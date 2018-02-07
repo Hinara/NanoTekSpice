@@ -9,11 +9,30 @@ CXX	=	g++
 
 RM	=	rm -rf
 
-CXXFLAGS	+=	-Wall -Wextra -Werror -I./include
+CXXFLAGS	+=	-I./include/Components/ -I./include/nanotekspice/
 
 NAME		=	nanotekspice
 
-SRCS		=	src/Main.cpp
+SRCS		=	src/Main.cpp				\
+			src/Parser.cpp				\
+			src/Components/ComponentFactory.cpp	\
+			src/Components/Input.cpp		\
+			src/Components/Output.cpp		\
+			src/Components/Comp2716.cpp		\
+			src/Components/Comp4001.cpp		\
+			src/Components/Comp4008.cpp		\
+			src/Components/Comp4011.cpp		\
+			src/Components/Comp4013.cpp		\
+			src/Components/Comp4017.cpp		\
+			src/Components/Comp4030.cpp		\
+			src/Components/Comp4040.cpp		\
+			src/Components/Comp4069.cpp		\
+			src/Components/Comp4071.cpp		\
+			src/Components/Comp4081.cpp		\
+			src/Components/Comp4094.cpp		\
+			src/Components/Comp4514.cpp		\
+			src/Components/Comp4801.cpp		\
+
 
 OBJS		=	$(SRCS:.cpp=.o)
 
