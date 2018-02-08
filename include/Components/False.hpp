@@ -2,21 +2,21 @@
 ** EPITECH PROJECT, 2018
 ** Nanotekspice
 ** File description:
-** True
+** False
 */
 
-#ifndef TRUE_HPP_
-	#define TRUE_HPP_
+#ifndef FALSE_HPP_
+	#define FALSE_HPP_
 
 #include <string>
 #include <memory>
 #include "IComponent.hpp"
 
-class True	:	public nts::IComponent
+class False	:	public nts::IComponent
 {
 	public:
-		True(const std::string &);
-		~True();
+		False(const std::string &);
+		~False();
 		nts::Tristate	compute(std::size_t pin = 1);
 		void		setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin);
 		void		dump() const;
@@ -25,4 +25,5 @@ class True	:	public nts::IComponent
 		const std::string	_name;
 };
 
-#endif /* !TRUE_HPP_ */
+
+#endif /* !FALSE_HPP_ */

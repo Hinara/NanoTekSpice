@@ -108,3 +108,13 @@ std::unique_ptr<nts::IComponent>	nts::ComponentFactory::createClock(const std::s
 {
 	return std::unique_ptr<Clock> (new Clock(value));
 }
+
+std::unique_ptr<nts::IComponent>	nts::ComponentFactory::createTrue(const std::string &value)
+{
+	return std::unique_ptr<True> (new True(value));
+}
+
+std::unique_ptr<nts::IComponent>	nts::ComponentFactory::createFalse(const std::string &value)
+{
+	return std::unique_ptr<False> (new False(value));
+}

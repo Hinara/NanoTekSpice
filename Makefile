@@ -17,6 +17,8 @@ SRCS		=	src/Main.cpp				\
 			src/Parser.cpp				\
 			src/Graph.cpp				\
 			src/Components/ComponentFactory.cpp	\
+			src/Components/True.cpp			\
+			src/Components/False.cpp		\
 			src/Components/Clock.cpp		\
 			src/Components/Input.cpp		\
 			src/Components/Output.cpp		\
