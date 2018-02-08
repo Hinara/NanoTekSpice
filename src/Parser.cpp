@@ -114,7 +114,6 @@ void	Parser::parseFile()
 			while (line.find(':') != line.npos)
 				line.replace(line.find(':'), 1, " ");
 			parseLine(line, chipsets, links);
-			std::cout << line << std::endl;
 		}
 		myFile.close();
 	} catch (std::exception ex) {

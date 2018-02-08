@@ -28,6 +28,7 @@
 #include "Comp4801.hpp"
 #include "Input.hpp"
 #include "Output.hpp"
+#include "Clock.hpp"
 #include "IComponent.hpp"
 
 using FnctPtr = std::function<std::unique_ptr<nts::IComponent>(const std::string &value)>;
@@ -56,6 +57,7 @@ namespace nts
 			static std::unique_ptr<nts::IComponent>	create2716(const std::string &value);
 			static std::unique_ptr<nts::IComponent>	createInput(const std::string &value);
 			static std::unique_ptr<nts::IComponent>	createOutput(const std::string &value);
+			static std::unique_ptr<nts::IComponent>	createClock(const std::string &value);
 		private:
 			std::map<const std::string, FnctPtr>	_map = {
 				{"4001", create4001},
@@ -74,6 +76,7 @@ namespace nts
 				{"2716", create2716},
 				{"input", createInput},
 				{"output", createOutput},
+				{"clock", createClock}
 			};
 	};
 }

@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <exception>
+#include "Graph.hpp"
 #include "Parser.hpp"
 
 int	main(int ac, char **av)
@@ -15,7 +16,9 @@ int	main(int ac, char **av)
 		return 84;
 	try {
 	Parser a(av[1]);
+	Graph	b;
 	a.parseFile();
+	//b.createGraph(a.getChipsets(), a.getLinks());
 	} catch (std::exception ex) {
 		std::cout << ex.what() << std::endl;
 	}

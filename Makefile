@@ -9,13 +9,15 @@ CXX	=	g++
 
 RM	=	rm -rf
 
-CXXFLAGS	+=	-I./include/Components/ -I./include/nanotekspice/
+CXXFLAGS	+=	-Wall -Wextra -I./include/Components/ -I./include/nanotekspice/
 
 NAME		=	nanotekspice
 
 SRCS		=	src/Main.cpp				\
 			src/Parser.cpp				\
+			src/Graph.cpp				\
 			src/Components/ComponentFactory.cpp	\
+			src/Components/Clock.cpp		\
 			src/Components/Input.cpp		\
 			src/Components/Output.cpp		\
 			src/Components/Comp2716.cpp		\

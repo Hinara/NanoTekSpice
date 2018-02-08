@@ -9,6 +9,8 @@
 	#define COMP4071_HPP_
 
 #include <string>
+#include <map>
+#include <utility>
 #include "IComponent.hpp"
 
 class Comp4071	:	public nts::IComponent
@@ -22,6 +24,7 @@ class Comp4071	:	public nts::IComponent
 		const std::string	getName() const { return _name; }
 	private:
 		const std::string	_name;
+		std::map<std::size_t, std::pair<nts::IComponent *, std::size_t>>	_links;
 };
 
 #endif /* !COMP4071_HPP_ */

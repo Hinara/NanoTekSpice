@@ -23,6 +23,8 @@ class Parser {
 		Parser(const std::string &);
 		~Parser();
 		void	parseFile();
+		std::deque<chipset_s>	getChipsets() const { return _chipsets; }
+		std::deque<link_s>	getLinks() const { return _links; }
 	private:
 		const std::string	_filename;
 		std::deque<chipset_s>	_chipsets;

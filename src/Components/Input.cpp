@@ -5,10 +5,11 @@
 ** Input
 */
 
+#include <iostream>
 #include "Input.hpp"
 
 Input::Input(const std::string &name)
-: _name(name), _value(nts::Tristate::UNDEFINED)
+: _name(name)
 {
 }
 
@@ -18,14 +19,15 @@ Input::~Input()
 
 nts::Tristate	Input::compute(std::size_t pin)
 {
+	if (pin != 1)
+		throw std::exception();
 }
 
 void		Input::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin)
 {
-
+	throw std::exception();
 }
 
 void		Input::dump() const
 {
-
 }

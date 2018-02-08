@@ -8,7 +8,10 @@
 #ifndef OUTPUT_HPP_
 	#define OUTPUT_HPP_
 
+#include <utility>
 #include <string>
+#include <exception>
+#include <map>
 #include "IComponent.hpp"
 
 class Output	:	public nts::IComponent
@@ -20,11 +23,9 @@ class Output	:	public nts::IComponent
 		void		setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin);
 		void		dump() const;
 		const std::string	getName() const { return _name; }
-		const nts::Tristate	getValue() const { return _value; }
-		void			setValue(nts::Tristate val) { _value = val; }
 	private:
 		const std::string	_name;
-		nts::Tristate		_value;
+		std::map<std::size_t, std::pair<nts::IComponent *, std::size_t>>	_links;
 };
 
 #endif /* !OUTPUT_HPP_ */

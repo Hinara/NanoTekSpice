@@ -19,7 +19,7 @@ std::unique_ptr<nts::IComponent>	nts::ComponentFactory::createComponent(const st
 {
 	for (auto it = _map.begin(); it != _map.end(); it++) {
 		if (type == it->first)
-			return(it->second)(value);
+			return (it->second)(value);
 	}
 	return (_map.end()->second)(value);
 }
@@ -102,4 +102,9 @@ std::unique_ptr<nts::IComponent>	nts::ComponentFactory::createInput(const std::s
 std::unique_ptr<nts::IComponent>	nts::ComponentFactory::createOutput(const std::string &value)
 {
 	return std::unique_ptr<Output> (new Output(value));
+}
+
+std::unique_ptr<nts::IComponent>	nts::ComponentFactory::createClock(const std::string &value)
+{
+	return std::unique_ptr<Clock> (new Clock(value));
 }
