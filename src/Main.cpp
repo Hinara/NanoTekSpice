@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 	Parser a(av[1]);
 	Graph	b;
 	a.parseFile();
-	//b.createGraph(a.getChipsets(), a.getLinks());
+	b.createGraph(a.getChipsets(), a.getLinks());
 	} catch (std::exception ex) {
 		std::cout << ex.what() << std::endl;
 	}

@@ -25,7 +25,7 @@ class Graph {
 		std::map<const std::string, nts::IComponent *>	_graphControler;
 	private:
 		void	fillGraphControler(const std::deque<chipset_s>);
-		void	linkGraph(const std::deque<link_s>);
+		void	linkGraph(const std::deque<link_s>, const std::deque<chipset_s>);
 };
 
 #endif /* !GRAPH_HPP_ */
