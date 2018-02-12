@@ -16,6 +16,7 @@ NAME		=	nanotekspice
 SRCS		=	src/Main.cpp				\
 			src/Parser.cpp				\
 			src/Graph.cpp				\
+			src/Errors.cpp				\
 			src/Components/ComponentFactory.cpp	\
 			src/Components/True.cpp			\
 			src/Components/False.cpp		\

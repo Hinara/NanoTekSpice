@@ -35,11 +35,9 @@ const std::string	getChipsetType(const std::string _name, const std::deque<chips
 	return "";
 }
 
-void	linkOuput(const std::string compO, const std::string compT, const link_s _link)
+void	linkOuput(nts::IComponent *first, nts::IComponent *second, std::size_t f_pin, std::size_t s_pin)
 {
-	if (compO == "output" || compT == "output") {
-
-	}
+	first->setLink(f_pin, *second, s_pin);
 }
 
 void	Graph::linkGraph(const std::deque<link_s> _link, const std::deque<chipset_s> _chipset)
@@ -47,8 +45,19 @@ void	Graph::linkGraph(const std::deque<link_s> _link, const std::deque<chipset_s
 	for (link_s th : _link) {
 		const std::string	compO = getChipsetType(th._nameO, _chipset);
 		const std::string	compT = getChipsetType(th._nameT, _chipset);
-		linkOuput(compO, compT, th);
+
+		if ((std::find(_priority.cbegin(), _priority.cend(), compO) != _priority.npos 
+		&& std::find(_priority.cbegin(), _priority.cend(), compT) == _priority.npos) ||
+		 (compO == "output" && compT != "output"))
+			linkOuput(_graphControler[th._nameO], _graphControler[th._nameT], th._pinO, th._pinT);
+		else if ((std::find(_priority.cbegin(), _priority.cend(), compO) == _priority.npos 
+		&& std::find(_priority.cbegin(), _priority.cend(), compT) != _priority.npos) ||
+		 (compT == "output" && compO != "output"))
+			linkOuput(_graphControler[th._nameT], _graphControler[th._nameO], th._pinT, th._pinO);
+		else
+			throw Err::LinkError("Error at the creation of the graph.");
 	}
+	
 }
 
 void	Graph::fillGraphControler(const std::deque<chipset_s> _chipset)
