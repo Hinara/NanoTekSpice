@@ -22,6 +22,7 @@ public:
 	const std::string	getName() const { return _name; }
 private:
 	const std::string	_name;
+	nts::Tristate		_value;
 };
 
 #endif /* !CLOCK_HPP_ */

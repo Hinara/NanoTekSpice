@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include "../Errors.hpp"
 #include "Output.hpp"
 
 Output::Output(const std::string &name)
@@ -19,14 +20,12 @@ Output::~Output()
 
 nts::Tristate	Output::compute(std::size_t pin)
 {
-	if (pin != 1)
-		throw std::exception();
 }
 
 void		Output::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin)
 {
 	if (pin != 1 && _links[1].first)
-		throw std::exception();
+		throw Err::LinkError("You can't link the pin: it's already exist or is not equal to 1\n");
 	_links[1].first = &other;
 	_links[1].second = otherpin;
 }

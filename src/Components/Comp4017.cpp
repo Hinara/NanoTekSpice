@@ -5,6 +5,8 @@
 ** 4017
 */
 
+#include <sstream>
+#include "../Errors.hpp"
 #include "Comp4017.hpp"
 
 Comp4017::Comp4017(const std::string &name)
@@ -24,7 +26,15 @@ nts::Tristate	Comp4017::compute(std::size_t pin)
 
 void		Comp4017::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin)
 {
+	std::stringstream	myPin;
 
+	myPin << pin;
+	if (_links.size() < pin)
+		throw Err::LinkError("Pin " + myPin.str() + " doesn't exist in the component 2716\n");
+	else if (_links[pin].first != nullptr)
+		throw Err::LinkError("Pin " + myPin.str() + " already connected\n");
+	_links[pin].first = &other;
+	_links[pin].second = otherpin;
 }
 
 void		Comp4017::dump() const

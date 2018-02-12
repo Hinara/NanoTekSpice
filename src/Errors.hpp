@@ -60,6 +60,12 @@ namespace Err
 	public:
 		InfiniteLoop(std::string const &message, std::string const &component = "Unknown") throw();
 	};
+
+	class UnknowPin	:	public Errors
+	{
+	public:
+		UnknowPin(std::string const &message, std::string const &component = "Unknown") throw();
+	};
 };
 
 #endif /* !ERRORS_HPP_ */

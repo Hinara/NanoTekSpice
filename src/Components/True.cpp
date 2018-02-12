@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include "../Errors.hpp"
 #include "True.hpp"
 
 True::True(const std::string &name)
@@ -19,12 +20,12 @@ True::~True()
 
 nts::Tristate	True::compute(std::size_t pin)
 {
-	return nts::Tristate::TRUE;
+	return nts::TRUE;
 }
 
-void		True::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin)
+void		True::setLink([[gnu::unused]] std::size_t pin, [[gnu::unused]] nts::IComponent &other, [[gnu::unused]] std::size_t otherpin)
 {
-	throw std::exception();
+	throw Err::LinkError("You can't link the \'True\' component\n");
 }
 
 void		True::dump() const

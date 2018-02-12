@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include "../Errors.hpp"
 #include "False.hpp"
 
 
@@ -20,15 +21,15 @@ False::~False()
 
 nts::Tristate	False::compute(std::size_t pin)
 {
-	return nts::Tristate::FALSE;
+	return nts::FALSE;
 }
 
-void		False::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin)
+void		False::setLink([[gnu::unused]] std::size_t pin, [[gnu::unused]] nts::IComponent &other, [[gnu::unused]] std::size_t otherpin)
 {
-	throw std::exception();
+	throw Err::LinkError("You can't link the \'False\' component\n");
 }
 
 void		False::dump() const
 {
-	std::cout << _name << " = 1" << std::endl;
+	std::cout << _name << " = 0" << std::endl;
 }

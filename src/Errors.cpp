@@ -56,3 +56,8 @@ Err::InfiniteLoop::InfiniteLoop(std::string const &message, std::string const &c
 : Errors(message, component)
 {
 }
+
+Err::UnknowPin::UnknowPin(std::string const &message, std::string const &component) throw()
+: Errors(message, component)
+{
+}
