@@ -16,7 +16,7 @@
 #include <string>
 #include <algorithm>
 #include "Nano.hpp"
-#include "IComponent.hpp"
+#include "Components/IComponent.hpp"
 
 class Parser {
 public:

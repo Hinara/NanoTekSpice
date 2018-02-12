@@ -15,7 +15,7 @@
 #include <vector>
 #include <algorithm>
 #include "Nano.hpp"
-#include "IComponent.hpp"
+#include "Components/IComponent.hpp"
 
 class Graph {
 public:
