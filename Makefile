@@ -9,7 +9,7 @@ CXX	=	g++
 
 RM	=	rm -rf
 
-CXXFLAGS	+=	-Wall -Wextra -I./include/Components/ -I./include/nanotekspice/
+CXXFLAGS	+=	-Wall -Wextra
 
 NAME		=	nanotekspice
 
