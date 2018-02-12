@@ -21,6 +21,7 @@ private:
 	void    input(const std::string &s);
 	void	simulate();
 	void	loop();
+	void	dump();
 	void	display();
 	void	executeCommand(const std::string &s);
 };
