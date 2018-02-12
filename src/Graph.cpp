@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <utility>
+#include "Errors.hpp"
 #include "Output.hpp"
 #include "ComponentFactory.hpp"
 #include "Graph.hpp"
@@ -32,6 +33,7 @@ const std::string	getChipsetType(const std::string _name, const std::deque<chips
 		if (_name == it._name)
 			return it._comp;
 	}
+	throw Err::UnknowType("This " + _name + " name doesn't exist");
 	return "";
 }
 
@@ -46,21 +48,20 @@ void	Graph::linkGraph(const std::deque<link_s> _link, const std::deque<chipset_s
 		const std::string	compO = getChipsetType(th._nameO, _chipset);
 		const std::string	compT = getChipsetType(th._nameT, _chipset);
 
-		if ((std::find(_priority.cbegin(), _priority.cend(), compO) != _priority.npos 
-		&& std::find(_priority.cbegin(), _priority.cend(), compT) == _priority.npos) ||
+		if ((std::find(_priority.cbegin(), _priority.cend(), compO) != _priority.cend() 
+		&& std::find(_priority.cbegin(), _priority.cend(), compT) == _priority.cend()) ||
 		 (compO == "output" && compT != "output"))
 			linkOuput(_graphControler[th._nameO], _graphControler[th._nameT], th._pinO, th._pinT);
-		else if ((std::find(_priority.cbegin(), _priority.cend(), compO) == _priority.npos 
-		&& std::find(_priority.cbegin(), _priority.cend(), compT) != _priority.npos) ||
+		else if ((std::find(_priority.cbegin(), _priority.cend(), compO) == _priority.cend() 
+		&& std::find(_priority.cbegin(), _priority.cend(), compT) != _priority.cend()) ||
 		 (compT == "output" && compO != "output"))
 			linkOuput(_graphControler[th._nameT], _graphControler[th._nameO], th._pinT, th._pinO);
 		else
 			throw Err::LinkError("Error at the creation of the graph.");
 	}
-	
 }
 
-void	Graph::fillGraphControler(const std::deque<chipset_s> _chipset)
+void	Graph::fillGraphControler(const std::deque<chipset_s> _chipset) noexcept
 {
 	nts::ComponentFactory	_factory;
 

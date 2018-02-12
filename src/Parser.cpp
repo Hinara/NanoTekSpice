@@ -7,6 +7,7 @@
 
 #include <sstream>
 #include <iostream>
+#include "Errors.hpp"
 #include "Parser.hpp"
 
 Parser::Parser(const std::string &filename)
@@ -96,7 +97,7 @@ void	Parser::parseLine(const std::string line, int &chipsets, int &links)
 	} else if (chipsets == 1 && links == 1) {
 		verifLink(line);
 	} else
-		throw std::exception();
+		throw Err::LexicalError("Error: line not in the format:\n" + line);
 }
 
 void	Parser::parseFile()
