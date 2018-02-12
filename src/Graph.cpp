@@ -8,8 +8,8 @@
 #include <iostream>
 #include <utility>
 #include "Errors.hpp"
-#include "Output.hpp"
-#include "ComponentFactory.hpp"
+#include "Components/Output.hpp"
+#include "Components/ComponentFactory.hpp"
 #include "Graph.hpp"
 
 Graph::Graph()
