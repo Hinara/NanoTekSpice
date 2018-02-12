@@ -12,7 +12,7 @@
 #include "../Graph.hpp"
 #include "Cli.hpp"
 
-bool *stop;
+static bool	*stop;
 
 Cli::Cli(const Graph &g)
 	: _g(g)
@@ -24,6 +24,10 @@ Cli::~Cli()
 }
 
 void	Cli::display()
+{
+}
+
+void	Cli::dump()
 {
 	auto components = _g.getGraph();
 	std::for_each(components.begin(), components.end(),
@@ -45,8 +49,9 @@ void	Cli::loop()
 {
 	bool	exit = false;
 	stop = &exit;
-	auto oldHandler = std::signal(SIGINT,
-				      []([[gnu::unused]] int s){ *stop = true; });
+	auto oldHandler = std::signal(
+		SIGINT,
+		[]([[gnu::unused]] int s){ *stop = true; });
 	while (!exit)
 		this->simulate();
 	std::signal(SIGINT, oldHandler);
@@ -54,10 +59,11 @@ void	Cli::loop()
 
 void	Cli::executeCommand(const std::string &s)
 {
-        const static std::map<std::string, void (Cli::*)()> m = {
+        const static std::map<const std::string, void (Cli::*)()> m = {
 		{ "simulate", &Cli::simulate },
 		{ "loop", &Cli::loop },
-		{ "display", &Cli::display }
+		{ "display", &Cli::display },
+		{ "dump", &Cli::dump },
 	};
 	try {
 		(this->*m.at(s))();
