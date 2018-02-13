@@ -93,10 +93,10 @@ void	Parser::LinkGraph(link_s link)
 	else if (link._nameO == link._nameT && link._pinO == link._pinT)
 		throw Err::LinkError("You can't link a component on the same pin.");
 	else {
-		if (_output.find(link._nameO) != _output.cend() && _output.find(link._nameT) == _output.cend())
-			_output[link._nameO]->setLink(link._pinO, *(_graph[link._nameT]), link._pinT);
-		if (_output.find(link._nameT) != _output.cend() && _output.find(link._nameO) == _output.cend())
-			_output[link._nameT]->setLink(link._pinO, *(_graph[link._nameO]), link._pinT);
+		// if ((_output.find(link._nameO) != _output.cend() && ()) 
+		// || _component.find(link._nameO) != _component.cend()) {
+
+		// }
 	}
 }
 
