@@ -7,12 +7,12 @@
 
 #include "Errors.hpp"
 
-Err::Errors::Errors(std::string const &message, std::string const &component) throw()
+Err::Errors::Errors(std::string const &message, std::string const &component)
 : _message(message), _component(component)
 {
 }
 
-Err::Errors::~Errors() throw()
+Err::Errors::~Errors()
 {
 }
 
@@ -26,38 +26,43 @@ const char		*Err::Errors::what() const noexcept
 	return _message.data();
 }
 
-Err::LexicalError::LexicalError(std::string const &message, std::string const &component) throw()
+Err::LexicalError::LexicalError(std::string const &message, std::string const &component)
 : Errors(message, component)
 {
 
 }
 
-Err::UnknowType::UnknowType(std::string const &message, std::string const &component) throw()
+Err::UnknowType::UnknowType(std::string const &message, std::string const &component)
 : Errors(message, component)
 {
 }
 
-Err::LinkError::LinkError(std::string const &message, std::string const &component) throw()
+Err::LinkError::LinkError(std::string const &message, std::string const &component)
 : Errors(message, component)
 {
 }
 
-Err::SectionError::SectionError(std::string const &message, std::string const &component) throw()
+Err::SectionError::SectionError(std::string const &message, std::string const &component)
 : Errors(message, component)
 {
 }
 
-Err::SegFault::SegFault(std::string const &message, std::string const &component) throw()
+Err::SegFault::SegFault(std::string const &message, std::string const &component)
 : Errors(message, component)
 {
 }
 
-Err::InfiniteLoop::InfiniteLoop(std::string const &message, std::string const &component) throw()
+Err::InfiniteLoop::InfiniteLoop(std::string const &message, std::string const &component)
 : Errors(message, component)
 {
 }
 
-Err::UnknowPin::UnknowPin(std::string const &message, std::string const &component) throw()
+Err::UnknowPin::UnknowPin(std::string const &message, std::string const &component)
 : Errors(message, component)
+{
+}
+
+Err::DuplicatedSectionHeader::DuplicatedSectionHeader(std::string const &message, std::string const &component)
+	: Errors(message, component)
 {
 }
