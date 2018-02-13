@@ -5,6 +5,7 @@
 ** Componentfactory
 */
 
+#include <iostream>
 #include "ComponentFactory.hpp"
 
 nts::ComponentFactory::ComponentFactory()

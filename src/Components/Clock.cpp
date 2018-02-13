@@ -20,14 +20,14 @@ Clock::~Clock()
 nts::Tristate	Clock::compute(std::size_t pin)
 {
 	if (pin != 1)
-		throw Err::UnknowPin("This pin doesn't exist.\n");
+		throw Err::UnknowPin("This pin doesn't exist.");
 	_value = static_cast<nts::Tristate>(-_value);
 	return static_cast<nts::Tristate>(-_value);
 }
 
 void		Clock::setLink([[gnu::unused]] std::size_t pin, [[gnu::unused]] nts::IComponent &other, [[gnu::unused]] std::size_t otherpin)
 {
-	throw Err::LinkError("Clock can't link.\n");
+	throw Err::LinkError("Clock can't link.");
 }
 
 void		Clock::dump() const

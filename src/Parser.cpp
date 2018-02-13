@@ -63,7 +63,7 @@ void	Parser::putInControler(chipset_s chipset)
 
 	if (chipset._comp == "output")
 		_output[chipset._name] = factory.createComponent(chipset._comp, chipset._name);
-	else if (find(priority.cbegin(), priority.cend(), chipset._comp) != priority.cend())
+	else if (find(priority.cbegin(), priority.cend(), chipset._comp) == priority.cend())
 		_component[chipset._name] = factory.createComponent(chipset._comp, chipset._name);
 }
 
@@ -93,10 +93,14 @@ void	Parser::LinkGraph(link_s link)
 	else if (link._nameO == link._nameT && link._pinO == link._pinT)
 		throw Err::LinkError("You can't link a component on the same pin.");
 	else {
-		// if ((_output.find(link._nameO) != _output.cend() && ()) 
-		// || _component.find(link._nameO) != _component.cend()) {
-
-		// }
+		if ((_output.find(link._nameO) != _output.cend() || _component.find(link._nameO) != _component.cend()) 
+		&& _output.find(link._nameT) == _output.cend())
+			_graph[link._nameO]->setLink(link._pinO, *(_graph[link._nameT]), link._pinT);
+		else if ((_output.find(link._nameT) != _output.cend() || _component.find(link._nameT) != _component.cend()) 
+		&& _output.find(link._nameO) == _output.cend())
+			_graph[link._nameT]->setLink(link._pinT, *(_graph[link._nameO]), link._pinO);
+		else
+			throw Err::LinkError("Impossible link.");
 	}
 }
 
