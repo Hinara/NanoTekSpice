@@ -25,7 +25,12 @@ Parser::Parser(const std::string &filename)
 Parser::~Parser()
 {
 }
-
+/*
+std::map<const std::string, std::unique_ptr<nts::IComponent>>	Parser::getGraph() const
+{
+	return _graph;
+}
+*/
 char	Parser::epurLine(std ::string &line)
 {
 	if (line.find('#') != line.npos)
@@ -49,50 +54,73 @@ char	Parser::isKeyWord(const std::string line, int &chipset, int &link)
 	return 0;
 }
 
+void	Parser::putInControler(chipset_s chipset)
+{
+	const std::vector<std::string>	priority = { "input", "clock", "true", "false" };
+	nts::ComponentFactory	factory;
+
+	if (chipset._comp == "output")
+		_output[chipset._name] = factory.createComponent(chipset._comp, chipset._name);
+	else if (find(priority.cbegin(), priority.cend(), chipset._comp) != priority.cend())
+		_component[chipset._name] = factory.createComponent(chipset._comp, chipset._name);
+}
+
 void	Parser::verifChipset(const std::string line)
 {
 	std::istringstream	data(line);
+	nts::ComponentFactory	factory;
 	std::string		err;
 	chipset_s		elem;
 
 	if (!(data >> elem._comp) || !(data >> elem._name) || data >> err)
-		throw std::exception();
+		throw Err::LexicalError("Chipset's problem when parsing the file.\n");
 	else if (find(_comp.cbegin(), _comp.cend(), elem._comp) == _comp.cend())
-		throw std::exception();
-	for (auto it = _chipsets.cbegin(); it != _chipsets.cend(); it++) {
-		if (it->_name == elem._name)
-			throw std::exception();
+		throw Err::UnknowType("This component doesn't exist.\n");
+	else {
+		if (_graph.find(elem._name) != _graph.cend())
+			throw Err::LexicalError("\'" + elem._name + "\' is already used.\n");
 	}
-	_chipsets.push_back(elem);
+	putInControler(elem);
+	_graph[elem._name] = factory.createComponent(elem._comp, elem._name);
 }
 
-void	verifName(const std::string name, std::deque<chipset_s> data)
+void	Parser::LinkGraph(link_s link)
 {
-	for (auto it = data.cbegin(); it != data.cend(); it++) {
-		if (it->_name == name)
-			return ;
+	if (_graph.find(link._nameO) == _graph.cend() || _graph.find(link._nameT) == _graph.cend())
+		throw Err::LexicalError("This component doesn't exist.\n");
+	else if (link._nameO == link._nameT && link._pinO == link._pinT)
+		throw Err::LinkError("You can't link a component on the same pin.\n");
+	else {
+		if (_output.find(link._nameO) != _output.cend() && _output.find(link._nameT) == _output.cend())
+			_output[link._nameO]->setLink(link._pinO, *(_graph[link._nameT]), link._pinT);
+		if (_output.find(link._nameT) != _output.cend() && _output.find(link._nameO) == _output.cend())
+			_output[link._nameT]->setLink(link._pinO, *(_graph[link._nameO]), link._pinT);
 	}
-	throw std::exception();
 }
 
-void	Parser::verifLink(const std::string line)
+void	Parser::verifLink(std::string line)
 {
 	std::istringstream	data(line);
 	std::string		err;
 	link_s			elem;
 
+	if (!(data >> elem._nameO) || !(data >> elem._nameT) || data >> err)
+		throw Err::LexicalError("Too much link on the line.\n");
+	std::replace(line.begin(), line.end(), ':', ' ');
+	data.str(line);
+	elem._nameO = "";
+	elem._nameT = "";
 	if (!(data >> elem._nameO) || !(data >> elem._pinO)
 	|| !(data >> elem._nameT) || !(data >> elem._pinT) || data >> err
 	|| elem._pinO <= 0 || elem._pinT <= 0)
-		throw std::exception();
-	verifName(elem._nameO, _chipsets);
-	verifName(elem._nameT, _chipsets);
-	_links.push_back(elem);
+		throw Err::LexicalError("Bad arguments when parsing.\n");
+	LinkGraph(elem);
 }
 
-void	Parser::parseLine(const std::string line, int &chipsets, int &links)
+void	Parser::parseLine(std::string line, int &chipsets, int &links)
 {
 	if (chipsets == 1 && links == 0) {
+		std::replace(line.begin(), line.end(), ':', ' ');
 		verifChipset(line);
 	} else if (chipsets == 1 && links == 1) {
 		verifLink(line);
@@ -112,12 +140,11 @@ void	Parser::parseFile()
 		while (getline(myFile, line)) {
 			if (epurLine(line) == 1 || isKeyWord(line, chipsets, links) == 1)
 				continue;
-			while (line.find(':') != line.npos)
-				line.replace(line.find(':'), 1, " ");
 			parseLine(line, chipsets, links);
 		}
 		myFile.close();
 	} catch (std::exception ex) {
+		std::cout << ex.what();
 		throw std::exception();
 	}
 }

@@ -22,9 +22,9 @@ public:
 	Graph();
 	~Graph();
 	void	createGraph(const std::deque<chipset_s>, const std::deque<link_s>);
-	std::map<const std::string, nts::IComponent *>	getGraph() const { return _graphControler; }
+	const std::map<const std::string, std::unique_ptr<nts::IComponent> >	&getGraph() const { return _graphControler; }
 private:
-	std::map<const std::string, nts::IComponent *>	_graphControler;
+	std::map<const std::string, std::unique_ptr<nts::IComponent> >	_graphControler;
 	std::vector<std::string>	_priority = { "input", "clock", "true", "false" };
 private:
 	void	fillGraphControler(const std::deque<chipset_s>) noexcept;

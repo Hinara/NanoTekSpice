@@ -17,7 +17,7 @@ public:
 	~Cli();
 	void	start();
 private:
-	Graph	_g;
+	const Graph	&_g;
 	void    input(const std::string &s);
 	void	simulate();
 	void	loop();

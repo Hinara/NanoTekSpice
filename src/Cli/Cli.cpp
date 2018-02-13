@@ -29,11 +29,12 @@ void	Cli::display()
 
 void	Cli::dump()
 {
-	auto components = _g.getGraph();
-	std::for_each(components.begin(), components.end(),
-		     [](const std::pair<std::string, nts::IComponent *> pair)
+	const std::map<const std::string, std::unique_ptr<nts::IComponent> >	&components = _g.getGraph();
+        std::for_each(components.begin(), components.end(),
+		     [](const std::pair<const std::string, std::unique_ptr<nts::IComponent> > &pair)
 		     { pair.second->dump(); }
 		);
+	(void) components;
 }
 
 void	Cli::input(const std::string &s)

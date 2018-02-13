@@ -17,13 +17,11 @@ int	main(int ac, char **av)
 		return 84;
 	try {
 		Parser	p(av[1]);
-		Graph	g;
 		p.parseFile();
-		g.createGraph(p.getChipsets(), p.getLinks());
-		Cli	c(g);
-		c.start();
+		//Cli	c(g);
+		//c.start();
 	} catch (std::exception ex) {
-		std::cout << ex.what() << std::endl;
+		return 84;
 	}
 	return 0;
 }
