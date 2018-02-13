@@ -13,31 +13,32 @@ CXXFLAGS	+=	-Wall -Wextra
 
 NAME		=	nanotekspice
 
-SRCS		=	src/Main.cpp				\
-			src/Parser.cpp				\
-			src/Graph.cpp				\
-			src/Errors.cpp				\
-			src/Cli/Cli.cpp				\
+SRCS		=									\
+			src/Main.cpp						\
+			src/Parser.cpp						\
+			src/Graph.cpp						\
+			src/Errors.cpp						\
+			src/Cli/Cli.cpp						\
 			src/Components/ComponentFactory.cpp	\
-			src/Components/True.cpp			\
-			src/Components/False.cpp		\
-			src/Components/Clock.cpp		\
-			src/Components/Input.cpp		\
-			src/Components/Output.cpp		\
-			src/Components/Comp2716.cpp		\
-			src/Components/Comp4001.cpp		\
-			src/Components/Comp4008.cpp		\
-			src/Components/Comp4011.cpp		\
-			src/Components/Comp4013.cpp		\
-			src/Components/Comp4017.cpp		\
-			src/Components/Comp4030.cpp		\
-			src/Components/Comp4040.cpp		\
-			src/Components/Comp4069.cpp		\
-			src/Components/Comp4071.cpp		\
-			src/Components/Comp4081.cpp		\
-			src/Components/Comp4094.cpp		\
-			src/Components/Comp4514.cpp		\
-			src/Components/Comp4801.cpp		\
+			src/Components/True.cpp				\
+			src/Components/False.cpp			\
+			src/Components/Clock.cpp			\
+			src/Components/Input.cpp			\
+			src/Components/Output.cpp			\
+			src/Components/Comp2716.cpp			\
+			src/Components/Comp4001.cpp			\
+			src/Components/Comp4008.cpp			\
+			src/Components/Comp4011.cpp			\
+			src/Components/Comp4013.cpp			\
+			src/Components/Comp4017.cpp			\
+			src/Components/Comp4030.cpp			\
+			src/Components/Comp4040.cpp			\
+			src/Components/Comp4069.cpp			\
+			src/Components/Comp4071.cpp			\
+			src/Components/Comp4081.cpp			\
+			src/Components/Comp4094.cpp			\
+			src/Components/Comp4514.cpp			\
+			src/Components/Comp4801.cpp			\
 
 
 OBJS		=	$(SRCS:.cpp=.o)
