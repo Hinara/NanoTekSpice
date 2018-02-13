@@ -41,9 +41,9 @@ private:
 	void	verifLink(std::string);
 	void	putInControler(chipset_s);
 	void	LinkGraph(link_s);
-	void	parseLine(std::string, int &, int &);
-	char	isKeyWord(const std::string, int &, int &);
-	char	epurLine(std::string &line);
+	void	parseLine(std::string, bool &, bool &);
+	bool	isKeyWord(const std::string, bool &, bool &);
+	bool	epurLine(std::string &line);
 };
 
 #endif /* !PARSER_HPP_ */
