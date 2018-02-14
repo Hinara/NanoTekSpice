@@ -36,35 +36,35 @@ bool	Parser::epurLine(std ::string &line)
 	return true;
 }
 
-bool	Parser::isKeyWord(const std::string line, bool &chipset, bool &link)
+bool	Parser::isKeyWord(const std::string line, parseState &s)
 {
 	if (line == ".chipsets:") {
-		if (chipset)
+		if (s == CHIPSET)
 			throw Err::DuplicatedSectionHeader("Duplicated \'.chipset:\' header");
-		chipset = true;
+		s = CHIPSET;
 		return (true);
 	} else if (line == ".links:") {
-		if (link)
+		if (s == LINK)
 			throw Err::DuplicatedSectionHeader("Duplicated \'.links:\' header");
-		link = true;
+		s = LINK;
 		return (true);
 	}
 	return (false);
 }
 
-void	Parser::putInGraph(chipset_s chipset)
+void	Parser::putInGraph(chipset_s chipset, graph_s &data)
 {
 	nts::ComponentFactory	factory;
-	_graph[chipset._name] = factory.createComponent(chipset._comp, chipset._name);
+	data._graph[chipset._name] = factory.createComponent(chipset._comp, chipset._name);
 	if (chipset._comp == "output")
-		_output.push_back(chipset._name);
+		data._output.push_back(chipset._name);
 	else if (chipset._comp == "clock")
-		_clock.push_back(chipset._name);
+		data._clock.push_back(chipset._name);
 	else if (chipset._comp == "input")
-		_input.push_back(chipset._name);
+		data._input.push_back(chipset._name);
 }
 
-void	Parser::verifChipset(const std::string line)
+void	Parser::verifChipset(const std::string line, graph_s &dat)
 {
 	std::istringstream	data(line);
 	nts::ComponentFactory	factory;
@@ -76,28 +76,28 @@ void	Parser::verifChipset(const std::string line)
 	else if (find(_comp.cbegin(), _comp.cend(), elem._comp) == _comp.cend())
 		throw Err::UnknowType("This component doesn't exist.");
 	else {
-		if (_graph.find(elem._name) != _graph.cend())
+		if (dat._graph.find(elem._name) != dat._graph.cend())
 			throw Err::LexicalError("\'" + elem._name + "\' is already used.");
 	}
-	putInGraph(elem);
+	putInGraph(elem, dat);
 }
 
-void	Parser::LinkGraph(link_s link)
+void	Parser::LinkGraph(link_s link, graph_s &data)
 {
-	if (_graph.find(link._nameO) == _graph.cend() || _graph.find(link._nameT) == _graph.cend())
+	if (data._graph.find(link._nameO) == data._graph.cend() || data._graph.find(link._nameT) == data._graph.cend())
 		throw Err::LexicalError("This component doesn't exist.");
-	bool a = (static_cast<SuperComponent *>(_graph.at(link._nameO).get()))->isInput(link._pinO);
-	bool b = (static_cast<SuperComponent *>(_graph.at(link._nameT).get()))->isInput(link._pinT);
+	bool a = (static_cast<SuperComponent *>(data._graph.at(link._nameO).get()))->isInput(link._pinO);
+	bool b = (static_cast<SuperComponent *>(data._graph.at(link._nameT).get()))->isInput(link._pinT);
 
 	if (a && !b)
-		_graph[link._nameT]->setLink(link._pinT, *(_graph[link._nameO]), link._pinO);
+		data._graph[link._nameT]->setLink(link._pinT, *(data._graph[link._nameO]), link._pinO);
 	else if (b && !a)
-		_graph[link._nameO]->setLink(link._pinO, *(_graph[link._nameT]), link._pinT);
+		data._graph[link._nameO]->setLink(link._pinO, *(data._graph[link._nameT]), link._pinT);
 	else
 		throw Err::LinkError("Can't link pin of the same type.");
 }
 
-void	Parser::verifLink(std::string line)
+void	Parser::verifLink(std::string line, graph_s &dat)
 {
 	std::istringstream	data(line);
 	std::string		err;
@@ -111,35 +111,34 @@ void	Parser::verifLink(std::string line)
 	|| !(parse >> elem._nameT) || !(parse >> elem._pinT) || parse >> err
 	|| elem._pinO <= 0 || elem._pinT <= 0)
 		throw Err::LexicalError("Bad arguments when parsing.");
-	LinkGraph(elem);
+	LinkGraph(elem, dat);
 }
 
-void	Parser::parseLine(std::string line, bool &chipsets, bool &links)
+void	Parser::parseLine(std::string line, parseState &state, graph_s &data)
 {
-	if (chipsets && !links) {
-		std::replace(line.begin(), line.end(), ':', ' ');
-		verifChipset(line);
-	} else if (chipsets && links) {
-		verifLink(line);
+	if (state == CHIPSET) {
+		if (line.find(':') != line.npos)
+			throw Err::LexicalError("\':\' is a separator and can't be use in chipset.");
+		verifChipset(line, data);
+	} else if (state == LINK) {
+		verifLink(line, data);
 	} else
 		throw Err::LexicalError("Error: line not in the format:" + line);
 }
 
-void	Parser::parseFile()
+void	Parser::parseFile(graph_s &data)
 {
 	std::ifstream	myFile(_filename, std::ifstream::in);
-	std::map<const std::string, std::map<const std::string, const std::string>>	_data;
 	std::string	line;
-	bool	chipsets = 0;
-	bool	links = 0;
+	parseState	state = NONE;
 	int		lineNum = 0;
 
 	try {
 		while (getline(myFile, line)) {
 			lineNum += 1;
 			std::cout << line << std::endl;
-			if (epurLine(line) && isKeyWord(line, chipsets, links) == false)
-				parseLine(line, chipsets, links);
+			if (epurLine(line) && isKeyWord(line, state) == false)
+				parseLine(line, state, data);
 		}
 		myFile.close();
 	} catch (Err::Errors ex) {

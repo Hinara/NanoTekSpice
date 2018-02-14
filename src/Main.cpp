@@ -14,8 +14,9 @@ int	main(int ac, char **av)
 	if (ac == 0)
 		return 84;
 	try {
+		graph_s	data;
 		Parser	p(av[1]);
-		p.parseFile();
+		p.parseFile(data);
 	} catch (std::exception ex) {
 		std::cerr << ex.what() << std::endl;
 		return 84;

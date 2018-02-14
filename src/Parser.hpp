@@ -24,25 +24,26 @@ class Parser {
 public:
 	Parser(const std::string &);
 	~Parser();
-	void	parseFile();
+	void	parseFile(graph_s &);
 private:
+	enum parseState {
+		NONE,
+		CHIPSET,
+		LINK
+	};
 	const std::string	_filename;
-	std::map<const std::string, std::unique_ptr<nts::IComponent>>	_graph;
-	std::deque<std::string>	_output;
-	std::deque<std::string>	_input;
-	std::deque<std::string>	_clock;
 	const std::vector<std::string>	_comp = {
 		"input", "output", "2716", "4001", "4008",
 		"4011", "4013", "4017", "4030", "4040", "4069",
 		"4071", "4081", "4094", "4514", "4801", "clock", "true", "false"
 	};
 private:
-	void	verifChipset(const std::string);
-	void	verifLink(std::string);
-	void	putInGraph(chipset_s);
-	void	LinkGraph(link_s);
-	void	parseLine(std::string, bool &, bool &);
-	bool	isKeyWord(const std::string, bool &, bool &);
+	void	verifChipset(const std::string, graph_s &);
+	void	verifLink(std::string, graph_s &);
+	void	putInGraph(chipset_s, graph_s &);
+	void	LinkGraph(link_s, graph_s &);
+	void	parseLine(std::string, parseState &, graph_s &);
+	bool	isKeyWord(const std::string, parseState &);
 	bool	epurLine(std::string &line);
 };
 
