@@ -2,4 +2,7 @@ src/Cli/Cli.cpp
 - display command (Wainting finished graph with array of outputs)
 - input=value command
 - simulate command (Wainting finished graph with array of outputs)
+
+src/Components
 - input/output of components
+-Logic of a lot of components
