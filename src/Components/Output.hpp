@@ -19,10 +19,11 @@ public:
 	Output(const std::string &);
 	~Output();
 	nts::Tristate	internalCompute(std::size_t);
-	const std::string	getName() const { return _name; }
 	static const std::unordered_map<size_t,  PinStatus>	pins;
+	void simulate();
+	nts::Tristate	getValue();
 private:
-	const std::string	_name;
+	nts::Tristate		_state;
 };
 
 #endif /* !OUTPUT_HPP_ */

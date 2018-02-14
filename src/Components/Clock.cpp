@@ -9,16 +9,18 @@
 #include "Clock.hpp"
 
 Clock::Clock(const std::string &name)
-: SuperComponent(pins), _name(name)
+: Input(name), _name(name)
 {
 }
 
 Clock::~Clock()
 {
 }
-const std::unordered_map<size_t,  SuperComponent::PinStatus> Clock::pins = {
-	{1, PinStatus::OUTPUT} };
 
-nts::Tristate	Clock::internalCompute(std::size_t pin)
+void	Clock::swapState()
 {
+	if (this->_state != nts::UNDEFINED) {
+		this->_state = this->_state == (nts::TRUE) ?
+			nts::TRUE : nts::FALSE;
+	}
 }

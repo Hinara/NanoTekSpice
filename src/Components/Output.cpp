@@ -9,8 +9,8 @@
 #include "../Errors.hpp"
 #include "Output.hpp"
 
-Output::Output(const std::string &name)
-: SuperComponent(pins), _name(name)
+Output::Output([[gnu::unused]] const std::string &value)
+: SuperComponent(pins), _state(nts::UNDEFINED)
 {
 }
 
@@ -20,7 +20,17 @@ Output::~Output()
 const std::unordered_map<size_t,  SuperComponent::PinStatus> Output::pins = {
 		{1, PinStatus::INPUT} };
 
-nts::Tristate	Output::internalCompute(std::size_t pin)
+nts::Tristate	Output::internalCompute([[gnu::unused]] std::size_t pin)
 {
-	return getInputPin(1);
+	throw;
+}
+
+void	Output::simulate()
+{
+	this->_state = getInputPin(1);
+}
+
+nts::Tristate	Output::getValue()
+{
+	return this->_state;
 }

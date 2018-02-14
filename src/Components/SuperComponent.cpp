@@ -41,9 +41,9 @@ nts::Tristate	SuperComponent::compute(std::size_t pin)
 		return (p.first);
 	}
 	p.second = true;
-	nts::Tristate res = this->internalCompute(pin);
+	p.first = this->internalCompute(pin);
 	p.second = false;
-	return (res);
+	return (p.first);
 }
 
 #include "iostream"
@@ -51,7 +51,6 @@ void		SuperComponent::setLink(std::size_t pin,
 					nts::IComponent &other,
 					std::size_t otherpin)
 {
-	std::cout << "Here" << std::endl;
 	try {
 		auto &p = this->input.at(pin);
 		if (p.first)

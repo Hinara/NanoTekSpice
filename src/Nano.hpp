@@ -8,6 +8,8 @@
 #ifndef NANO_HPP_
 	#define NANO_HPP_
 
+#include <map>
+#include <memory>
 #include <deque>
 #include <string>
 #include "Components/IComponent.hpp"

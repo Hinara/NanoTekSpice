@@ -18,8 +18,11 @@ public:
 	nts::Tristate	internalCompute(std::size_t);
 	const std::string	getName() const { return _name; }
 	static const std::unordered_map<size_t,  PinStatus>	pins;
+	void	setState(nts::Tristate);
 private:
 	const std::string	_name;
+protected:
+	nts::Tristate		_state;
 };
 
 #endif /* !INPUT_HPP_ */
