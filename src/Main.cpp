@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <exception>
+#include <algorithm>
 #include "Nano.hpp"
 #include "Parser.hpp"
 #include "Cli/Cli.hpp"
@@ -20,6 +21,7 @@ int	main(int ac, char **av)
 		Cli	c(g);
 		Parser	p(av[1]);
 		p.parseFile(g);
+		std::sort(g._output.cbegin(), g._output.cend());
 		c.start();
 	} catch (std::exception ex) {
 		std::cerr << ex.what() << std::endl;
