@@ -8,7 +8,7 @@
 #include "Comp4001.hpp"
 
 Comp4001::Comp4001(const std::string &name)
-: SuperComponent(getPin()), _name(name)
+: SuperComponent(pins), _name(name)
 {
 }
 
@@ -17,24 +17,19 @@ Comp4001::~Comp4001()
 
 }
 
-std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4001::getPin()
-{
-	const std::unordered_map<size_t,  PinStatus>	&pins = {
-		 {1, PinStatus::Input},
-		 {2, PinStatus::Input},
-		 {3, PinStatus::Output},
-		 {4, PinStatus::Output},
-		 {5, PinStatus::Input},
-		 {6, PinStatus::Input},
-		 {8, PinStatus::Input},
-		 {9, PinStatus::Input},
-		 {10, PinStatus::Output},
-		 {11, PinStatus::Output},
-		 {12, PinStatus::Input},
-		 {13, PinStatus::Input} };
-
-	return pins;
-}
+const std::unordered_map<size_t,  SuperComponent::PinStatus> Comp4001::pins = {
+		 {1, PinStatus::INPUT},
+		 {2, PinStatus::INPUT},
+		 {3, PinStatus::OUTPUT},
+		 {4, PinStatus::OUTPUT},
+		 {5, PinStatus::INPUT},
+		 {6, PinStatus::INPUT},
+		 {8, PinStatus::INPUT},
+		 {9, PinStatus::INPUT},
+		 {10, PinStatus::OUTPUT},
+		 {11, PinStatus::OUTPUT},
+		 {12, PinStatus::INPUT},
+		 {13, PinStatus::INPUT} };
 
 nts::Tristate	Comp4001::internalCompute(std::size_t pin)
 {

@@ -13,7 +13,7 @@ SuperComponent::SuperComponent(std::unordered_map<size_t, PinStatus> pins)
 {
 	std::for_each(pins.begin(), pins.end(),
 		[this](std::pair<size_t, PinStatus> pin) {
-			if (pin.second == Output)
+			if (pin.second == OUTPUT)
 				this->output.insert(std::make_pair(pin.first, std::make_pair(nts::UNDEFINED, false)));
 			else
 				this->input.insert(std::make_pair(pin.first, std::make_pair(nullptr, 0)));

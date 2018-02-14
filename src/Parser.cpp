@@ -108,29 +108,25 @@ void	Parser::LinkGraph(link_s link)
 {
 	if (_graph.find(link._nameO) == _graph.cend() || _graph.find(link._nameT) == _graph.cend())
 		throw Err::LexicalError("This component doesn't exist.");
-	else if (link._nameO == link._nameT && link._pinO == link._pinT)
-		throw Err::LinkError("You can't link a component on the same pin.");
-	else {
-		if (_component.find(link._nameO) != _component.cend() && _component.find(link._nameT) != _component.cend()) {
-			const std::unordered_map<std::size_t, std::pair<nts::IComponent *, std::size_t>> a = (static_cast<SuperComponent *>(_component[link._nameO].get()))->getInput();
-			const std::unordered_map<std::size_t, std::pair<nts::IComponent *, std::size_t>> b = (static_cast<SuperComponent *>(_component[link._nameT].get()))->getInput();
+	//if (_component.find(link._nameO) != _component.cend() && _component.find(link._nameT) != _component.cend()) {
+		const std::unordered_map<std::size_t, std::pair<nts::IComponent *, std::size_t>> a = (static_cast<SuperComponent *>(_component[link._nameO].get()))->getInput();
+		const std::unordered_map<std::size_t, std::pair<nts::IComponent *, std::size_t>> b = (static_cast<SuperComponent *>(_component[link._nameT].get()))->getInput();
 
-			if (a.find(link._pinO) != a.cend() && b.find(link._pinT) == b.cend())
-				_graph[link._nameT]->setLink(link._pinT, *(_graph[link._nameO]), link._pinO);
-			else if (b.find(link._pinT) != b.cend() && a.find(link._pinO) == a.cend())
-				_graph[link._nameO]->setLink(link._pinO, *(_graph[link._nameT]), link._pinT);
-			else
-				throw Err::LinkError("Can't link an input pin to an another input pin.");
-		}
-		if ((_output.find(link._nameO) != _output.cend() || _component.find(link._nameO) != _component.cend()) 
-		&& _output.find(link._nameT) == _output.cend())
-			_graph[link._nameO]->setLink(link._pinO, *(_graph[link._nameT]), link._pinT);
-		else if ((_output.find(link._nameT) != _output.cend() || _component.find(link._nameT) != _component.cend()) 
-		&& _output.find(link._nameO) == _output.cend())
+		if (a.find(link._pinO) != a.cend() && b.find(link._pinT) == b.cend())
 			_graph[link._nameT]->setLink(link._pinT, *(_graph[link._nameO]), link._pinO);
+		else if (b.find(link._pinT) != b.cend() && a.find(link._pinO) == a.cend())
+			_graph[link._nameO]->setLink(link._pinO, *(_graph[link._nameT]), link._pinT);
 		else
-			throw Err::LinkError("Impossible link.");
-	}
+			throw Err::LinkError("Can't link an input pin to an another input pin.");
+	//}
+	/*if ((_output.find(link._nameO) != _output.cend() || _component.find(link._nameO) != _component.cend()) 
+	&& _output.find(link._nameT) == _output.cend())
+		_graph[link._nameO]->setLink(link._pinO, *(_graph[link._nameT]), link._pinT);
+	else if ((_output.find(link._nameT) != _output.cend() || _component.find(link._nameT) != _component.cend()) 
+	&& _output.find(link._nameO) == _output.cend())
+		_graph[link._nameT]->setLink(link._pinT, *(_graph[link._nameO]), link._pinO);
+	else
+		throw Err::LinkError("Impossible link.");*/
 }
 
 void	Parser::verifLink(std::string line)

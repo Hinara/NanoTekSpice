@@ -23,18 +23,18 @@ Comp4069::~Comp4069()
 std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4069::getPin()
 {
 	const std::unordered_map<size_t,  PinStatus>	&pins = {
-		 {1, PinStatus::Input},
-		 {2, PinStatus::Output},
-		 {3, PinStatus::Input},
-		 {4, PinStatus::Output},
-		 {5, PinStatus::Input},
-		 {6, PinStatus::Output},
-		 {8, PinStatus::Output},
-		 {9, PinStatus::Input},
-		 {10, PinStatus::Output},
-		 {11, PinStatus::Input},
-		 {12, PinStatus::Output},
-		 {13, PinStatus::Input} };
+		 {1, PinStatus::INPUT},
+		 {2, PinStatus::OUTPUT},
+		 {3, PinStatus::INPUT},
+		 {4, PinStatus::OUTPUT},
+		 {5, PinStatus::INPUT},
+		 {6, PinStatus::OUTPUT},
+		 {8, PinStatus::OUTPUT},
+		 {9, PinStatus::INPUT},
+		 {10, PinStatus::OUTPUT},
+		 {11, PinStatus::INPUT},
+		 {12, PinStatus::OUTPUT},
+		 {13, PinStatus::INPUT} };
 
 	return pins;
 }

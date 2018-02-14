@@ -19,8 +19,8 @@ public:
 	const std::unordered_map<std::size_t, std::pair<nts::IComponent *, std::size_t>>	getInput() const;
 protected:
 	enum PinStatus {
-		Input,
-		Output
+		INPUT,
+		OUTPUT
 	};
 	SuperComponent(std::unordered_map<size_t, PinStatus>);
 	nts::Tristate	getInputPin(std::size_t) const;

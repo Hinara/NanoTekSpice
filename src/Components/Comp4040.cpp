@@ -23,20 +23,20 @@ Comp4040::~Comp4040()
 std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4040::getPin()
 {
 	const std::unordered_map<size_t,  PinStatus>	&pins = {
-		 {1, PinStatus::Output},
-		 {2, PinStatus::Output},
-		 {3, PinStatus::Output},
-		 {4, PinStatus::Output},
-		 {5, PinStatus::Output},
-		 {6, PinStatus::Output},
-		 {7, PinStatus::Output},
-		 {9, PinStatus::Output},
-		 {10, PinStatus::Input},
-		 {11, PinStatus::Input},
-		 {12, PinStatus::Output},
-		 {13, PinStatus::Output},
-		 {14, PinStatus::Output},
-		 {15, PinStatus::Output} };
+		 {1, PinStatus::OUTPUT},
+		 {2, PinStatus::OUTPUT},
+		 {3, PinStatus::OUTPUT},
+		 {4, PinStatus::OUTPUT},
+		 {5, PinStatus::OUTPUT},
+		 {6, PinStatus::OUTPUT},
+		 {7, PinStatus::OUTPUT},
+		 {9, PinStatus::OUTPUT},
+		 {10, PinStatus::INPUT},
+		 {11, PinStatus::INPUT},
+		 {12, PinStatus::OUTPUT},
+		 {13, PinStatus::OUTPUT},
+		 {14, PinStatus::OUTPUT},
+		 {15, PinStatus::OUTPUT} };
 
 	return pins;
 }
