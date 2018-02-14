@@ -7,9 +7,7 @@
 
 #include <iostream>
 #include <exception>
-#include "Graph.hpp"
 #include "Parser.hpp"
-#include "Cli/Cli.hpp"
 
 int	main(int ac, char **av)
 {
@@ -18,8 +16,6 @@ int	main(int ac, char **av)
 	try {
 		Parser	p(av[1]);
 		p.parseFile();
-		//Cli	c(g);
-		//c.start();
 	} catch (std::exception ex) {
 		return 84;
 	}

@@ -9,7 +9,6 @@
 	#define COMP4081_HPP_
 
 #include <string>
-#include <unordered_map>
 #include <utility>
 #include "IComponent.hpp"
 #include "SuperComponent.hpp"

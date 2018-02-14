@@ -8,24 +8,18 @@
 #ifndef INPUT_HPP_
 	#define INPUT_HPP_
 
-#include <utility>
-#include <string>
-#include <exception>
-#include "IComponent.hpp"
+#include "SuperComponent.hpp"
 
-class Input	:	public nts::IComponent
+class Input	:	public SuperComponent
 {
 public:
 	Input(const std::string &);
 	~Input();
-	nts::Tristate	compute(std::size_t pin = 1);
-	void		setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin);
-	void		dump() const;
-	const std::string	getName() const noexcept { return _name; }
-	void		setValue(nts::Tristate val) noexcept { _value = val; }
+	nts::Tristate	internalCompute(std::size_t);
+	const std::string	getName() const { return _name; }
+	static const std::unordered_map<size_t,  PinStatus>	pins;
 private:
 	const std::string	_name;
-	nts::Tristate		_value;
 };
 
 #endif /* !INPUT_HPP_ */

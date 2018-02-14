@@ -5,8 +5,8 @@
 ** Output
 */
 
-#ifndef OUTPUT_HPP_
-	#define OUTPUT_HPP_
+#ifndef SUPERCOMPONENT_HPP_
+	#define SUPERCOMPONENT_HPP_
 	#include "IComponent.hpp"
 	#include <unordered_map>
 
@@ -31,4 +31,4 @@ private:
 	std::unordered_map<std::size_t, std::pair<nts::Tristate, bool>>	output;
 };
 
-#endif /* OUTPUT_HPP_ */
+#endif /* SUPERCOMPONENT_HPP_ */

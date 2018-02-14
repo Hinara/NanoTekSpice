@@ -10,22 +10,19 @@
 
 #include <utility>
 #include <string>
-#include <exception>
-#include <map>
 #include "IComponent.hpp"
+#include "SuperComponent.hpp"
 
-class Output	:	public nts::IComponent
+class Output	:	public SuperComponent
 {
 public:
 	Output(const std::string &);
 	~Output();
-	nts::Tristate	compute(std::size_t pin = 1);
-	void		setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin);
-	void		dump() const;
+	nts::Tristate	internalCompute(std::size_t);
 	const std::string	getName() const { return _name; }
+	static const std::unordered_map<size_t,  PinStatus>	pins;
 private:
 	const std::string	_name;
-	std::pair<nts::IComponent *, std::size_t>	_links;
 };
 
 #endif /* !OUTPUT_HPP_ */

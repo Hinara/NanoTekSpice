@@ -10,7 +10,7 @@
 #include "True.hpp"
 
 True::True(const std::string &name)
-: _name(name)
+: SuperComponent(pins), _name(name)
 {
 }
 
@@ -18,17 +18,12 @@ True::~True()
 {
 }
 
-nts::Tristate	True::compute(std::size_t pin)
+const std::unordered_map<size_t,  SuperComponent::PinStatus> True::pins = {
+		{1, PinStatus::OUTPUT} };
+
+nts::Tristate	True::internalCompute(std::size_t pin)
 {
+	if (pin != 1)
+		throw Err::UnknowPin("\'True\''s pin can only be equal to 1.");
 	return nts::TRUE;
-}
-
-void		True::setLink([[gnu::unused]] std::size_t pin, [[gnu::unused]] nts::IComponent &other, [[gnu::unused]] std::size_t otherpin)
-{
-	throw Err::LinkError("You can't link the \'True\' component\n");
-}
-
-void		True::dump() const
-{
-	std::cout << _name << " = 1" << std::endl;
 }

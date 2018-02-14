@@ -10,26 +10,16 @@
 #include "Input.hpp"
 
 Input::Input(const std::string &name)
-: _name(name), _value(nts::UNDEFINED)
+: SuperComponent(pins) , _name(name)
 {
 }
 
 Input::~Input()
 {
 }
+const std::unordered_map<size_t,  SuperComponent::PinStatus> Input::pins = {
+		 {1, PinStatus::OUTPUT} };
 
-nts::Tristate	Input::compute(std::size_t pin)
-{
-	if (pin != 1)
-		throw Err::UnknowPin("Input pin can only be equal to 1");
-	return _value;
-}
-
-void		Input::setLink([[gnu::unused]] std::size_t pin, [[gnu::unused]] nts::IComponent &other, [[gnu::unused]] std::size_t otherpin)
-{
-	throw Err::LinkError("You can't link the \'Input\' component\n");
-}
-
-void		Input::dump() const
+nts::Tristate	Input::internalCompute(std::size_t pin)
 {
 }

@@ -9,18 +9,16 @@
 	#define FALSE_HPP_
 
 #include <string>
-#include <memory>
-#include "IComponent.hpp"
+#include "SuperComponent.hpp"
 
-class False	:	public nts::IComponent
+class False	:	public SuperComponent
 {
 public:
 	False(const std::string &);
 	~False();
-	nts::Tristate	compute(std::size_t pin = 1);
-	void		setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin);
-	void		dump() const;
+	nts::Tristate	internalCompute(std::size_t);
 	const std::string	getName() const { return _name; }
+	static const std::unordered_map<size_t,  PinStatus>	pins;
 private:
 	const std::string	_name;
 };

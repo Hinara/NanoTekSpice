@@ -9,28 +9,16 @@
 #include "Clock.hpp"
 
 Clock::Clock(const std::string &name)
-: _name(name)
+: SuperComponent(pins), _name(name)
 {
 }
 
 Clock::~Clock()
 {
 }
+const std::unordered_map<size_t,  SuperComponent::PinStatus> Clock::pins = {
+	{1, PinStatus::OUTPUT} };
 
-nts::Tristate	Clock::compute(std::size_t pin)
+nts::Tristate	Clock::internalCompute(std::size_t pin)
 {
-	if (pin != 1)
-		throw Err::UnknowPin("This pin doesn't exist.");
-	_value = static_cast<nts::Tristate>(~_value);
-	return static_cast<nts::Tristate>(~_value);
-}
-
-void		Clock::setLink([[gnu::unused]] std::size_t pin, [[gnu::unused]] nts::IComponent &other, [[gnu::unused]] std::size_t otherpin)
-{
-	throw Err::LinkError("Clock can't link.");
-}
-
-void		Clock::dump() const
-{
-	
 }

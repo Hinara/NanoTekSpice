@@ -11,25 +11,19 @@
 
 
 False::False(const std::string &name)
-: _name(name)
+: SuperComponent(pins), _name(name)
 {
 }
 
 False::~False()
 {
 }
+const std::unordered_map<size_t,  SuperComponent::PinStatus> False::pins = {
+	{1, PinStatus::OUTPUT} };
 
-nts::Tristate	False::compute(std::size_t pin)
+nts::Tristate	False::internalCompute(std::size_t pin)
 {
+	if (pin != 1)
+		throw Err::UnknowPin("\'False\''s pin can only be equal to 1.");
 	return nts::FALSE;
-}
-
-void		False::setLink([[gnu::unused]] std::size_t pin, [[gnu::unused]] nts::IComponent &other, [[gnu::unused]] std::size_t otherpin)
-{
-	throw Err::LinkError("You can't link the \'False\' component\n");
-}
-
-void		False::dump() const
-{
-	std::cout << _name << " = 0" << std::endl;
 }

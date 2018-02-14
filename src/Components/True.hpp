@@ -11,16 +11,16 @@
 #include <string>
 #include <memory>
 #include "IComponent.hpp"
+#include "SuperComponent.hpp"
 
-class True	:	public nts::IComponent
+class True	:	public SuperComponent
 {
 public:
 	True(const std::string &);
 	~True();
-	nts::Tristate	compute(std::size_t pin = 1);
-	void		setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin);
-	void		dump() const;
+	nts::Tristate	internalCompute(std::size_t);
 	const std::string	getName() const { return _name; }
+	static const std::unordered_map<size_t,  PinStatus>	pins;
 private:
 	const std::string	_name;
 };

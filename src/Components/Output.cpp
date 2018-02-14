@@ -10,29 +10,17 @@
 #include "Output.hpp"
 
 Output::Output(const std::string &name)
-: _name(name), _links({NULL, 0})
+: SuperComponent(pins), _name(name)
 {
 }
 
 Output::~Output()
 {
 }
+const std::unordered_map<size_t,  SuperComponent::PinStatus> Output::pins = {
+		{1, PinStatus::INPUT} };
 
-nts::Tristate	Output::compute(std::size_t pin)
+nts::Tristate	Output::internalCompute(std::size_t pin)
 {
-	if (pin != 1)
-		throw Err::SectionError("Output only have one pin.");
-	_links.first->compute(_links.second);
-}
-
-void		Output::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin)
-{
-	if (pin != 1 && _links.first)
-		throw Err::LinkError("You can't link the pin: it's already exist or is not equal to 1\n");
-	_links.first = &other;
-	_links.second = otherpin;
-}
-
-void		Output::dump() const
-{
+	return getInputPin(1);
 }
