@@ -14,12 +14,12 @@ CXXFLAGS	+=	-Wall -Wextra
 NAME		=	nanotekspice
 
 SRCS		=									\
-			src/Main.cpp						\
-			src/Parser.cpp						\
-			src/Graph.cpp						\
-			src/Errors.cpp						\
-			src/Cli/Cli.cpp						\
-			src/Components/ComponentFactory.cpp	\
+			src/Main.cpp					\
+			src/Parser.cpp					\
+			src/Errors.cpp					\
+			src/Cli/Cli.cpp					\
+			src/Components/ComponentFactory.cpp		\
+			src/Components/SuperComponent.cpp		\
 			src/Components/True.cpp				\
 			src/Components/False.cpp			\
 			src/Components/Clock.cpp			\

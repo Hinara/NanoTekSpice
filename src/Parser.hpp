@@ -25,12 +25,16 @@ public:
 	Parser(const std::string &);
 	~Parser();
 	void	parseFile();
-	//std::map<const std::string, std::unique_ptr<nts::IComponent>>	getGraph() const;
+	/*std::map<const std::string, std::unique_ptr<nts::IComponent>>	&getGraph();
+	std::map<const std::string, std::unique_ptr<nts::IComponent>>	&getOut();
+	std::map<const std::string, std::unique_ptr<nts::IComponent>>	&getComp();
+	std::map<const std::string, std::unique_ptr<nts::IComponent>>	&getSpec();*/
 private:
 	const std::string	_filename;
 	std::map<const std::string, std::unique_ptr<nts::IComponent>>	_graph;
 	std::map<const std::string, std::unique_ptr<nts::IComponent>>	_output;
 	std::map<const std::string, std::unique_ptr<nts::IComponent>>	_component;
+	std::map<const std::string, std::unique_ptr<nts::IComponent>>	_spec;
 	const std::vector<std::string>	_comp = {
 		"input", "output", "2716", "4001", "4008",
 		"4011", "4013", "4017", "4030", "4040", "4069",

@@ -10,7 +10,7 @@
 #include "Comp4030.hpp"
 
 Comp4030::Comp4030(const std::string &name)
-: _name(name)
+: SuperComponent(getPin()), _name(name)
 {
 
 }
@@ -20,24 +20,44 @@ Comp4030::~Comp4030()
 
 }
 
-nts::Tristate	Comp4030::compute(std::size_t pin)
+std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4030::getPin()
 {
+	const std::unordered_map<size_t,  PinStatus>	&pins = {
+		 {1, PinStatus::Input},
+		 {2, PinStatus::Input},
+		 {3, PinStatus::Output},
+		 {4, PinStatus::Output},
+		 {5, PinStatus::Input},
+		 {6, PinStatus::Input},
+		 {8, PinStatus::Input},
+		 {9, PinStatus::Input},
+		 {10, PinStatus::Output},
+		 {11, PinStatus::Output},
+		 {12, PinStatus::Input},
+		 {13, PinStatus::Input} };
+
+	return pins;
 }
 
-void		Comp4030::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin)
+nts::Tristate	Comp4030::internalCompute(std::size_t pin)
 {
-	std::stringstream	myPin;
+	const auto &ptr = [] (nts::Tristate first, nts::Tristate second)-> nts::Tristate { return static_cast<nts::Tristate>(first ^ second); };
 
-	myPin << pin;
-	if (_links.size() < pin)
-		throw Err::LinkError("Pin " + myPin.str() + " doesn't exist in the component 4030");
-	else if (_links[pin].first != nullptr)
-		throw Err::LinkError("Pin " + myPin.str() + " already connected");
-	_links[pin].first = &other;
-	_links[pin].second = otherpin;
-}
-
-void		Comp4030::dump() const
-{
-	
+	switch (pin)
+	{
+		case 3:
+			return ptr(getInputPin(1), getInputPin(2));
+			break;
+		case 4:
+			return ptr(getInputPin(5), getInputPin(6));
+			break;
+		case 10:
+			return ptr(getInputPin(8), getInputPin(9));
+			break;
+		case 11:
+			return ptr(getInputPin(12), getInputPin(13));
+			break;
+		default:
+			throw ;
+	}
 }

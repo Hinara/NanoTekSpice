@@ -63,7 +63,7 @@ namespace nts
 			{ "4801", create_elem<Comp4801> },
 			{ "2716", create_elem<Comp2716> },
 			{ "input", create_elem<Input> },
-			{ "output", create_elem<Output> },
+			//{ "output", create_elem<Output> },
 			{ "clock", create_elem<Clock> },
 			{ "true", create_elem<True> },
 			{ "false", create_elem<False> }

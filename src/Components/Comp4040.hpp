@@ -12,19 +12,18 @@
 #include <map>
 #include <utility>
 #include "IComponent.hpp"
+#include "SuperComponent.hpp"
 
-class Comp4040	:	public nts::IComponent
+class Comp4040	:	public SuperComponent
 {
 public:
 	Comp4040(const std::string &);
 	~Comp4040();
-	nts::Tristate	compute(std::size_t pin = 1);
-	void		setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin);
-	void		dump() const;
+	nts::Tristate	internalCompute(std::size_t);
 	const std::string	getName() const { return _name; }
+	static std::unordered_map<size_t, PinStatus> getPin();
 private:
 	const std::string	_name;
-	std::map<std::size_t, std::pair<nts::IComponent *, std::size_t>>	_links;
 };
 
 #endif /* !COMP4040_HPP_ */

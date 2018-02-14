@@ -25,7 +25,7 @@ public:
 	const std::string	getName() const { return _name; }
 private:
 	const std::string	_name;
-	std::map<std::size_t, std::pair<nts::IComponent *, std::size_t>>	_links;
+	std::pair<nts::IComponent *, std::size_t>	_links;
 };
 
 #endif /* !OUTPUT_HPP_ */

@@ -10,7 +10,7 @@
 #include "Comp4008.hpp"
 
 Comp4008::Comp4008(const std::string &name)
-: _name(name)
+: SuperComponent(getPin()), _name(name)
 {
 
 }
@@ -20,24 +20,25 @@ Comp4008::~Comp4008()
 
 }
 
-nts::Tristate	Comp4008::compute(std::size_t pin)
+std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4008::getPin()
 {
+	const std::unordered_map<size_t,  PinStatus>	&pins = {
+		 {1, PinStatus::Input},
+		 {2, PinStatus::Input},
+		 {3, PinStatus::Output},
+		 {4, PinStatus::Output},
+		 {5, PinStatus::Input},
+		 {6, PinStatus::Input},
+		 {8, PinStatus::Input},
+		 {9, PinStatus::Input},
+		 {10, PinStatus::Output},
+		 {11, PinStatus::Output},
+		 {12, PinStatus::Input},
+		 {13, PinStatus::Input} };
+
+	return pins;
 }
 
-void		Comp4008::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin)
+nts::Tristate	Comp4008::internalCompute(std::size_t pin)
 {
-	std::stringstream	myPin;
-
-	myPin << pin;
-	if (_links.size() < pin)
-		throw Err::LinkError("Pin " + myPin.str() + " doesn't exist in the component 4008");
-	else if (_links[pin].first != nullptr)
-		throw Err::LinkError("Pin " + myPin.str() + " already connected");
-	_links[pin].first = &other;
-	_links[pin].second = otherpin;
-}
-
-void		Comp4008::dump() const
-{
-	
 }

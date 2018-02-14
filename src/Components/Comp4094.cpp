@@ -10,7 +10,7 @@
 #include "Comp4094.hpp"
 
 Comp4094::Comp4094(const std::string &name)
-: _name(name)
+: SuperComponent(getPin()), _name(name)
 {
 
 }
@@ -20,24 +20,13 @@ Comp4094::~Comp4094()
 
 }
 
-nts::Tristate	Comp4094::compute(std::size_t pin)
+std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4094::getPin()
 {
+	const std::unordered_map<size_t,  PinStatus>	&pins = {};
+
+	return pins;
 }
 
-void		Comp4094::setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin)
+nts::Tristate	Comp4094::internalCompute(std::size_t pin)
 {
-	std::stringstream	myPin;
-
-	myPin << pin;
-	if (_links.size() < pin)
-		throw Err::LinkError("Pin " + myPin.str() + " doesn't exist in the component 4094");
-	else if (_links[pin].first != nullptr)
-		throw Err::LinkError("Pin " + myPin.str() + " already connected");
-	_links[pin].first = &other;
-	_links[pin].second = otherpin;
-}
-
-void		Comp4094::dump() const
-{
-	
 }

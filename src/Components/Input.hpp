@@ -22,7 +22,7 @@ public:
 	void		setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin);
 	void		dump() const;
 	const std::string	getName() const noexcept { return _name; }
-	void		setValue(std::size_t val) noexcept { _value = static_cast<nts::Tristate>(val); }
+	void		setValue(nts::Tristate val) noexcept { _value = val; }
 private:
 	const std::string	_name;
 	nts::Tristate		_value;

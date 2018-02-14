@@ -20,9 +20,19 @@ SuperComponent::SuperComponent(std::unordered_map<size_t, PinStatus> pins)
 		});
 }
 
+SuperComponent::~SuperComponent()
+{
+}
+
+
+const std::unordered_map<std::size_t, std::pair<nts::IComponent *, std::size_t>>	SuperComponent::getInput() const
+{
+	return input;
+}
+
 nts::Tristate	SuperComponent::compute(std::size_t pin)
 {
-        auto &p = this->output.at(pin);
+	auto &p = this->output.at(pin);
 	if (p.second) {
 		return (p.first);
 	}
@@ -50,5 +60,10 @@ void		SuperComponent::setLink(std::size_t pin,
 nts::Tristate	SuperComponent::getInputPin(std::size_t pin) const
 {
 	const auto &p = this->input.at(pin);
-	return p.first->compute(p.second);
+	return p.first->compute(p.second);//
+}
+
+void		SuperComponent::dump() const
+{
+	
 }
