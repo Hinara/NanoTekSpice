@@ -24,6 +24,8 @@ public:
 	static const std::unordered_map<size_t, PinStatus> pins;
 private:
 	const std::string	_name;
+private:
+	std::pair<nts::Tristate, nts::Tristate>	bitFullAdder(nts::Tristate, nts::Tristate, nts::Tristate);
 };
 
 #endif /* !COMP4008_HPP_ */

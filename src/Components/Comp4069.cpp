@@ -7,6 +7,7 @@
 
 #include <sstream>
 #include "../Errors.hpp"
+#include "SimpleElec.hpp"
 #include "Comp4069.hpp"
 
 Comp4069::Comp4069(const std::string &name)
@@ -40,24 +41,24 @@ nts::Tristate	Comp4069::internalCompute(std::size_t pin)
 	switch (pin)
 	{
 		case 2:
-			return static_cast<nts::Tristate>(~(getInputPin(1)));
+			return (SimpleElec::notGate(getInputPin(1)));
 			break;
 		case 4:
-			return static_cast<nts::Tristate>(~(getInputPin(3)));
+			return (SimpleElec::notGate(getInputPin(3)));
 			break;
 		case 6:
-			return static_cast<nts::Tristate>(~(getInputPin(5)));
+			return (SimpleElec::notGate(getInputPin(5)));
 			break;
 		case 8:
-			return static_cast<nts::Tristate>(~(getInputPin(9)));
+			return (SimpleElec::notGate(getInputPin(9)));
 			break;
 		case 10:
-			return static_cast<nts::Tristate>(~(getInputPin(11)));
+			return (SimpleElec::notGate(getInputPin(11)));
 			break;
 		case 12:
-			return static_cast<nts::Tristate>(~(getInputPin(13)));
+			return (SimpleElec::notGate(getInputPin(13)));
 			break;
 		default:
-			throw ;
+			throw Err::UnknowPin("Comp4069 can't compute this pin.");
 	}
 }

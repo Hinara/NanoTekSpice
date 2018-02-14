@@ -38,6 +38,7 @@ SRCS		=							\
 			src/Components/Comp4094.cpp			\
 			src/Components/Comp4514.cpp			\
 			src/Components/Comp4801.cpp			\
+			src/Components/SimpleElec.cpp			\
 
 
 OBJS		=	$(SRCS:.cpp=.o)

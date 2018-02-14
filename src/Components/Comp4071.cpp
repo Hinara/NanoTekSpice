@@ -7,6 +7,7 @@
 
 #include <sstream>
 #include "../Errors.hpp"
+#include "SimpleElec.hpp"
 #include "Comp4071.hpp"
 
 Comp4071::Comp4071(const std::string &name)
@@ -38,23 +39,21 @@ const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4071::pins = {
 
 nts::Tristate	Comp4071::internalCompute(std::size_t pin)
 {
-	const auto &ptr = [] (nts::Tristate first, nts::Tristate second)-> nts::Tristate { return static_cast<nts::Tristate>(first | second); };
-
 	switch (pin)
 	{
 		case 3:
-			return ptr(getInputPin(1), getInputPin(2));
+			return (SimpleElec::orGate(getInputPin(1), getInputPin(2)));
 			break;
 		case 4:
-			return ptr(getInputPin(5), getInputPin(6));
+			return (SimpleElec::orGate(getInputPin(5), getInputPin(6)));
 			break;
 		case 10:
-			return ptr(getInputPin(8), getInputPin(9));
+			return (SimpleElec::orGate(getInputPin(8), getInputPin(9)));
 			break;
 		case 11:
-			return ptr(getInputPin(12), getInputPin(13));
+			return (SimpleElec::orGate(getInputPin(12), getInputPin(13)));
 			break;
 		default:
-			throw ;
+			throw Err::UnknowPin("Comp4071 can't compute this pin.");
 	}
 }
