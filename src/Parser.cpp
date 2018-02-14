@@ -94,7 +94,7 @@ void	Parser::LinkGraph(link_s link)
 	else if (b && !a)
 		_graph[link._nameO]->setLink(link._pinO, *(_graph[link._nameT]), link._pinT);
 	else
-		throw Err::LinkError("Can't link an input pin to an another input pin.");
+		throw Err::LinkError("Can't link pin of the same type.");
 }
 
 void	Parser::verifLink(std::string line)
