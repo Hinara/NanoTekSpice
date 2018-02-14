@@ -11,13 +11,17 @@
 
 SuperComponent::SuperComponent(std::unordered_map<size_t, PinStatus> pins)
 {
-	std::for_each(pins.begin(), pins.end(),
+	try {
+		std::for_each(pins.begin(), pins.end(),
 		[this](std::pair<size_t, PinStatus> pin) {
 			if (pin.second == OUTPUT)
 				this->output.insert(std::make_pair(pin.first, std::make_pair(nts::UNDEFINED, false)));
 			else
 				this->input.insert(std::make_pair(pin.first, std::make_pair(nullptr, 0)));
 		});
+	} catch (std::exception e) {
+		throw Err::Errors("????");
+	}
 }
 
 SuperComponent::~SuperComponent()
@@ -25,9 +29,9 @@ SuperComponent::~SuperComponent()
 }
 
 
-const std::unordered_map<std::size_t, std::pair<nts::IComponent *, std::size_t>>	SuperComponent::getInput() const
+bool	SuperComponent::isInput(size_t pin) const
 {
-	return input;
+	return (input.find(pin) == input.cend());
 }
 
 nts::Tristate	SuperComponent::compute(std::size_t pin)
@@ -42,10 +46,12 @@ nts::Tristate	SuperComponent::compute(std::size_t pin)
 	return (res);
 }
 
+#include "iostream"
 void		SuperComponent::setLink(std::size_t pin,
 					nts::IComponent &other,
 					std::size_t otherpin)
 {
+	std::cout << "Here" << std::endl;
 	try {
 		auto &p = this->input.at(pin);
 		if (p.first)

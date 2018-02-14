@@ -16,7 +16,7 @@ public:
 	nts::Tristate	compute(std::size_t pin = 1) override;
 	void		setLink(std::size_t, nts::IComponent &, std::size_t) override;
 	void		dump() const override;
-	const std::unordered_map<std::size_t, std::pair<nts::IComponent *, std::size_t>>	getInput() const;
+	bool		isInput(size_t pin) const;
 protected:
 	enum PinStatus {
 		INPUT,

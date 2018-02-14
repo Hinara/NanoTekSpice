@@ -17,6 +17,7 @@ int	main(int ac, char **av)
 		Parser	p(av[1]);
 		p.parseFile();
 	} catch (std::exception ex) {
+		std::cerr << ex.what() << std::endl;
 		return 84;
 	}
 	return 0;
