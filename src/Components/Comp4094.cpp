@@ -10,7 +10,7 @@
 #include "Comp4094.hpp"
 
 Comp4094::Comp4094(const std::string &name)
-: SuperComponent(getPin()), _name(name)
+: SuperComponent(pins), _name(name)
 {
 
 }
@@ -20,12 +20,7 @@ Comp4094::~Comp4094()
 
 }
 
-std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4094::getPin()
-{
-	const std::unordered_map<size_t,  PinStatus>	&pins = {};
-
-	return pins;
-}
+const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4094::pins = {};
 
 nts::Tristate	Comp4094::internalCompute(std::size_t pin)
 {

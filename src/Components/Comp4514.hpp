@@ -21,7 +21,7 @@ public:
 	~Comp4514();
 	nts::Tristate	internalCompute(std::size_t) final;
 	const std::string	getName() const { return _name; }
-	static std::unordered_map<size_t, PinStatus> getPin();
+	static const std::unordered_map<size_t, PinStatus> pins;
 private:
 	const std::string	_name;
 };
