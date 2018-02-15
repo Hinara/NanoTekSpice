@@ -102,10 +102,10 @@ void	Cli::executeCommand(const std::string &s)
 	try {
 		(this->*m.at(s))();
 	} catch (std::out_of_range e) {
-		if (s.find("=true") == s.length() - 5) {
-			this->input(s.substr(0, s.length() - 5), nts::TRUE);
-		} else if (s.find("=false") == s.length() - 6) {
-			this->input(s.substr(0, s.length() - 6), nts::FALSE);
+		if (s.find("=1") == s.length() - 2) {
+			this->input(s.substr(0, s.length() - 2), nts::TRUE);
+		} else if (s.find("=0") == s.length() - 2) {
+			this->input(s.substr(0, s.length() - 2), nts::FALSE);
 		} else {
 			std::cout << "Command not found\n";
 		}
@@ -116,6 +116,9 @@ void	Cli::start()
 {
 	bool		exit = false;
 	std::string	line;
+
+	simulate();
+	display();
 	while (!exit) {
 		std::cout << ">";
 		std::getline(std::cin, line);

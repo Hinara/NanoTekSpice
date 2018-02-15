@@ -136,7 +136,6 @@ void	Parser::parseFile(graph_s &data)
 	try {
 		while (getline(myFile, line)) {
 			lineNum += 1;
-			std::cout << line << std::endl;
 			if (epurLine(line) && isKeyWord(line, state) == false)
 				parseLine(line, state, data);
 		}
