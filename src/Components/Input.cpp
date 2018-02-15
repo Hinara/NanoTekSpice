@@ -22,6 +22,9 @@ const std::unordered_map<size_t,  SuperComponent::PinStatus> Input::pins = {
 
 nts::Tristate	Input::internalCompute(std::size_t pin)
 {
+	if (pin != 1)
+		throw;
+	return this->_state;
 }
 
 void	Input::setState(nts::Tristate state)
