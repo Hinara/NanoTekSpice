@@ -17,6 +17,7 @@
 #include <memory>
 #include "Nano.hpp"
 #include "Errors.hpp"
+#include "Graph.hpp"
 #include "Components/ComponentFactory.hpp"
 #include "Components/IComponent.hpp"
 
@@ -24,7 +25,7 @@ class Parser {
 public:
 	Parser(const std::string &);
 	~Parser();
-	void	parseFile(graph_s &);
+	void	parseFile(Graph &);
 private:
 	enum parseState {
 		NONE,
@@ -38,11 +39,9 @@ private:
 		"4071", "4081", "4094", "4514", "4801", "clock", "true", "false"
 	};
 private:
-	void	verifChipset(const std::string, graph_s &);
-	void	verifLink(std::string, graph_s &);
-	void	putInGraph(chipset_s, graph_s &);
-	void	LinkGraph(link_s, graph_s &);
-	void	parseLine(std::string, parseState &, graph_s &);
+	void	verifChipset(const std::string, Graph &);
+	void	verifLink(std::string, Graph &);
+	void	parseLine(std::string, parseState &, Graph &);
 	bool	isKeyWord(const std::string, parseState &);
 	bool	epurLine(std::string &line);
 };
