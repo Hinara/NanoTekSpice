@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	if (ac == 0)
+	if (ac < 2)
 		return 84;
 	try {
 		graph_s	g;
