@@ -66,10 +66,17 @@ namespace Err
 	public:
 		UnknowPin(std::string const &message, std::string const &component = "Unknown");
 	};
+
 	class DuplicatedSectionHeader :	public Errors
 	{
 	public:
 		DuplicatedSectionHeader(std::string const &message, std::string const &component = "Unknown");
+	};
+
+	class ArgumentError	:	public Errors
+	{
+	public:
+		ArgumentError(std::string const &message, std::string const &component = "Unknown");
 	};
 };
 

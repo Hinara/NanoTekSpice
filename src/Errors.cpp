@@ -66,3 +66,8 @@ Err::DuplicatedSectionHeader::DuplicatedSectionHeader(std::string const &message
 	: Errors(message, component)
 {
 }
+
+Err::ArgumentError::ArgumentError(std::string const &message, std::string const &component)
+	: Errors(message, component)
+{
+}

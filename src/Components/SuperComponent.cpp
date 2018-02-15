@@ -71,3 +71,17 @@ void		SuperComponent::dump() const
 {
 	
 }
+
+bool	SuperComponent::inputIsLink(PinNumber pin) const
+{
+	if (!input.at(pin).first)
+		return false;
+	return true;
+}
+
+bool	SuperComponent::outputIsLink(PinNumber pin) const
+{
+	if (!output.at(pin).first)
+		return false;
+	return true;
+}
