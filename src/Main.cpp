@@ -10,7 +10,7 @@
 #include <algorithm>
 #include "Nano.hpp"
 #include "Parser.hpp"
-#include "Cli/Cli.hpp"
+#include "Cli.hpp"
 
 int	main(int ac, char **av)
 {

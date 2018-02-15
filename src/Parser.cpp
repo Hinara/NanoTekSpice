@@ -44,6 +44,8 @@ bool	Parser::isKeyWord(const std::string line, parseState &s)
 		s = CHIPSET;
 		return (true);
 	} else if (line == ".links:") {
+		if (s != CHIPSET)
+			throw Err::LexicalError("Links section without Chipset section before");
 		if (s == LINK)
 			throw Err::DuplicatedSectionHeader("Duplicated \'.links:\' header");
 		s = LINK;

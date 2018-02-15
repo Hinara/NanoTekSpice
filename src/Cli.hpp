@@ -7,7 +7,7 @@
 
 #ifndef CLI_H_
 	#define CLI_H_
-	#include "../Nano.hpp"
+	#include "Nano.hpp"
 
 class Cli
 {

@@ -10,11 +10,10 @@
 #include <string>
 #include <algorithm>
 #include <memory>
-#include "../Nano.hpp"
-#include "../Components/Input.hpp"
-#include "../Components/Clock.hpp"
-#include "../Components/Output.hpp"
-#include "../Components/IComponent.hpp"
+#include "Components/Input.hpp"
+#include "Components/Clock.hpp"
+#include "Components/Output.hpp"
+#include "Components/IComponent.hpp"
 #include "Cli.hpp"
 
 static bool	*stop;
