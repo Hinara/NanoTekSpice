@@ -18,7 +18,8 @@ Input::~Input()
 {
 }
 const std::unordered_map<size_t,  SuperComponent::PinStatus> Input::pins = {
-		 {1, PinStatus::OUTPUT} };
+	{1, PinStatus::OUTPUT}
+};
 
 nts::Tristate	Input::internalCompute(std::size_t pin)
 {

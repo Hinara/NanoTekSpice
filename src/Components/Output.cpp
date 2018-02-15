@@ -9,7 +9,7 @@
 #include "../Errors.hpp"
 #include "Output.hpp"
 
-Output::Output([[gnu::unused]] const std::string &value)
+Output::Output(const std::string &)
 : SuperComponent(pins), _state(nts::UNDEFINED)
 {
 }
@@ -17,10 +17,12 @@ Output::Output([[gnu::unused]] const std::string &value)
 Output::~Output()
 {
 }
-const std::unordered_map<size_t,  SuperComponent::PinStatus> Output::pins = {
-		{1, PinStatus::INPUT} };
 
-nts::Tristate	Output::internalCompute([[gnu::unused]] std::size_t pin)
+const std::unordered_map<size_t,  SuperComponent::PinStatus> Output::pins = {
+	{1, PinStatus::INPUT}
+};
+
+nts::Tristate	Output::internalCompute(std::size_t)
 {
 	throw;
 }

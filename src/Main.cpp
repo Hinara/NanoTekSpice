@@ -20,6 +20,7 @@ int	main(int ac, char **av)
 		graph_s	g;
 		Cli	c(g);
 		Parser	p(av[1]);
+
 		p.parseFile(g);
 		std::sort(g._output.begin(), g._output.end());
 		c.start();

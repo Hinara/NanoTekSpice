@@ -40,10 +40,10 @@ namespace nts
 	public:
 		ComponentFactory();
 		~ComponentFactory();
-		std::unique_ptr<nts::IComponent>	createComponent(const std::string &type, const std::string &value);
+		inline std::unique_ptr<nts::IComponent>	createComponent(const std::string &type, const std::string &value) { return (_map.at(type))(value); }
 	private:
 		template<class T>
-		static std::unique_ptr<nts::IComponent>	create_elem(const std::string &value)
+		static std::unique_ptr<nts::IComponent>	createElem(const std::string &value)
 			{
 				return std::unique_ptr<T> (new T(value));
 			}

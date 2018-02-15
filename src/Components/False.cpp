@@ -19,7 +19,8 @@ False::~False()
 {
 }
 const std::unordered_map<size_t,  SuperComponent::PinStatus> False::pins = {
-	{1, PinStatus::OUTPUT} };
+	{1, PinStatus::OUTPUT}
+};
 
 nts::Tristate	False::internalCompute(std::size_t pin)
 {

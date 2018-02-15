@@ -82,9 +82,7 @@ void	Cli::loop()
 {
 	bool	exit = false;
 	stop = &exit;
-	auto oldHandler = std::signal(
-		SIGINT,
-		[](int){ *stop = true; });
+	auto oldHandler = std::signal(SIGINT, [](int){ *stop = true; });
 	while (!exit)
 		this->simulate();
 	std::signal(SIGINT, oldHandler);
