@@ -9,7 +9,7 @@
 #include "../Errors.hpp"
 #include "Comp4801.hpp"
 
-Comp4801::Comp4801(const std::string &name)
+Comp4801::Comp4801(const std::string &)
 : SuperComponent(pins)
 {
 }
