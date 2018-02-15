@@ -113,18 +113,16 @@ void	Cli::executeCommand(const std::string &s)
 
 void	Cli::start()
 {
-	bool		exit = false;
 	std::string	line;
 
 	simulate();
 	display();
-	while (!exit) {
+	while (!std::cin.eof() && line != "exit") {
 		std::cout << ">";
 		std::getline(std::cin, line);
-		if (line == "" && std::cin.eof())
+		if (std::cin.eof())
 			std::cout << "\n";
-	        exit = (line == "" && std::cin.eof()) || line == "exit";
-		if (!exit)
+		if (line != "" && line != "exit")
 			executeCommand(line);
 	}
 }
