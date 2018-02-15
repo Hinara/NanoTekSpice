@@ -9,7 +9,7 @@
 #include "../Errors.hpp"
 #include "SuperComponent.hpp"
 
-SuperComponent::SuperComponent(std::unordered_map<size_t, PinStatus> pins)
+SuperComponent::SuperComponent(const std::unordered_map<PinNumber, PinStatus> &pins)
 {
 	try {
 		std::for_each(pins.begin(), pins.end(),
@@ -29,12 +29,12 @@ SuperComponent::~SuperComponent()
 }
 
 
-bool	SuperComponent::isInput(size_t pin) const
+bool	SuperComponent::isInput(PinNumber pin) const
 {
 	return (input.find(pin) == input.cend());
 }
 
-nts::Tristate	SuperComponent::compute(std::size_t pin)
+nts::Tristate	SuperComponent::compute(PinNumber pin)
 {
 	auto &p = this->output.at(pin);
 	if (p.second) {
@@ -46,10 +46,9 @@ nts::Tristate	SuperComponent::compute(std::size_t pin)
 	return (p.first);
 }
 
-#include "iostream"
-void		SuperComponent::setLink(std::size_t pin,
+void		SuperComponent::setLink(PinNumber pin,
 					nts::IComponent &other,
-					std::size_t otherpin)
+					PinNumber otherpin)
 {
 	try {
 		auto &p = this->input.at(pin);
@@ -62,7 +61,7 @@ void		SuperComponent::setLink(std::size_t pin,
 	}
 }
 
-nts::Tristate	SuperComponent::getInputPin(std::size_t pin) const
+nts::Tristate	SuperComponent::getInputPin(PinNumber pin) const
 {
 	const auto &p = this->input.at(pin);
 	return p.first->compute(p.second);//

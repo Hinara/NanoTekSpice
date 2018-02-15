@@ -13,22 +13,27 @@
 class SuperComponent : public nts::IComponent
 {
 public:
-	nts::Tristate	compute(std::size_t pin = 1) override;
-	void		setLink(std::size_t, nts::IComponent &, std::size_t) override;
-	void		dump() const override;
-	bool		isInput(size_t pin) const;
+	using PinNumber = std::size_t;
+	nts::Tristate	compute(PinNumber pin = 1) override;
+	void	setLink(PinNumber, nts::IComponent &, PinNumber) override;
+	void	dump() const override;
+	bool	isInput(PinNumber pin) const;
 protected:
 	enum PinStatus {
 		INPUT,
 		OUTPUT
 	};
-	SuperComponent(std::unordered_map<size_t, PinStatus>);
-	nts::Tristate	getInputPin(std::size_t) const;
+	using PinMap = std::unordered_map<PinNumber, PinStatus>;
+	SuperComponent(const PinMap &);
+	nts::Tristate	getInputPin(PinNumber) const;
 	virtual ~SuperComponent();
-	virtual nts::Tristate	internalCompute(std::size_t) = 0;
+	virtual nts::Tristate	internalCompute(PinNumber) = 0;
 private:
-	std::unordered_map<std::size_t, std::pair<nts::IComponent *, std::size_t>> input;
-	std::unordered_map<std::size_t, std::pair<nts::Tristate, bool>>	output;
+	using Lock = bool;
+	using PinInput = std::pair<nts::IComponent *, PinNumber>;
+	using PinOutput = std::pair<nts::Tristate, Lock>;
+	std::unordered_map<PinNumber, PinInput> 	input;
+	std::unordered_map<PinNumber, PinOutput>	output;
 };
 
 #endif /* SUPERCOMPONENT_HPP_ */

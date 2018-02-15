@@ -16,11 +16,8 @@ class False	:	public SuperComponent
 public:
 	False(const std::string &);
 	~False();
-	nts::Tristate	internalCompute(std::size_t);
-	const std::string	getName() const { return _name; }
-	static const std::unordered_map<size_t,  PinStatus>	pins;
-private:
-	const std::string	_name;
+	nts::Tristate		internalCompute(PinNumber);
+	static const PinMap	pins;
 };
 
 #endif /* !FALSE_HPP_ */

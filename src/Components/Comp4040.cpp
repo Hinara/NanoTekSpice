@@ -9,18 +9,16 @@
 #include "../Errors.hpp"
 #include "Comp4040.hpp"
 
-Comp4040::Comp4040(const std::string &name)
-: SuperComponent(pins), _name(name)
+Comp4040::Comp4040(const std::string &)
+: SuperComponent(pins)
 {
-
 }
 
 Comp4040::~Comp4040()
 {
-
 }
 
-const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4040::pins = {
+const SuperComponent::PinMap	Comp4040::pins = {
 	{1, PinStatus::OUTPUT},
 	{2, PinStatus::OUTPUT},
 	{3, PinStatus::OUTPUT},
@@ -37,6 +35,6 @@ const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4040::pins = {
 	{15, PinStatus::OUTPUT}
 };
 
-nts::Tristate	Comp4040::internalCompute(std::size_t pin)
+nts::Tristate	Comp4040::internalCompute(PinNumber pin)
 {
 }

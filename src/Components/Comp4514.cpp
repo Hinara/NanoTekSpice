@@ -9,18 +9,16 @@
 #include "../Errors.hpp"
 #include "Comp4514.hpp"
 
-Comp4514::Comp4514(const std::string &name)
-: SuperComponent(pins), _name(name)
+Comp4514::Comp4514(const std::string &)
+: SuperComponent(pins)
 {
-
 }
 
 Comp4514::~Comp4514()
 {
-
 }
 
-const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4514::pins = {
+const SuperComponent::PinMap	Comp4514::pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},
 	{3, PinStatus::OUTPUT},
@@ -35,6 +33,6 @@ const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4514::pins = {
 	{13, PinStatus::INPUT}
 };
 
-nts::Tristate	Comp4514::internalCompute(std::size_t pin)
+nts::Tristate	Comp4514::internalCompute(PinNumber pin)
 {
 }

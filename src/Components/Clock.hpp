@@ -16,8 +16,6 @@ class Clock	:	public Input
 public:
 	Clock(const std::string &);
 	~Clock();
-	const std::string	getName() const { return _name; }
-	static const std::unordered_map<size_t,  PinStatus>	pins;
 	void	swapState();
 private:
 	const std::string	_name;

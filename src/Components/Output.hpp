@@ -18,8 +18,8 @@ class Output	:	public SuperComponent
 public:
 	Output(const std::string &);
 	~Output();
-	nts::Tristate	internalCompute(std::size_t);
-	static const std::unordered_map<size_t,  PinStatus>	pins;
+	nts::Tristate	internalCompute(PinNumber);
+	static const PinMap	pins;
 	void simulate();
 	nts::Tristate	getValue();
 private:

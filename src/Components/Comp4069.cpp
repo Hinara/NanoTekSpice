@@ -10,18 +10,16 @@
 #include "SimpleElec.hpp"
 #include "Comp4069.hpp"
 
-Comp4069::Comp4069(const std::string &name)
-: SuperComponent(pins),_name(name)
+Comp4069::Comp4069(const std::string &)
+: SuperComponent(pins)
 {
-
 }
 
 Comp4069::~Comp4069()
 {
-
 }
 
-const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4069::pins = {
+const SuperComponent::PinMap	Comp4069::pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::OUTPUT},
 	{3, PinStatus::INPUT},
@@ -36,7 +34,7 @@ const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4069::pins = {
 	{13, PinStatus::INPUT}
 };
 
-nts::Tristate	Comp4069::internalCompute(std::size_t pin)
+nts::Tristate	Comp4069::internalCompute(PinNumber pin)
 {
 	switch (pin)
 	{

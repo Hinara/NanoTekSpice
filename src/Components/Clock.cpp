@@ -8,8 +8,8 @@
 #include "../Errors.hpp"
 #include "Clock.hpp"
 
-Clock::Clock(const std::string &name)
-: Input(name), _name(name)
+Clock::Clock(const std::string &value)
+: Input(value)
 {
 }
 

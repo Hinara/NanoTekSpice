@@ -8,17 +8,16 @@
 #include "SimpleElec.hpp"
 #include "Comp4001.hpp"
 
-Comp4001::Comp4001(const std::string &name)
-: SuperComponent(pins), _name(name)
+Comp4001::Comp4001(const std::string &)
+: SuperComponent(pins)
 {
 }
 
 Comp4001::~Comp4001()
 {
-
 }
 
-const std::unordered_map<size_t,  SuperComponent::PinStatus> Comp4001::pins = {
+const SuperComponent::PinMap	Comp4001::pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},
 	{3, PinStatus::OUTPUT},
@@ -33,7 +32,7 @@ const std::unordered_map<size_t,  SuperComponent::PinStatus> Comp4001::pins = {
 	{13, PinStatus::INPUT}
 };
 
-nts::Tristate	Comp4001::internalCompute(std::size_t pin)
+nts::Tristate	Comp4001::internalCompute(PinNumber pin)
 {
 	switch (pin)
 	{

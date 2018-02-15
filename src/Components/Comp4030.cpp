@@ -10,15 +10,13 @@
 #include "SimpleElec.hpp"
 #include "Comp4030.hpp"
 
-Comp4030::Comp4030(const std::string &name)
-: SuperComponent(pins), _name(name)
+Comp4030::Comp4030(const std::string &)
+: SuperComponent(pins)
 {
-
 }
 
 Comp4030::~Comp4030()
 {
-
 }
 
 const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4030::pins = {

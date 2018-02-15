@@ -11,20 +11,15 @@
 #include <string>
 #include <map>
 #include <utility>
-#include "IComponent.hpp"
+#include "SuperComponent.hpp"
 
-class Comp2716	:	public nts::IComponent
+class Comp2716	:	public SuperComponent
 {
 public:
 	Comp2716(const std::string &);
 	~Comp2716();
-	nts::Tristate	compute(std::size_t pin = 1);
-	void		setLink(std::size_t pin, nts::IComponent &other, std::size_t otherpin);
-	void		dump() const;
-	const std::string	getName() const { return _name; }
-private:
-	const std::string	_name;
-	std::map<std::size_t, std::pair<nts::IComponent *, std::size_t>>	_links;
+	nts::Tristate		internalCompute(PinNumber);
+	static const PinMap	pins;
 };
 
 #endif /* !COMP2716_HPP_ */

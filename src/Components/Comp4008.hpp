@@ -19,11 +19,8 @@ class Comp4008	:	public SuperComponent
 public:
 	Comp4008(const std::string &);
 	~Comp4008();
-	nts::Tristate	internalCompute(std::size_t);
-	const std::string	getName() const { return _name; }
-	static const std::unordered_map<size_t, PinStatus> pins;
-private:
-	const std::string	_name;
+	nts::Tristate		internalCompute(PinNumber);
+	static const PinMap	pins;
 private:
 	std::pair<nts::Tristate, nts::Tristate>	bitFullAdder(nts::Tristate, nts::Tristate, nts::Tristate);
 };

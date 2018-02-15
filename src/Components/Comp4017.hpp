@@ -19,11 +19,8 @@ class Comp4017	:	public SuperComponent
 public:
 	Comp4017(const std::string &);
 	~Comp4017();
-	nts::Tristate	internalCompute(std::size_t);
-	const std::string	getName() const { return _name; }
-	static const std::unordered_map<size_t, PinStatus> pins;
-private:
-	const std::string	_name;
+	nts::Tristate	internalCompute(PinNumber);
+	static const PinMap	pins;
 };
 
 #endif /* !COMP4017_HPP_ */

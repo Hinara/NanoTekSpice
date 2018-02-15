@@ -10,17 +10,15 @@
 #include "Comp4801.hpp"
 
 Comp4801::Comp4801(const std::string &name)
-: SuperComponent(pins), _name(name)
+: SuperComponent(pins)
 {
-
 }
 
 Comp4801::~Comp4801()
 {
-
 }
 
-const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4801::pins = {
+const SuperComponent::PinMap	Comp4801::pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},
 	{3, PinStatus::OUTPUT},
@@ -35,6 +33,6 @@ const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4801::pins = {
 	{13, PinStatus::INPUT}
 };
 
-nts::Tristate	Comp4801::internalCompute(std::size_t pin)
+nts::Tristate	Comp4801::internalCompute(PinNumber pin)
 {
 }

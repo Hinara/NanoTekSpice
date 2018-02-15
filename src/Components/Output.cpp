@@ -18,11 +18,11 @@ Output::~Output()
 {
 }
 
-const std::unordered_map<size_t,  SuperComponent::PinStatus> Output::pins = {
+const SuperComponent::PinMap Output::pins = {
 	{1, PinStatus::INPUT}
 };
 
-nts::Tristate	Output::internalCompute(std::size_t)
+nts::Tristate	Output::internalCompute(PinNumber)
 {
 	throw;
 }

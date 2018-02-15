@@ -19,11 +19,8 @@ class Comp4040	:	public SuperComponent
 public:
 	Comp4040(const std::string &);
 	~Comp4040();
-	nts::Tristate	internalCompute(std::size_t);
-	const std::string	getName() const { return _name; }
-	static const std::unordered_map<size_t, PinStatus> pins;
-private:
-	const std::string	_name;
+	nts::Tristate		internalCompute(std::size_t);
+	static const PinMap	pins;
 };
 
 #endif /* !COMP4040_HPP_ */

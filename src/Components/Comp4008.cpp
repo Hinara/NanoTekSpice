@@ -10,18 +10,16 @@
 #include "SimpleElec.hpp"
 #include "Comp4008.hpp"
 
-Comp4008::Comp4008(const std::string &name)
-: SuperComponent(pins), _name(name)
+Comp4008::Comp4008(const std::string &)
+: SuperComponent(pins)
 {
-
 }
 
 Comp4008::~Comp4008()
 {
-
 }
 
-const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4008::pins = {
+const SuperComponent::PinMap	Comp4008::pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},
 	{3, PinStatus::INPUT},
@@ -50,7 +48,7 @@ std::pair<nts::Tristate, nts::Tristate>	Comp4008::bitFullAdder(nts::Tristate p1,
 	return (pair);
 }
 
-nts::Tristate	Comp4008::internalCompute(std::size_t pin)
+nts::Tristate	Comp4008::internalCompute(PinNumber pin)
 {
 	if (pin < 10 || pin > 14)
 		throw;
