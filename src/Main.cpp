@@ -41,6 +41,9 @@ int	main(int ac, char **av)
 				throw Err::LinkError("\'" + it.first + "\': is not linked.");
 		});
 //		c.start();
+	}catch (Err::Errors ex) {
+		std::cerr << ex.what() <<std::endl;
+		return 84;
 	} catch (std::exception ex) {
 		return 84;
 	}
