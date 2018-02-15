@@ -31,7 +31,7 @@ void	Cli::display()
 {
 	std::for_each(_g._output.begin(), _g._output.end(),
 		[this](const std::string &s)
-		{ 
+		{
 			nts::Tristate state = static_cast<Output *>(_g._graph.at(s).get())->getValue();
 			std::string str;
 			if (state == nts::TRUE) {
@@ -68,13 +68,13 @@ void	Cli::input(const std::string &s, nts::Tristate state)
 
 void	Cli::simulate()
 {
-	std::for_each(_g._input.begin(), _g._input.end(),
-		[this](const std::string &s)
-		{ static_cast<Clock *>(_g._graph.at(s).get())->swapState(); }
-	);
 	std::for_each(_g._output.begin(), _g._output.end(),
 		[this](const std::string &s)
 		{ static_cast<Output *>(_g._graph.at(s).get())->simulate(); }
+	);
+	std::for_each(_g._input.begin(), _g._input.end(),
+		[this](const std::string &s)
+		{ static_cast<Clock *>(_g._graph.at(s).get())->swapState(); }
 	);
 }
 
@@ -84,7 +84,7 @@ void	Cli::loop()
 	stop = &exit;
 	auto oldHandler = std::signal(
 		SIGINT,
-		[]([[gnu::unused]] int s){ *stop = true; });
+		[](int){ *stop = true; });
 	while (!exit)
 		this->simulate();
 	std::signal(SIGINT, oldHandler);
@@ -101,9 +101,9 @@ void	Cli::executeCommand(const std::string &s)
 	try {
 		(this->*m.at(s))();
 	} catch (std::out_of_range e) {
-		if (s.find("=1") == s.length() - 2) {
+		if (s.find("=1") == s.length() - 2 && s.length() >= 2) {
 			this->input(s.substr(0, s.length() - 2), nts::TRUE);
-		} else if (s.find("=0") == s.length() - 2) {
+		} else if (s.find("=0") == s.length() - 2 && s.length() >= 2) {
 			this->input(s.substr(0, s.length() - 2), nts::FALSE);
 		} else {
 			std::cout << "Command not found\n";
