@@ -9,39 +9,46 @@
 #include "../Errors.hpp"
 #include "SuperComponent.hpp"
 
-SuperComponent::SuperComponent(const std::unordered_map<PinNumber, PinStatus> &pins)
+SuperComponent::SuperComponent(const PinMap &pins)
 {
-	try {
-		std::for_each(pins.begin(), pins.end(),
+	std::for_each(pins.begin(), pins.end(),
 		[this](std::pair<PinNumber, PinStatus> pin) {
-			if (pin.second == OUTPUT)
-				this->output.insert(std::make_pair(pin.first, std::make_pair(nts::UNDEFINED, false)));
-			else
-				this->input.insert(std::make_pair(pin.first, std::make_pair(nullptr, 0)));
-		});
-	} catch (std::exception e) {
-		throw Err::Errors("????");
-	}
+			if (pin.second & OUTPUT) {
+				this->output.insert(std::make_pair(
+					pin.first,
+					std::make_pair(nts::UNDEFINED, false)
+				));
+			}
+			if (pin.second & INPUT) {
+				this->input.insert(std::make_pair(
+					pin.first,
+					std::make_pair(nullptr, 0)
+				));
+			}
+		}
+	);
 }
 
 SuperComponent::~SuperComponent()
 {
 }
 
-bool	SuperComponent::isInput(PinNumber pin) const
+bool SuperComponent::isInput(PinNumber pin) const
 {
 	return (input.find(pin) != input.cend());
 }
 
-bool	SuperComponent::isOutput(PinNumber pin) const
+bool SuperComponent::isOutput(PinNumber pin) const
 {
 	return (output.find(pin) != output.cend());
 }
 
-nts::Tristate	SuperComponent::compute(PinNumber pin)
+
+nts::Tristate SuperComponent::compute(PinNumber pin)
 {
 	auto &p = this->output.at(pin);
-	if (p.second) {
+	if (p.second)
+	{
 		return (p.first);
 	}
 	p.second = true;
@@ -50,40 +57,42 @@ nts::Tristate	SuperComponent::compute(PinNumber pin)
 	return (p.first);
 }
 
-void		SuperComponent::setLink(PinNumber pin,
-					nts::IComponent &other,
-					PinNumber otherpin)
+void SuperComponent::setLink(PinNumber pin,
+			     nts::IComponent &other,
+			     PinNumber otherpin)
 {
-	try {
+	try
+	{
 		auto &p = this->input.at(pin);
 		if (p.first)
-		throw Err::LinkError("Pin already linked");
+			throw Err::LinkError("Pin already linked");
 		p.first = &other;
 		p.second = otherpin;
-	} catch (std::exception) {
+	}
+	catch (std::exception)
+	{
 		throw Err::LinkError("Unknown Pin");
 	}
 }
 
-nts::Tristate	SuperComponent::getInputPin(PinNumber pin) const
+nts::Tristate SuperComponent::getInputPin(PinNumber pin) const
 {
 	const auto &p = this->input.at(pin);
 	return p.first->compute(p.second);
 }
 
-void		SuperComponent::dump() const
+void SuperComponent::dump() const
 {
-	
 }
 
-bool	SuperComponent::isInputLinked(PinNumber pin) const
+bool SuperComponent::isInputLinked(PinNumber pin) const
 {
 	if (!input.at(pin).first)
 		return false;
 	return true;
 }
 
-bool	SuperComponent::isOutputLinked(PinNumber pin) const
+bool SuperComponent::isOutputLinked(PinNumber pin) const
 {
 	if (!output.at(pin).first)
 		return false;

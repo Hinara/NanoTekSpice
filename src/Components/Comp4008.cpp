@@ -39,26 +39,24 @@ std::pair<nts::Tristate, nts::Tristate>	Comp4008::bitFullAdder(nts::Tristate p1,
 	nts::Tristate p2, nts::Tristate p3)
 {
 	std::pair<nts::Tristate, nts::Tristate> pair;
-	nts::Tristate tmp = SimpleElec::xorGate(p1, p2);
-	pair.first = SimpleElec::xorGate(tmp, p3);
-	pair.second = SimpleElec::orGate(
-		SimpleElec::andGate(tmp, p3), SimpleElec::andGate(p1, p2)
+	nts::Tristate tmp = LogicGate::xorGate(p1, p2);
+	pair.first = LogicGate::xorGate(tmp, p3);
+	pair.second = LogicGate::orGate(
+		LogicGate::andGate(tmp, p3), LogicGate::andGate(p1, p2)
 	);
 	return (pair);
 }
 
 nts::Tristate	Comp4008::internalCompute(PinNumber pin)
 {
-	if (pin < 10 || pin > 14)
-		throw;
-	auto p = bitFullAdder(getInputPin(7), getInputPin(6), getInputPin(9));
+	auto p = bitFullAdder(getInputPin(6), getInputPin(7), getInputPin(9));
 	if (pin >= 11)
-		p = bitFullAdder(getInputPin(7), getInputPin(6), p.second);
+		p = bitFullAdder(getInputPin(4), getInputPin(5), p.second);
 	if (pin >= 12)
-		p = bitFullAdder(getInputPin(7), getInputPin(6), p.second);
+		p = bitFullAdder(getInputPin(2), getInputPin(3), p.second);
 	if (pin >= 13)
-		p = bitFullAdder(getInputPin(7), getInputPin(6), p.second);
-	if (pin >= 14)
+		p = bitFullAdder(getInputPin(1), getInputPin(15), p.second);
+	if (pin == 14)
 		return (p.second);
 	return (p.first);
 }

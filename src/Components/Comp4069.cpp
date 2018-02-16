@@ -37,25 +37,19 @@ nts::Tristate	Comp4069::internalCompute(PinNumber pin)
 {
 	switch (pin)
 	{
-		case 2:
-			return (SimpleElec::notGate(getInputPin(1)));
-			break;
-		case 4:
-			return (SimpleElec::notGate(getInputPin(3)));
-			break;
-		case 6:
-			return (SimpleElec::notGate(getInputPin(5)));
-			break;
-		case 8:
-			return (SimpleElec::notGate(getInputPin(9)));
-			break;
-		case 10:
-			return (SimpleElec::notGate(getInputPin(11)));
-			break;
-		case 12:
-			return (SimpleElec::notGate(getInputPin(13)));
-			break;
-		default:
-			throw Err::UnknowPin("Comp4069 can't compute this pin.");
+	case 2:
+		return (LogicGate::notGate(getInputPin(1)));
+	case 4:
+		return (LogicGate::notGate(getInputPin(3)));
+	case 6:
+		return (LogicGate::notGate(getInputPin(5)));
+	case 8:
+		return (LogicGate::notGate(getInputPin(9)));
+	case 10:
+		return (LogicGate::notGate(getInputPin(11)));
+	case 12:
+		return (LogicGate::notGate(getInputPin(13)));
+	default:
+		throw Err::UnknowPin("Comp4069 can't compute this pin.");
 	}
 }

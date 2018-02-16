@@ -37,19 +37,15 @@ nts::Tristate	Comp4001::internalCompute(PinNumber pin)
 {
 	switch (pin)
 	{
-		case 3:
-			return (SimpleElec::norGate(getInputPin(1), getInputPin(2)));
-			break;
-		case 4:
-			return (SimpleElec::norGate(getInputPin(5), getInputPin(6)));
-			break;
-		case 10:
-			return (SimpleElec::norGate(getInputPin(8), getInputPin(9)));
-			break;
-		case 11:
-			return (SimpleElec::norGate(getInputPin(12), getInputPin(13)));
-			break;
-		default:
-			throw Err::UnknowPin("Comp4001 can't compute this pin.");
+	case 3:
+		return (LogicGate::norGate(getInputPin(1), getInputPin(2)));
+	case 4:
+		return (LogicGate::norGate(getInputPin(5), getInputPin(6)));
+	case 10:
+		return (LogicGate::norGate(getInputPin(8), getInputPin(9)));
+	case 11:
+		return (LogicGate::norGate(getInputPin(12), getInputPin(13)));
+	default:
+		throw Err::UnknowPin("Comp4001 can't compute this pin.");
 	}
 }

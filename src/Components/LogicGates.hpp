@@ -5,13 +5,13 @@
 ** Basic Logic Gate
 */
 
-#ifndef SIMPLEELEC_HPP_
-	#define SIMPLEELEC_HPP_
+#ifndef LOGICGATE_HPP_
+	#define LOGICGATE_HPP_
 	#include "IComponent.hpp"
 
-class SimpleElec {
+class LogicGate {
 public:
-	~SimpleElec() = delete;
+	~LogicGate() = delete;
 	static nts::Tristate	andGate(nts::Tristate p1, nts::Tristate p2);
 	static nts::Tristate	xorGate(nts::Tristate p1, nts::Tristate p2);
 	static nts::Tristate	orGate(nts::Tristate p1, nts::Tristate p2);
@@ -21,4 +21,4 @@ public:
 	static nts::Tristate	norGate(nts::Tristate p1, nts::Tristate p2);
 };
 
-#endif /* !SIMPLEELEC_HPP_ */
+#endif /* !LOGICGATE_HPP_ */

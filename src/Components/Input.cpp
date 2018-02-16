@@ -22,8 +22,6 @@ const SuperComponent::PinMap Input::_pins = {
 
 nts::Tristate	Input::internalCompute(PinNumber pin)
 {
-	if (pin != 1 || _state == nts::UNDEFINED)
-		throw Err::SectionError("");
 	return this->_state;
 }
 
