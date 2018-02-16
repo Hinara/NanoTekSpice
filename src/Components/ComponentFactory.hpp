@@ -18,7 +18,7 @@ namespace nts
 	public:
 		using CompPtr = std::unique_ptr<nts::IComponent>;
 		using FnctPtr = std::function<CompPtr(const std::string &)>;
-		using CompMap = std::map<const std::string, FnctPtr>;
+		using CreateCompMap = std::map<const std::string, FnctPtr>;
 		ComponentFactory();
 		~ComponentFactory();
 		CompPtr	createComponent(const std::string &type,
@@ -30,7 +30,7 @@ namespace nts
 			{
 				return std::unique_ptr<T> (new T(value));
 			}
-		static const CompMap	_map;
+		static const CreateCompMap	_map;
 	};
 }
 

@@ -12,7 +12,6 @@
 #include <string>
 #include <memory>
 #include <unordered_map>
-#include <vector>
 #include <algorithm>
 #include "Nano.hpp"
 #include "Components/Output.hpp"
@@ -22,22 +21,30 @@
 
 class Graph {
 	public:
+		using CompMap =
+			std::map<std::string, std::unique_ptr<nts::IComponent>>;
+		using OutputMap = std::map<std::string, Output *>;
+		using InputMap = std::unordered_map<std::string, Input *>;
+		using ClockMap = std::unordered_map<std::string, Clock *>;
 		Graph();
 		~Graph();
 		void	fillGraph(chipset_s);
 		void	setLink(link_s);
-		nts::IComponent							*getComp(const std::string &name) { return _graph.at(name).get(); }
-		Output								*getOutputComp(const std::string &name) { return _output.at(name); }
-		Input								*getInputComp(const std::string &name) { return _input.at(name); }
-		std::map<std::string, std::unique_ptr<nts::IComponent>>		&getGraph() { return _graph; }
-		std::map<std::string, Output *>					&getOutput() { return _output; }
-		std::unordered_map<std::string, Input *>			&getInput() { return _input; }
-		std::unordered_map<std::string, Clock *>			&getClock() { return _clock; }
+		nts::IComponent	*getComp(const std::string &name)
+			{ return _graph.at(name).get(); }
+		Output		*getOutputComp(const std::string &name)
+			{ return _output.at(name); }
+		Input		*getInputComp(const std::string &name)
+			{ return _input.at(name); }
+		CompMap		&getGraph() { return _graph; }
+		OutputMap	&getOutput() { return _output; }
+		InputMap	&getInput() { return _input; }
+		ClockMap	&getClock() { return _clock; }
 	private:
-		std::map<std::string, std::unique_ptr<nts::IComponent>>	_graph;
-		std::map<std::string, Output *>				_output;
-		std::unordered_map<std::string, Input *>		_input;
-		std::unordered_map<std::string, Clock *>		_clock;
+		CompMap		_graph;
+		OutputMap	_output;
+		InputMap	_input;
+		ClockMap	_clock;
 };
 
 #endif /* !GRAPH_HPP_ */

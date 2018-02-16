@@ -16,7 +16,8 @@ namespace Err
 	class Errors	:	public std::exception
 	{
 	public:
-		Errors(std::string const &message, std::string const &component = "Unknown");
+		Errors(std::string const &message,
+			std::string const &component = "Unknown");
 		~Errors();
 		const std::string	&getComponent() const noexcept;
 		virtual const char	*what() const noexcept;
@@ -28,55 +29,64 @@ namespace Err
 	class LexicalError	:	public Errors
 	{
 	public:
-		LexicalError(std::string const &message, std::string const &component = "Unknown");
+		LexicalError(std::string const &message,
+			std::string const &component = "Unknown");
 	};
 
 	class UnknowType	:	public Errors
 	{
 	public:
-		UnknowType(std::string const &message, std::string const &component = "Unknown");
+		UnknowType(std::string const &message,
+			std::string const &component = "Unknown");
 	};
 
 	class LinkError	:	public Errors
 	{
 	public:
-		LinkError(std::string const &message, std::string const &component = "Unknown");
+		LinkError(std::string const &message,
+			std::string const &component = "Unknown");
 	};
 
 	class SectionError	:	public Errors
 	{
 	public:
-		SectionError(std::string const &message, std::string const &component = "Unknown");
+		SectionError(std::string const &message,
+			std::string const &component = "Unknown");
 	};
 
 	class SegFault	:	public Errors
 	{
 	public:
-		SegFault(std::string const &message, std::string const &component = "Unknown");
+		SegFault(std::string const &message,
+			std::string const &component = "Unknown");
 	};
 
 	class InfiniteLoop	:	public Errors
 	{
 	public:
-		InfiniteLoop(std::string const &message, std::string const &component = "Unknown");
+		InfiniteLoop(std::string const &message,
+			std::string const &component = "Unknown");
 	};
 
 	class UnknowPin	:	public Errors
 	{
 	public:
-		UnknowPin(std::string const &message, std::string const &component = "Unknown");
+		UnknowPin(std::string const &message,
+			std::string const &component = "Unknown");
 	};
 
 	class DuplicatedSectionHeader :	public Errors
 	{
 	public:
-		DuplicatedSectionHeader(std::string const &message, std::string const &component = "Unknown");
+		DuplicatedSectionHeader(std::string const &message,
+			std::string const &component = "Unknown");
 	};
 
 	class ArgumentError	:	public Errors
 	{
 	public:
-		ArgumentError(std::string const &message, std::string const &component = "Unknown");
+		ArgumentError(std::string const &message,
+			std::string const &component = "Unknown");
 	};
 };
 

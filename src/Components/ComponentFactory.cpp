@@ -34,7 +34,7 @@ nts::ComponentFactory::~ComponentFactory()
 {
 }
 
-const nts::ComponentFactory::CompMap	nts::ComponentFactory::_map = {
+const nts::ComponentFactory::CreateCompMap	nts::ComponentFactory::_map = {
 	{ "4001", createElem<Comp4001> },
 	{ "4008", createElem<Comp4008> },
 	{ "4011", createElem<Comp4011> },
