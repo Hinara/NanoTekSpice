@@ -5,7 +5,6 @@
 ** Componentfactory
 */
 
-#include <iostream>
 #include "ComponentFactory.hpp"
 
 nts::ComponentFactory::ComponentFactory()
@@ -37,3 +36,9 @@ const std::map<const std::string, FnctPtr>	nts::ComponentFactory::_map = {
 	{ "true", createElem<True> },
 	{ "false", createElem<False> }
 };
+
+std::unique_ptr<nts::IComponent>	nts::ComponentFactory::createComponent(
+	const std::string &type, const std::string &value)
+{
+	return (_map.at(type))(value);
+}

@@ -5,7 +5,6 @@
 ** 4801
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "Comp4801.hpp"
 

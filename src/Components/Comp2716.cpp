@@ -5,7 +5,6 @@
 ** 2716
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "Comp2716.hpp"
 

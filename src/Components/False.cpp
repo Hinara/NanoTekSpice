@@ -5,7 +5,6 @@
 ** False
 */
 
-#include <iostream>
 #include "../Errors.hpp"
 #include "False.hpp"
 

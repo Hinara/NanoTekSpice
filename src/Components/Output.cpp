@@ -5,7 +5,6 @@
 ** Output
 */
 
-#include <iostream>
 #include "../Errors.hpp"
 #include "Output.hpp"
 

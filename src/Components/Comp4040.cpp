@@ -5,7 +5,6 @@
 ** 4040
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "Comp4040.hpp"
 

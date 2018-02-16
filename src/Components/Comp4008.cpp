@@ -5,7 +5,6 @@
 ** 4008
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "SimpleElec.hpp"
 #include "Comp4008.hpp"

@@ -5,7 +5,6 @@
 ** 4030
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "SimpleElec.hpp"
 #include "Comp4030.hpp"

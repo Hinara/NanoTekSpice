@@ -5,7 +5,6 @@
 ** true
 */
 
-#include <iostream>
 #include "../Errors.hpp"
 #include "True.hpp"
 

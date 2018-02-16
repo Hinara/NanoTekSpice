@@ -5,7 +5,6 @@
 ** 4514
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "Comp4514.hpp"
 

@@ -5,7 +5,6 @@
 ** 4069
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "SimpleElec.hpp"
 #include "Comp4069.hpp"

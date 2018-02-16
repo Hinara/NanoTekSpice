@@ -5,7 +5,6 @@
 ** 4094
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "Comp4094.hpp"
 

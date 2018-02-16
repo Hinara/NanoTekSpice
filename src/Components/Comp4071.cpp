@@ -5,7 +5,6 @@
 ** 4071
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "SimpleElec.hpp"
 #include "Comp4071.hpp"

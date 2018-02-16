@@ -5,7 +5,6 @@
 ** 4017
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "Comp4017.hpp"
 

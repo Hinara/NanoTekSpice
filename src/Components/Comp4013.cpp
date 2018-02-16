@@ -5,7 +5,6 @@
 ** 4013
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "Comp4013.hpp"
 

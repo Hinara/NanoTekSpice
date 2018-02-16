@@ -5,7 +5,6 @@
 ** Input
 */
 
-#include <iostream>
 #include "../Errors.hpp"
 #include "Input.hpp"
 

@@ -5,7 +5,6 @@
 ** 4011
 */
 
-#include <sstream>
 #include "../Errors.hpp"
 #include "SimpleElec.hpp"
 #include "Comp4011.hpp"
