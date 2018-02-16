@@ -5,6 +5,7 @@
 ** graph
 */
 
+#include "Errors.hpp"
 #include "Components/SuperComponent.hpp"
 #include "Components/ComponentFactory.hpp"
 #include "Graph.hpp"
