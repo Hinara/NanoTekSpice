@@ -5,6 +5,25 @@
 ** Componentfactory
 */
 
+#include "Comp2716.hpp"
+#include "Comp4001.hpp"
+#include "Comp4008.hpp"
+#include "Comp4011.hpp"
+#include "Comp4013.hpp"
+#include "Comp4017.hpp"
+#include "Comp4030.hpp"
+#include "Comp4040.hpp"
+#include "Comp4069.hpp"
+#include "Comp4071.hpp"
+#include "Comp4081.hpp"
+#include "Comp4094.hpp"
+#include "Comp4514.hpp"
+#include "Comp4801.hpp"
+#include "Input.hpp"
+#include "Output.hpp"
+#include "Clock.hpp"
+#include "True.hpp"
+#include "False.hpp"
 #include "ComponentFactory.hpp"
 
 nts::ComponentFactory::ComponentFactory()
@@ -15,7 +34,7 @@ nts::ComponentFactory::~ComponentFactory()
 {
 }
 
-const std::map<const std::string, FnctPtr>	nts::ComponentFactory::_map = {
+const nts::ComponentFactory::CompMap	nts::ComponentFactory::_map = {
 	{ "4001", createElem<Comp4001> },
 	{ "4008", createElem<Comp4008> },
 	{ "4011", createElem<Comp4011> },
@@ -37,7 +56,7 @@ const std::map<const std::string, FnctPtr>	nts::ComponentFactory::_map = {
 	{ "false", createElem<False> }
 };
 
-std::unique_ptr<nts::IComponent>	nts::ComponentFactory::createComponent(
+nts::ComponentFactory::CompPtr	nts::ComponentFactory::createComponent(
 	const std::string &type, const std::string &value)
 {
 	return (_map.at(type))(value);
