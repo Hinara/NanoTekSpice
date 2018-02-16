@@ -17,6 +17,7 @@
 #include "Nano.hpp"
 #include "Components/Output.hpp"
 #include "Components/Input.hpp"
+#include "Components/Clock.hpp"
 #include "Components/IComponent.hpp"
 
 class Graph {
@@ -31,12 +32,12 @@ class Graph {
 		std::map<std::string, std::unique_ptr<nts::IComponent>>		&getGraph() { return _graph; }
 		std::map<std::string, Output *>					&getOutput() { return _output; }
 		std::unordered_map<std::string, Input *>			&getInput() { return _input; }
-		std::vector<nts::IComponent *>					&getClock() { return _clock; }
+		std::unordered_map<std::string, Clock *>			&getClock() { return _clock; }
 	private:
 		std::map<std::string, std::unique_ptr<nts::IComponent>>	_graph;
 		std::map<std::string, Output *>				_output;
 		std::unordered_map<std::string, Input *>		_input;
-		std::vector<nts::IComponent *>				_clock;
+		std::unordered_map<std::string, Clock *>		_clock;
 };
 
 #endif /* !GRAPH_HPP_ */

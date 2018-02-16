@@ -42,15 +42,15 @@ bool	ArgumentsParser::setInputVal(Graph &graph, std::string var) const
 
 bool	ArgumentsParser::setClockVal(Graph &graph, std::string var) const
 {
-	std::vector<std::string> tab = graph.getClock();
+	auto &tab = graph.getClock();
+	
 	std::string val = var.substr(var.size() - 2, var.size());
-
 	var = var.erase(var.size() - 2);
-	if (std::find(tab.cbegin(), tab.cend(), var) != tab.cend()) {
+	if (tab.count(var) > 0) {
 		if (val == "=1")
-			(static_cast<Input *>(graph.getGraph().at(var).get()))->setState(nts::TRUE);
+			tab.at(var)->setState(nts::TRUE);
 		else if (val == "=0")
-			(static_cast<Input *>(graph.getGraph().at(var).get()))->setState(nts::FALSE);
+			tab.at(var)->setState(nts::FALSE);
 		else
 			throw Err::ArgumentError("Bad value in arguments line: a value is equal to 1 or 0.");
 		return true;

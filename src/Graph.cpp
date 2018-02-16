@@ -25,7 +25,10 @@ void	Graph::fillGraph(chipset_s chipset)
 	if (chipset._comp == "output")
 		_output[chipset._name] = static_cast<Output *>(_graph[chipset._name].get());
 	else if (chipset._comp == "clock")
-		_clock.push_back(static_cast<Clock *>(_graph[chipset._name].get()));
+		_clock.push_back(make_pair(
+			chipset._name,
+			static_cast<Clock *>(_graph[chipset._name].get())
+		));
 	else if (chipset._comp == "input")
 		_input[chipset._name] = static_cast<Input *>(_graph[chipset._name].get());
 }
