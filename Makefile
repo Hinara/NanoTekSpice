@@ -41,7 +41,7 @@ SRCS		=							\
 			src/Components/Comp4094.cpp			\
 			src/Components/Comp4514.cpp			\
 			src/Components/Comp4801.cpp			\
-			src/Components/SimpleElec.cpp			\
+			src/Components/LogicGates.cpp			\
 
 
 OBJS		=	$(SRCS:.cpp=.o)

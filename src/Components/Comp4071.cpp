@@ -6,7 +6,7 @@
 */
 
 #include "../Errors.hpp"
-#include "SimpleElec.hpp"
+#include "LogicGates.hpp"
 #include "Comp4071.hpp"
 
 Comp4071::Comp4071(const std::string &)

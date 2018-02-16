@@ -1,4 +1,4 @@
-#include "SimpleElec.hpp"
+#include "LogicGates.hpp"
 
 nts::Tristate	SimpleElec::andGate(nts::Tristate p1, nts::Tristate p2)
 {
