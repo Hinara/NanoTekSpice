@@ -8,6 +8,7 @@
 #ifndef SIMPLEELEC_HPP_
 	#define SIMPLEELEC_HPP_
 	#include "IComponent.hpp"
+
 class SimpleElec {
 public:
 	~SimpleElec() = delete;

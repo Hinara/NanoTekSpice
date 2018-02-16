@@ -7,12 +7,7 @@
 
 #ifndef COMP4514_HPP_
 	#define COMP4514_HPP_
-
-#include <string>
-#include <map>
-#include <utility>
-#include "IComponent.hpp"
-#include "SuperComponent.hpp"
+	#include "SuperComponent.hpp"
 
 class Comp4514	:	public SuperComponent
 {

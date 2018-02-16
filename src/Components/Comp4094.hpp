@@ -7,19 +7,14 @@
 
 #ifndef COMP4094_HPP_
 	#define COMP4094_HPP_
-
-#include <string>
-#include <map>
-#include <utility>
-#include "IComponent.hpp"
-#include "SuperComponent.hpp"
+	#include "SuperComponent.hpp"
 
 class Comp4094	:	public SuperComponent
 {
 public:
 	Comp4094(const std::string &);
 	~Comp4094();
-	nts::Tristate		internalCompute(PinNumber);
+	nts::Tristate		internalCompute(PinNumber) final;
 	static const PinMap	pins;
 };
 

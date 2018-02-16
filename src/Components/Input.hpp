@@ -7,15 +7,14 @@
 
 #ifndef INPUT_HPP_
 	#define INPUT_HPP_
-
-#include "SuperComponent.hpp"
+	#include "SuperComponent.hpp"
 
 class Input	:	public SuperComponent
 {
 public:
 	Input(const std::string &);
 	~Input();
-	nts::Tristate		internalCompute(PinNumber);
+	nts::Tristate		internalCompute(PinNumber) final;
 	static const PinMap	pins;
 	void			setState(nts::Tristate);
 protected:

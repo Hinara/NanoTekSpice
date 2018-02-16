@@ -22,8 +22,9 @@ public:
 	bool	outputIsLink(PinNumber) const;
 protected:
 	enum PinStatus {
-		INPUT,
-		OUTPUT
+		INPUT = 0x01,
+		OUTPUT = 0x10,
+		BIDIRECTIONNAL = OUTPUT & INPUT
 	};
 	using PinMap = std::unordered_map<PinNumber, PinStatus>;
 	SuperComponent(const PinMap &);

@@ -7,19 +7,14 @@
 
 #ifndef COMP4001_HPP_
 	#define COMP4001_HPP_
-
-#include <string>
-#include <map>
-#include <sstream>
-#include "../Errors.hpp"
-#include "SuperComponent.hpp"
+	#include "SuperComponent.hpp"
 
 class Comp4001	:	public SuperComponent
 {
 public:
 	Comp4001(const std::string &);
 	~Comp4001();
-	nts::Tristate		internalCompute(PinNumber);
+	nts::Tristate		internalCompute(PinNumber) final;
 	static const PinMap	pins;
 };
 

@@ -7,8 +7,7 @@
 
 #ifndef ICOMPONENT_HPP_
 	#define ICOMPONENT_HPP_
-
-#include <stdlib.h>
+	#include <stdlib.h>
 
 namespace	nts
 {

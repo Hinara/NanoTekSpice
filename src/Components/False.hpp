@@ -7,16 +7,14 @@
 
 #ifndef FALSE_HPP_
 	#define FALSE_HPP_
-
-#include <string>
-#include "SuperComponent.hpp"
+	#include "SuperComponent.hpp"
 
 class False	:	public SuperComponent
 {
 public:
 	False(const std::string &);
 	~False();
-	nts::Tristate		internalCompute(PinNumber);
+	nts::Tristate		internalCompute(PinNumber) final;
 	static const PinMap	pins;
 };
 

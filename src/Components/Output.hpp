@@ -7,18 +7,14 @@
 
 #ifndef OUTPUT_HPP_
 	#define OUTPUT_HPP_
-
-#include <utility>
-#include <string>
-#include "IComponent.hpp"
-#include "SuperComponent.hpp"
+	#include "SuperComponent.hpp"
 
 class Output	:	public SuperComponent
 {
 public:
 	Output(const std::string &);
 	~Output();
-	nts::Tristate	internalCompute(PinNumber);
+	nts::Tristate		internalCompute(PinNumber) final;
 	static const PinMap	pins;
 	void simulate();
 	nts::Tristate	getValue();
