@@ -49,9 +49,9 @@ void	Cli::display()
 void	Cli::dump()
 {
 	const std::map<const std::string, std::unique_ptr<nts::IComponent> >	&components = _g._graph;
-        std::for_each(components.begin(), components.end(),
-		     [](const std::pair<const std::string, std::unique_ptr<nts::IComponent> > &pair)
-		     { pair.second->dump(); }
+	std::for_each(components.begin(), components.end(),
+			[](const std::pair<const std::string, std::unique_ptr<nts::IComponent> > &pair)
+			{ pair.second->dump(); }
 		);
 	(void) components;
 }
@@ -90,7 +90,7 @@ void	Cli::loop()
 
 void	Cli::executeCommand(const std::string &s)
 {
-        const static std::map<const std::string, void (Cli::*)()> m = {
+	const static std::map<const std::string, void (Cli::*)()> m = {
 		{ "simulate", &Cli::simulate },
 		{ "loop", &Cli::loop },
 		{ "display", &Cli::display },
