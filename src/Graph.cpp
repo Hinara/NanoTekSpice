@@ -25,14 +25,15 @@ void	Graph::fillGraph(chipset_s chipset)
 	if (chipset._comp == "output")
 		_output[chipset._name] = static_cast<Output *>(_graph[chipset._name].get());
 	else if (chipset._comp == "clock")
-		_clock.push_back(chipset._name);
+		_clock.push_back(static_cast<Clock *>(_graph[chipset._name].get()));
 	else if (chipset._comp == "input")
 		_input[chipset._name] = static_cast<Input *>(_graph[chipset._name].get());
 }
 
 void	Graph::setLink(link_s link)
 {
-	if (_graph.find(link._nameO) == _graph.cend() || _graph.find(link._nameT) == _graph.cend())
+	if (_graph.find(link._nameO) == _graph.cend() ||
+		_graph.find(link._nameT) == _graph.cend())
 		throw Err::LexicalError("This component doesn't exist.");
 	SuperComponent *compO = 
 		(static_cast<SuperComponent *>(_graph.at(link._nameO).get()));

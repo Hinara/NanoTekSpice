@@ -31,12 +31,12 @@ class Graph {
 		std::map<std::string, std::unique_ptr<nts::IComponent>>		&getGraph() { return _graph; }
 		std::map<std::string, Output *>					&getOutput() { return _output; }
 		std::unordered_map<std::string, Input *>			&getInput() { return _input; }
-		std::vector<std::string>					&getClock() { return _clock; }
+		std::vector<nts::IComponent *>					&getClock() { return _clock; }
 	private:
-		std::map<std::string, std::unique_ptr<nts::IComponent>>		_graph;
-		std::map<std::string, Output *>					_output;
-		std::unordered_map<std::string, Input *>			_input;
-		std::vector<std::string>					_clock;
+		std::map<std::string, std::unique_ptr<nts::IComponent>>	_graph;
+		std::map<std::string, Output *>				_output;
+		std::unordered_map<std::string, Input *>		_input;
+		std::vector<nts::IComponent *>				_clock;
 };
 
 #endif /* !GRAPH_HPP_ */
