@@ -5,6 +5,7 @@
 ** 4001
 */
 
+#include "../Errors.hpp"
 #include "SimpleElec.hpp"
 #include "Comp4001.hpp"
 
