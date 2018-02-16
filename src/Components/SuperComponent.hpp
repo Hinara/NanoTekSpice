@@ -18,8 +18,9 @@ public:
 	void	setLink(PinNumber, nts::IComponent &, PinNumber) override;
 	void	dump() const override;
 	bool	isInput(PinNumber pin) const;
-	bool	inputIsLink(PinNumber) const;
-	bool	outputIsLink(PinNumber) const;
+	bool	isOutput(PinNumber pin) const;
+	bool	isInputLinked(PinNumber) const;
+	bool	isOutputLinked(PinNumber) const;
 protected:
 	enum PinStatus {
 		INPUT = 0x01,

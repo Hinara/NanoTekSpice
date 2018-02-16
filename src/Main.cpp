@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 				throw Err::ArgumentError("\'" + var + "\': input not set.");
 		});*/
 		std::for_each(g.getOutput().begin(), g.getOutput().end(), [](auto it){
-			if (!(it.second->inputIsLink(1)))
+			if (!(it.second->isInputLinked(1)))
 				throw Err::LinkError("\'" + it.first + "\': is not linked.");
 		});
 //		c.start();
