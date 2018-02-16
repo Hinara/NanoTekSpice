@@ -9,7 +9,7 @@
 #include "Comp4514.hpp"
 
 Comp4514::Comp4514(const std::string &)
-: SuperComponent(pins)
+: SuperComponent(_pins)
 {
 }
 
@@ -17,7 +17,7 @@ Comp4514::~Comp4514()
 {
 }
 
-const SuperComponent::PinMap	Comp4514::pins = {
+const SuperComponent::PinMap	Comp4514::_pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},
 	{3, PinStatus::OUTPUT},

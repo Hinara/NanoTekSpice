@@ -10,7 +10,7 @@
 #include "Comp4008.hpp"
 
 Comp4008::Comp4008(const std::string &)
-: SuperComponent(pins)
+: SuperComponent(_pins)
 {
 }
 
@@ -18,7 +18,7 @@ Comp4008::~Comp4008()
 {
 }
 
-const SuperComponent::PinMap	Comp4008::pins = {
+const SuperComponent::PinMap	Comp4008::_pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},
 	{3, PinStatus::INPUT},

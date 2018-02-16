@@ -10,7 +10,7 @@
 #include "Comp4030.hpp"
 
 Comp4030::Comp4030(const std::string &)
-: SuperComponent(pins)
+: SuperComponent(_pins)
 {
 }
 
@@ -18,7 +18,7 @@ Comp4030::~Comp4030()
 {
 }
 
-const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4030::pins = {
+const SuperComponent::PinMap	Comp4030::_pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},
 	{3, PinStatus::OUTPUT},

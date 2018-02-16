@@ -9,7 +9,7 @@
 #include "Comp4013.hpp"
 
 Comp4013::Comp4013(const std::string &)
-: SuperComponent(pins)
+: SuperComponent(_pins)
 {
 }
 
@@ -17,7 +17,7 @@ Comp4013::~Comp4013()
 {
 }
 
-const SuperComponent::PinMap	Comp4013::pins = {
+const SuperComponent::PinMap	Comp4013::_pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},
 	{3, PinStatus::OUTPUT},

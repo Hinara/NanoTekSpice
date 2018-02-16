@@ -14,8 +14,10 @@ class Comp4040	:	public SuperComponent
 public:
 	Comp4040(const std::string &);
 	~Comp4040();
+protected:
 	nts::Tristate		internalCompute(PinNumber) final;
-	static const PinMap	pins;
+private:
+	static const PinMap	_pins;
 };
 
 #endif /* !COMP4040_HPP_ */

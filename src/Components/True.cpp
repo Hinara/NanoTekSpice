@@ -9,7 +9,7 @@
 #include "True.hpp"
 
 True::True(const std::string &)
-: SuperComponent(pins)
+: SuperComponent(_pins)
 {
 }
 
@@ -17,7 +17,7 @@ True::~True()
 {
 }
 
-const SuperComponent::PinMap True::pins = {
+const SuperComponent::PinMap True::_pins = {
 	{1, PinStatus::OUTPUT}
 };
 

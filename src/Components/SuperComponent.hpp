@@ -30,6 +30,7 @@ protected:
 	SuperComponent(const PinMap &);
 	nts::Tristate	getInputPin(PinNumber) const;
 	virtual ~SuperComponent();
+protected:
 	virtual nts::Tristate	internalCompute(PinNumber) = 0;
 private:
 	using Lock = bool;

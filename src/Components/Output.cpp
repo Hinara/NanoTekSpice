@@ -9,7 +9,7 @@
 #include "Output.hpp"
 
 Output::Output(const std::string &)
-: SuperComponent(pins), _state(nts::UNDEFINED)
+: SuperComponent(_pins), _state(nts::UNDEFINED)
 {
 }
 
@@ -17,7 +17,7 @@ Output::~Output()
 {
 }
 
-const SuperComponent::PinMap Output::pins = {
+const SuperComponent::PinMap	Output::_pins = {
 	{1, PinStatus::INPUT}
 };
 

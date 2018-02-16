@@ -9,7 +9,7 @@
 #include "Comp2716.hpp"
 
 Comp2716::Comp2716(const std::string &value)
-: SuperComponent(pins)
+: SuperComponent(_pins)
 {
 }
 
@@ -17,7 +17,7 @@ Comp2716::~Comp2716()
 {
 }
 
-const SuperComponent::PinMap	Comp2716::pins = {
+const SuperComponent::PinMap	Comp2716::_pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},
 	{3, PinStatus::INPUT},

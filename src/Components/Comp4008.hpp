@@ -14,9 +14,10 @@ class Comp4008	:	public SuperComponent
 public:
 	Comp4008(const std::string &);
 	~Comp4008();
+protected:
 	nts::Tristate		internalCompute(PinNumber) final;
-	static const PinMap	pins;
 private:
+	static const PinMap	_pins;
 	std::pair<nts::Tristate, nts::Tristate>	bitFullAdder(
 		nts::Tristate, nts::Tristate, nts::Tristate);
 };

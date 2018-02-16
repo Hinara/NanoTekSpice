@@ -14,8 +14,10 @@ class True	:	public SuperComponent
 public:
 	True(const std::string &);
 	~True();
+protected:
 	nts::Tristate		internalCompute(PinNumber) final;
-	static const PinMap	pins;
+private:
+	static const PinMap	_pins;
 };
 
 #endif /* !TRUE_HPP_ */

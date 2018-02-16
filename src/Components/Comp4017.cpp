@@ -9,7 +9,7 @@
 #include "Comp4017.hpp"
 
 Comp4017::Comp4017(const std::string &)
-: SuperComponent(pins)
+: SuperComponent(_pins)
 {
 }
 
@@ -17,7 +17,7 @@ Comp4017::~Comp4017()
 {
 }
 
-const std::unordered_map<size_t,  SuperComponent::PinStatus>	Comp4017::pins = {
+const SuperComponent::PinMap	Comp4017::_pins = {
 	{1, PinStatus::OUTPUT},
 	{2, PinStatus::OUTPUT},
 	{3, PinStatus::OUTPUT},

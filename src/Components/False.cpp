@@ -10,14 +10,14 @@
 
 
 False::False(const std::string &)
-: SuperComponent(pins)
+: SuperComponent(_pins)
 {
 }
 
 False::~False()
 {
 }
-const SuperComponent::PinMap False::pins = {
+const SuperComponent::PinMap False::_pins = {
 	{1, PinStatus::OUTPUT}
 };
 

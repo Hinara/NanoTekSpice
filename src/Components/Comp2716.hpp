@@ -14,8 +14,10 @@ class Comp2716	:	public SuperComponent
 public:
 	Comp2716(const std::string &);
 	~Comp2716();
+protected:
 	nts::Tristate		internalCompute(PinNumber) final;
-	static const PinMap	pins;
+private:
+	static const PinMap	_pins;
 };
 
 #endif /* !COMP2716_HPP_ */

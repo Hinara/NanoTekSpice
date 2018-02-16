@@ -14,11 +14,12 @@ class Input	:	public SuperComponent
 public:
 	Input(const std::string &);
 	~Input();
-	nts::Tristate		internalCompute(PinNumber) final;
-	static const PinMap	pins;
 	void			setState(nts::Tristate);
 protected:
+	nts::Tristate		internalCompute(PinNumber) final;
 	nts::Tristate		_state;
+private:
+	static const PinMap	_pins;
 };
 
 #endif /* !INPUT_HPP_ */

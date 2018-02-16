@@ -9,14 +9,14 @@
 #include "Input.hpp"
 
 Input::Input(const std::string &)
-: SuperComponent(pins), _state(nts::UNDEFINED)
+: SuperComponent(_pins), _state(nts::UNDEFINED)
 {
 }
 
 Input::~Input()
 {
 }
-const SuperComponent::PinMap Input::pins = {
+const SuperComponent::PinMap Input::_pins = {
 	{1, PinStatus::OUTPUT}
 };
 

@@ -14,8 +14,10 @@ class Comp4001	:	public SuperComponent
 public:
 	Comp4001(const std::string &);
 	~Comp4001();
+protected:
 	nts::Tristate		internalCompute(PinNumber) final;
-	static const PinMap	pins;
+private:
+	static const PinMap	_pins;
 };
 
 #endif /* !COMP4001_HPP_ */

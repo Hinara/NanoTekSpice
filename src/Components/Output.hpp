@@ -14,12 +14,13 @@ class Output	:	public SuperComponent
 public:
 	Output(const std::string &);
 	~Output();
-	nts::Tristate		internalCompute(PinNumber) final;
-	static const PinMap	pins;
 	void simulate();
-	nts::Tristate	getValue();
-private:
+	nts::Tristate		getValue();
+protected:
+	nts::Tristate		internalCompute(PinNumber) final;
 	nts::Tristate		_state;
+private:
+	static const PinMap	_pins;
 };
 
 #endif /* !OUTPUT_HPP_ */
