@@ -68,7 +68,7 @@ void		SuperComponent::setLink(PinNumber pin,
 nts::Tristate	SuperComponent::getInputPin(PinNumber pin) const
 {
 	const auto &p = this->input.at(pin);
-	return p.first->compute(p.second);//
+	return p.first->compute(p.second);
 }
 
 void		SuperComponent::dump() const
