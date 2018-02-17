@@ -1,9 +1,5 @@
 # TODO
 
-## Cli
-
-- Use Graph Class
-
 ## Components
 
 | Component | Table | internalCompute |
