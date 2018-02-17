@@ -10,71 +10,50 @@
 #include "Errors.hpp"
 #include "ArgumentsParser.hpp"
 
-ArgumentsParser::ArgumentsParser(char **args)
+ArgumentsParser::ArgumentsParser(Graph &g)
+	:_g(g)
 {
-	for (std::size_t i = 0; args[i] != nullptr; i++)
-		_args.push_back(std::string(args[i]));
 }
 
 ArgumentsParser::~ArgumentsParser()
 {
 }
 
-bool	ArgumentsParser::setInputVal(Graph &graph, std::string var) const
+ArgumentsParser::PairNameState	ArgumentsParser::getState(std::string var)
 {
-	std::unordered_map<std::string, Input *> tab = graph.getInputs();
-	std::string val = var.substr(var.size() - 2, var.size());
-
-	var = var.erase(var.size() - 2);
-	for (auto it = tab.cbegin(); it !=  tab.cend(); it++) {
-		if (it->first == var) {
-			if (val == "=1")
-				tab.at(var)->setState(nts::TRUE);
-			else if (val == "=0")
-				tab.at(var)->setState(nts::FALSE);
-			else
-				throw Err::ArgumentError("Bad value in arguments line: a value is equal to 1 or 0.");
-			return true;
-		}
-	}
-	return false;
+	std::string suffix = var.substr(var.size() - 2, var.size());
+	PairNameState res;
+	res.first = var.erase(var.size() - 2);
+	if (suffix == "=1")
+		res.second = nts::TRUE;
+	else if (suffix == "=0")
+		res.second = nts::FALSE;
+	else
+		throw Err::ArgumentError("Bad value in arguments line: a value is equal to 1 or 0.");
+	return (res);
 }
 
-bool	ArgumentsParser::setClockVal(Graph &graph, std::string var) const
+void	ArgumentsParser::setVal(std::string var)
 {
-	auto &tab = graph.getClocks();
-	
-	std::string val = var.substr(var.size() - 2, var.size());
-	var = var.erase(var.size() - 2);
-	if (tab.count(var) > 0) {
-		if (val == "=1")
-			tab.at(var)->setState(nts::TRUE);
-		else if (val == "=0")
-			tab.at(var)->setState(nts::FALSE);
-		else
-			throw Err::ArgumentError("Bad value in arguments line: a value is equal to 1 or 0.");
-		return true;
+	PairNameState p = getState(var);
+	Input *elem = nullptr;
+	const Graph::InputMap &inputs = _g.getInputs();
+	std::unordered_map<std::string, Input *>::const_iterator it;
+	it = inputs.find(p.first);
+	if (it != inputs.cend())
+		elem = it->second;
+	if (elem == nullptr) {
+		const Graph::ClockMap &clocks = _g.getClocks();
+		auto it2 = clocks.find(p.first);
+		if (it2 != clocks.cend())
+			elem = it->second;
 	}
-	return false;
+	if (elem != nullptr)
+		elem->setState(p.second);
 }
 
-void	ArgumentsParser::setVal(Graph &graph, std::string var) const
+void	ArgumentsParser::setValues(const int ac, const char **av)
 {
-	if (var.size() <= 2)
-		throw Err::ArgumentError("\'" + var + "\': bad format ex: \'input=1\'.");
-	if (setInputVal(graph, var) == false) {
-		if (setClockVal(graph, var) == false)
-			throw Err::ArgumentError("\'" + var + "\': this argument is not an input or a clock.");
-	}
-}
-
-void	ArgumentsParser::setValues(Graph &graph) const
-{
-	try
-	{
-		std::for_each(_args.begin(), _args.end(), [&graph, this](std::string var){ setVal(graph, var); });
-	} catch (Err::Errors ex) {
-		std::cerr << ex.what() << std::endl;
-		throw std::exception();
-	}
+	for (int i = 0; i < ac; i++)
+		setVal(av[i]);
 }

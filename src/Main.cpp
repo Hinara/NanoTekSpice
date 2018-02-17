@@ -13,7 +13,7 @@
 #include "ArgumentsParser.hpp"
 #include "Cli.hpp"
 
-int	main(int ac, char **av)
+int	main(const int ac, const char **av)
 {
 	if (ac < 2)
 		return 84;
@@ -24,9 +24,9 @@ int	main(int ac, char **av)
 
 		p.parseFile(g);
 		if (ac > 2) {
-			ArgumentsParser ap(&(av[2]));
+			ArgumentsParser ap(g);
 
-			ap.setValues(g);
+			ap.setValues(ac - 2, &(av[2]));
 		}/*
 		std::for_each(g.getInput().begin(), g.getInputs().end(), [](auto it){ 
 			if (it.second->compute() == nts::UNDEFINED)

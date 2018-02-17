@@ -14,15 +14,14 @@
 
 class ArgumentsParser {
 	public:
-		ArgumentsParser(char **);
+		ArgumentsParser(Graph &);
 		~ArgumentsParser();
-		void	setValues(Graph &) const;
+		void		setValues(const int ac, const char **av);
 	private:
-		std::vector<std::string>	_args;
-	private:
-		bool	setInputVal(Graph &, std::string) const;
-		bool	setClockVal(Graph &, std::string) const;
-		void	setVal(Graph &, std::string) const;
+		using PairNameState = std::pair<std::string, nts::Tristate>;
+		Graph		&_g;
+		void		setVal(std::string);
+		PairNameState	getState(std::string var);
 };
 
 #endif /* !ARGUMENTSPARSER_HPP_ */
