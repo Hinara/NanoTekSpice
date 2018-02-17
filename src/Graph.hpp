@@ -26,6 +26,9 @@ class Graph {
 		using OutputMap = std::map<std::string, Output *>;
 		using InputMap = std::unordered_map<std::string, Input *>;
 		using ClockMap = std::unordered_map<std::string, Clock *>;
+		using OutputPair = std::pair<std::string, Output *>;
+		using InputPair = std::pair<std::string, Input *>;
+		using ClockPair = std::pair<std::string, Clock *>;
 		Graph();
 		~Graph();
 		void	fillGraph(chipset_s);
@@ -37,9 +40,9 @@ class Graph {
 		Input		*getInputComp(const std::string &name)
 			{ return _input.at(name); }
 		CompMap		&getGraph() { return _graph; }
-		OutputMap	&getOutput() { return _output; }
-		InputMap	&getInput() { return _input; }
-		ClockMap	&getClock() { return _clock; }
+		OutputMap	&getOutputs() { return _output; }
+		InputMap	&getInputs() { return _input; }
+		ClockMap	&getClocks() { return _clock; }
 	private:
 		CompMap		_graph;
 		OutputMap	_output;

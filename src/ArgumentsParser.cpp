@@ -22,7 +22,7 @@ ArgumentsParser::~ArgumentsParser()
 
 bool	ArgumentsParser::setInputVal(Graph &graph, std::string var) const
 {
-	std::unordered_map<std::string, Input *> tab = graph.getInput();
+	std::unordered_map<std::string, Input *> tab = graph.getInputs();
 	std::string val = var.substr(var.size() - 2, var.size());
 
 	var = var.erase(var.size() - 2);
@@ -42,7 +42,7 @@ bool	ArgumentsParser::setInputVal(Graph &graph, std::string var) const
 
 bool	ArgumentsParser::setClockVal(Graph &graph, std::string var) const
 {
-	auto &tab = graph.getClock();
+	auto &tab = graph.getClocks();
 	
 	std::string val = var.substr(var.size() - 2, var.size());
 	var = var.erase(var.size() - 2);

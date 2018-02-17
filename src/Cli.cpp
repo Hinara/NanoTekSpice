@@ -10,6 +10,7 @@
 #include <string>
 #include <algorithm>
 #include <memory>
+#include "Graph.hpp"
 #include "Components/Input.hpp"
 #include "Components/Clock.hpp"
 #include "Components/Output.hpp"
@@ -18,7 +19,7 @@
 
 static bool	*stop;
 
-Cli::Cli(graph_s &g)
+Cli::Cli(Graph &g)
 	: _g(g)
 {
 }
@@ -29,26 +30,25 @@ Cli::~Cli()
 
 void	Cli::display()
 {
-	std::for_each(_g._output.begin(), _g._output.end(),
-		[this](const std::string &s)
+	const Graph::OutputMap &outputs = _g.getOutputs();
+	std::for_each(outputs.cbegin(), outputs.cend(),
+		[this](const Graph::OutputPair &p)
 		{
-			nts::Tristate state = static_cast<Output *>(_g._graph.at(s).get())->getValue();
-			std::string str;
+			nts::Tristate state = p.second->getValue();
+			std::string str = "U";
 			if (state == nts::TRUE) {
-				str = "true";
+				str = "1";
 			} else if (state == nts::FALSE) {
-				str = "false";
-			} else {
-				str = "undefined";
+				str = "0";
 			}
-			std::cout << s << ":" << str << std::endl;
+			std::cout << p.first << ":" << str << std::endl;
 		}
 	);
 }
 
 void	Cli::dump()
 {
-	const std::map<const std::string, std::unique_ptr<nts::IComponent> >	&components = _g._graph;
+	const Graph::CompMap	&components = _g.getGraph();
 	std::for_each(components.begin(), components.end(),
 			[](const std::pair<const std::string, std::unique_ptr<nts::IComponent> > &pair)
 			{ pair.second->dump(); }
@@ -58,23 +58,24 @@ void	Cli::dump()
 
 void	Cli::input(const std::string &s, nts::Tristate state)
 {
-	if (std::find(_g._input.cbegin(),
-		_g._input.cend(), s) == _g._input.cend()) {
+	try {
+		this->_g.getInputs().at(s)->setState(state);
+	} catch (std::exception e) {
 		std::cout << s << " is not an input" << std::endl;
-	} else {
-		static_cast<Input *>(_g._graph.at(s).get())->setState(state);
 	}
 }
 
 void	Cli::simulate()
 {
-	std::for_each(_g._output.begin(), _g._output.end(),
-		[this](const std::string &s)
-		{ static_cast<Output *>(_g._graph.at(s).get())->simulate(); }
+	const Graph::OutputMap &outputs = _g.getOutputs();
+	std::for_each(outputs.cbegin(), outputs.cend(),
+		[this](const Graph::OutputPair &p)
+		{ p.second->simulate(); }
 	);
-	std::for_each(_g._input.begin(), _g._input.end(),
-		[this](const std::string &s)
-		{ static_cast<Clock *>(_g._graph.at(s).get())->swapState(); }
+	const Graph::ClockMap &clocks = _g.getClocks();
+	std::for_each(clocks.cbegin(), clocks.cend(),
+		[this](const Graph::ClockPair &p)
+		{ p.second->swapState(); }
 	);
 }
 
