@@ -19,7 +19,8 @@ public:
 protected:
 	nts::Tristate		internalCompute(PinNumber) final;
 private:
-	std::pair<nts::Tristate, nts::Tristate>	flipFlop(nts::Tristate, nts::Tristate, nts::Tristate);
+	nts::Tristate		_value[2] = { nts::FALSE, nts::FALSE };
+	nts::Tristate		_lastState[2] = { nts::TRUE, nts::TRUE };
 	static const PinMap	_pins;
 };
 
