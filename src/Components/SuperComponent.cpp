@@ -78,7 +78,9 @@ void SuperComponent::setLink(PinNumber pin,
 nts::Tristate SuperComponent::getInputPin(PinNumber pin) const
 {
 	const auto &p = this->input.at(pin);
-	return p.first->compute(p.second);
+	if (p.first == nullptr)
+		return (nts::Tristate::UNDEFINED);
+	return (p.first->compute(p.second));
 }
 
 void SuperComponent::dump() const
@@ -88,13 +90,13 @@ void SuperComponent::dump() const
 bool SuperComponent::isInputLinked(PinNumber pin) const
 {
 	if (!input.at(pin).first)
-		return false;
-	return true;
+		return (false);
+	return (true);
 }
 
 bool SuperComponent::isOutputLinked(PinNumber pin) const
 {
 	if (!output.at(pin).first)
-		return false;
-	return true;
+		return (false);
+	return (true);
 }
