@@ -19,6 +19,7 @@ SRCS		=							\
 			src/Errors.cpp					\
 			src/Cli.cpp					\
 			src/Graph.cpp					\
+			src/Kernel.cpp					\
 			src/ArgumentsParser.cpp				\
 			src/Components/ComponentFactory.cpp		\
 			src/Components/SuperComponent.cpp		\

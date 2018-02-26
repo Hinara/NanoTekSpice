@@ -23,6 +23,7 @@ ArgumentsParser::PairNameState	ArgumentsParser::getState(std::string var)
 {
 	std::string suffix = var.substr(var.size() - 2, var.size());
 	PairNameState res;
+
 	res.first = var.erase(var.size() - 2);
 	if (suffix == "=1")
 		res.second = nts::TRUE;
@@ -39,6 +40,7 @@ void	ArgumentsParser::setVal(std::string var)
 	Input *elem = nullptr;
 	const Graph::InputMap &inputs = _g.getInputs();
 	std::unordered_map<std::string, Input *>::const_iterator it;
+
 	it = inputs.find(p.first);
 	if (it != inputs.cend())
 		elem = it->second;

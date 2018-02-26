@@ -26,11 +26,4 @@ struct	link_s {
 	int		_pinT;
 };
 
-struct	graph_s {
-	std::map<const std::string, std::unique_ptr<nts::IComponent>>	_graph;
-	std::deque<std::string>	_output;
-	std::deque<std::string>	_input;
-	std::deque<std::string>	_clock;
-};
-
 #endif /* !NANO_HPP_ */
