@@ -7,6 +7,8 @@
 
 #ifndef COMP4013_HPP_
 	#define COMP4013_HPP_
+	#include <utility>
+	#include "LogicGates.hpp"
 	#include "SuperComponent.hpp"
 
 class Comp4013	:	public SuperComponent
@@ -17,6 +19,7 @@ public:
 protected:
 	nts::Tristate		internalCompute(PinNumber) final;
 private:
+	std::pair<nts::Tristate, nts::Tristate>	flipFlop(nts::Tristate, nts::Tristate, nts::Tristate);
 	static const PinMap	_pins;
 };
 

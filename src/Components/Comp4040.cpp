@@ -9,7 +9,7 @@
 #include "Comp4040.hpp"
 
 Comp4040::Comp4040(const std::string &)
-: SuperComponent(_pins), _value(0), _lastState(nts::UNDEFINED)
+: SuperComponent(_pins), _value(0), _lastState(nts::TRUE)
 {
 }
 
