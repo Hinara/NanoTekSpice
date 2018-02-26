@@ -20,6 +20,6 @@ void	Clock::swapState()
 {
 	if (this->_state != nts::UNDEFINED) {
 		this->_state = this->_state == (nts::TRUE) ?
-			nts::TRUE : nts::FALSE;
+			nts::FALSE : nts::TRUE;
 	}
 }
