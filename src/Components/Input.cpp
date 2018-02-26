@@ -20,7 +20,7 @@ const SuperComponent::PinMap Input::_pins = {
 	{1, PinStatus::OUTPUT}
 };
 
-nts::Tristate	Input::internalCompute(PinNumber pin)
+nts::Tristate	Input::internalCompute(PinNumber)
 {
 	return this->_state;
 }

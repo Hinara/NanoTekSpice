@@ -15,7 +15,7 @@
 #include "Components/Clock.hpp"
 #include "Components/Output.hpp"
 #include "Components/IComponent.hpp"
-#include "True.hpp"
+#include "Components/True.hpp"
 #include "Cli.hpp"
 
 static bool	*stop;
