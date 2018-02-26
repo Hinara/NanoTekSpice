@@ -48,7 +48,7 @@ void	ArgumentsParser::setVal(std::string var)
 		const Graph::ClockMap &clocks = _g.getClocks();
 		auto it2 = clocks.find(p.first);
 		if (it2 != clocks.cend())
-			elem = it->second;
+			elem = it2->second;
 	}
 	if (elem != nullptr)
 		elem->setState(p.second);
