@@ -29,10 +29,6 @@ SuperComponent::SuperComponent(const PinMap &pins)
 	);
 }
 
-SuperComponent::~SuperComponent()
-{
-}
-
 bool SuperComponent::isInput(PinNumber pin) const
 {
 	return (input.find(pin) != input.cend());
