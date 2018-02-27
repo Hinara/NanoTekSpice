@@ -14,7 +14,6 @@ Comp4040::Comp4040(const std::string &)
 {
 }
 
-
 const SuperComponent::PinMap	Comp4040::_pins = {
 	{1, PinStatus::OUTPUT},
 	{2, PinStatus::OUTPUT},
