@@ -39,10 +39,10 @@ std::pair<nts::Tristate, nts::Tristate>	Comp4008::bitFullAdder(nts::Tristate p1,
 	nts::Tristate p2, nts::Tristate p3)
 {
 	std::pair<nts::Tristate, nts::Tristate> pair;
-	nts::Tristate tmp = LogicGate::xorGate(p1, p2);
-	pair.first = LogicGate::xorGate(tmp, p3);
-	pair.second = LogicGate::orGate(
-		LogicGate::andGate(tmp, p3), LogicGate::andGate(p1, p2)
+	nts::Tristate tmp = LogicGates::xorGate(p1, p2);
+	pair.first = LogicGates::xorGate(tmp, p3);
+	pair.second = LogicGates::orGate(
+		LogicGates::andGate(tmp, p3), LogicGates::andGate(p1, p2)
 	);
 	return (pair);
 }

@@ -5,13 +5,13 @@
 ** Basic Logic Gate
 */
 
-#ifndef LOGICGATE_HPP_
-	#define LOGICGATE_HPP_
+#ifndef LOGICGATES_HPP_
+	#define LOGICGATES_HPP_
 	#include "IComponent.hpp"
 
-class LogicGate {
+class LogicGates {
 public:
-	~LogicGate() = delete;
+	~LogicGates() = delete;
 	static nts::Tristate	andGate(nts::Tristate p1, nts::Tristate p2);
 	static nts::Tristate	xorGate(nts::Tristate p1, nts::Tristate p2);
 	static nts::Tristate	orGate(nts::Tristate p1, nts::Tristate p2);
@@ -21,4 +21,4 @@ public:
 	static nts::Tristate	norGate(nts::Tristate p1, nts::Tristate p2);
 };
 
-#endif /* !LOGICGATE_HPP_ */
+#endif /* !LOGICGATES_HPP_ */

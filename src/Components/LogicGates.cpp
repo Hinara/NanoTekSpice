@@ -1,6 +1,6 @@
 #include "LogicGates.hpp"
 
-nts::Tristate	LogicGate::andGate(nts::Tristate p1, nts::Tristate p2)
+nts::Tristate	LogicGates::andGate(nts::Tristate p1, nts::Tristate p2)
 {
 	if (p1 == nts::FALSE || p2 == nts::FALSE)
 		return (nts::FALSE);
@@ -10,7 +10,7 @@ nts::Tristate	LogicGate::andGate(nts::Tristate p1, nts::Tristate p2)
 	
 }
 
-nts::Tristate	LogicGate::xorGate(nts::Tristate p1, nts::Tristate p2)
+nts::Tristate	LogicGates::xorGate(nts::Tristate p1, nts::Tristate p2)
 {
 	if (p1 == nts::UNDEFINED || p2 == nts::UNDEFINED)
 		return (nts::UNDEFINED);
@@ -19,7 +19,7 @@ nts::Tristate	LogicGate::xorGate(nts::Tristate p1, nts::Tristate p2)
 	return (nts::TRUE);
 }
 
-nts::Tristate	LogicGate::orGate(nts::Tristate p1, nts::Tristate p2)
+nts::Tristate	LogicGates::orGate(nts::Tristate p1, nts::Tristate p2)
 {
 	if (p1 == nts::TRUE || p2 == nts::TRUE)
 		return (nts::TRUE);
@@ -28,7 +28,7 @@ nts::Tristate	LogicGate::orGate(nts::Tristate p1, nts::Tristate p2)
 	return (nts::UNDEFINED);
 }
 
-nts::Tristate	LogicGate::notGate(nts::Tristate p1)
+nts::Tristate	LogicGates::notGate(nts::Tristate p1)
 {
 	if (p1 == nts::UNDEFINED)
 		return (nts::UNDEFINED);
@@ -37,17 +37,17 @@ nts::Tristate	LogicGate::notGate(nts::Tristate p1)
 	return (nts::FALSE);
 }
 
-nts::Tristate	LogicGate::xnorGate(nts::Tristate p1, nts::Tristate p2)
+nts::Tristate	LogicGates::xnorGate(nts::Tristate p1, nts::Tristate p2)
 {
 	return notGate(xorGate(p1, p2));
 }
 
-nts::Tristate	LogicGate::nandGate(nts::Tristate p1, nts::Tristate p2)
+nts::Tristate	LogicGates::nandGate(nts::Tristate p1, nts::Tristate p2)
 {
 	return notGate(andGate(p1, p2));
 }
 
-nts::Tristate	LogicGate::norGate(nts::Tristate p1, nts::Tristate p2)
+nts::Tristate	LogicGates::norGate(nts::Tristate p1, nts::Tristate p2)
 {
 	return notGate(orGate(p1, p2));
 }

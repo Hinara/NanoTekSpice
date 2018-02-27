@@ -38,13 +38,13 @@ nts::Tristate	Comp4030::internalCompute(std::size_t pin)
 	switch (pin)
 	{
 	case 3:
-		return (LogicGate::xorGate(getInputPin(1), getInputPin(2)));
+		return (LogicGates::xorGate(getInputPin(1), getInputPin(2)));
 	case 4:
-		return (LogicGate::xorGate(getInputPin(5), getInputPin(6)));
+		return (LogicGates::xorGate(getInputPin(5), getInputPin(6)));
 	case 10:
-		return (LogicGate::xorGate(getInputPin(8), getInputPin(9)));
+		return (LogicGates::xorGate(getInputPin(8), getInputPin(9)));
 	case 11:
-		return (LogicGate::xorGate(getInputPin(12), getInputPin(13)));
+		return (LogicGates::xorGate(getInputPin(12), getInputPin(13)));
 	default:
 		throw Err::UnknowPin("Comp4030 can't compute this pin.");
 	}

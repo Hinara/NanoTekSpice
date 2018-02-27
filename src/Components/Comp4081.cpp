@@ -38,13 +38,13 @@ nts::Tristate	Comp4081::internalCompute(PinNumber pin)
 	switch (pin)
 	{
 	case 3:
-		return (LogicGate::andGate(getInputPin(1), getInputPin(2)));
+		return (LogicGates::andGate(getInputPin(1), getInputPin(2)));
 	case 4:
-		return (LogicGate::andGate(getInputPin(5), getInputPin(6)));
+		return (LogicGates::andGate(getInputPin(5), getInputPin(6)));
 	case 10:
-		return (LogicGate::andGate(getInputPin(8), getInputPin(9)));
+		return (LogicGates::andGate(getInputPin(8), getInputPin(9)));
 	case 11:
-		return (LogicGate::andGate(getInputPin(12), getInputPin(13)));
+		return (LogicGates::andGate(getInputPin(12), getInputPin(13)));
 	default:
 		throw Err::UnknowPin("Comp4081 can't compute this pin.");
 	}
