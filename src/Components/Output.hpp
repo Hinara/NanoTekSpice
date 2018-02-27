@@ -13,7 +13,7 @@ class Output	:	public SuperComponent
 {
 public:
 	Output(const std::string &);
-	~Output();
+	~Output() = default;
 	void simulate();
 	nts::Tristate		getValue();
 protected:

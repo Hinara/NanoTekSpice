@@ -12,10 +12,6 @@ Clock::Clock(const std::string &value)
 {
 }
 
-Clock::~Clock()
-{
-}
-
 void	Clock::swapState()
 {
 	if (this->_state != nts::UNDEFINED) {

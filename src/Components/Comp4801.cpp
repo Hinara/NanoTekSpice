@@ -13,10 +13,6 @@ Comp4801::Comp4801(const std::string &)
 {
 }
 
-Comp4801::~Comp4801()
-{
-}
-
 const SuperComponent::PinMap	Comp4801::_pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},

@@ -13,7 +13,7 @@ class Clock	:	public Input
 {
 public:
 	Clock(const std::string &);
-	~Clock();
+	~Clock() = default;
 	void	swapState();
 };
 

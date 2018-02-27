@@ -19,8 +19,8 @@ namespace nts
 		using CompPtr = std::unique_ptr<nts::IComponent>;
 		using FnctPtr = std::function<CompPtr(const std::string &)>;
 		using CreateCompMap = std::map<const std::string, FnctPtr>;
-		ComponentFactory();
-		~ComponentFactory();
+		ComponentFactory() = default;
+		~ComponentFactory() = default;
 		CompPtr	createComponent(const std::string &type,
 			const std::string &value);
 	private:

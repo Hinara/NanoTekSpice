@@ -13,7 +13,7 @@ class Input	:	public SuperComponent
 {
 public:
 	Input(const std::string &);
-	~Input();
+	~Input() = default;
 	void			setState(nts::Tristate);
 protected:
 	nts::Tristate		internalCompute(PinNumber) final;

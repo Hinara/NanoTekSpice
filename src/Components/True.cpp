@@ -13,10 +13,6 @@ True::True(const std::string &)
 {
 }
 
-True::~True()
-{
-}
-
 const SuperComponent::PinMap True::_pins = {
 	{1, PinStatus::OUTPUT}
 };

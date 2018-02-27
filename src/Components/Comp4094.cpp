@@ -13,10 +13,6 @@ Comp4094::Comp4094(const std::string &)
 {
 }
 
-Comp4094::~Comp4094()
-{
-}
-
 const SuperComponent::PinMap	Comp4094::_pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},

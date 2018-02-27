@@ -13,9 +13,6 @@ Input::Input(const std::string &)
 {
 }
 
-Input::~Input()
-{
-}
 const SuperComponent::PinMap Input::_pins = {
 	{1, PinStatus::OUTPUT}
 };

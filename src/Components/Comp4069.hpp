@@ -13,7 +13,7 @@ class Comp4069	:	public SuperComponent
 {
 public:
 	Comp4069(const std::string &);
-	~Comp4069();
+	~Comp4069() = default;
 protected:
 	nts::Tristate		internalCompute(PinNumber) final;
 private:

@@ -13,7 +13,7 @@ class Comp4801	:	public SuperComponent
 {
 public:
 	Comp4801(const std::string &);
-	~Comp4801();
+	~Comp4801() = default;
 protected:
 	nts::Tristate		internalCompute(PinNumber) final;
 private:

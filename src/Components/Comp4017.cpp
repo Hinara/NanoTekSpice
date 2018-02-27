@@ -13,10 +13,6 @@ Comp4017::Comp4017(const std::string &)
 {
 }
 
-Comp4017::~Comp4017()
-{
-}
-
 const SuperComponent::PinMap	Comp4017::_pins = {
 	{1, PinStatus::OUTPUT},
 	{2, PinStatus::OUTPUT},

@@ -14,10 +14,6 @@ Comp4008::Comp4008(const std::string &)
 {
 }
 
-Comp4008::~Comp4008()
-{
-}
-
 const SuperComponent::PinMap	Comp4008::_pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},

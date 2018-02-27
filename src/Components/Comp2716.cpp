@@ -13,10 +13,6 @@ Comp2716::Comp2716(const std::string &value)
 {
 }
 
-Comp2716::~Comp2716()
-{
-}
-
 const SuperComponent::PinMap	Comp2716::_pins = {
 	{1, PinStatus::INPUT},
 	{2, PinStatus::INPUT},

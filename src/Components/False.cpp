@@ -14,9 +14,6 @@ False::False(const std::string &)
 {
 }
 
-False::~False()
-{
-}
 const SuperComponent::PinMap False::_pins = {
 	{1, PinStatus::OUTPUT}
 };

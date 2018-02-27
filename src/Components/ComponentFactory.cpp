@@ -26,14 +26,6 @@
 #include "False.hpp"
 #include "ComponentFactory.hpp"
 
-nts::ComponentFactory::ComponentFactory()
-{
-}
-
-nts::ComponentFactory::~ComponentFactory()
-{
-}
-
 const nts::ComponentFactory::CreateCompMap	nts::ComponentFactory::_map = {
 	{ "4001", createElem<Comp4001> },
 	{ "4008", createElem<Comp4008> },

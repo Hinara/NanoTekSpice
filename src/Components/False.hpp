@@ -13,7 +13,7 @@ class False	:	public SuperComponent
 {
 public:
 	False(const std::string &);
-	~False();
+	~False() = default;
 protected:
 	nts::Tristate		internalCompute(PinNumber) final;
 private:
