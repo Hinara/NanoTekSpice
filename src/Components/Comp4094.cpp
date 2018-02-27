@@ -30,6 +30,33 @@ const SuperComponent::PinMap	Comp4094::_pins = {
 	{15, PinStatus::INPUT}
 };
 
+const Comp4094::CorrespondanceMap	Comp4094::_valuesTab = {
+	{4, 1 << 0},
+	{5, 1 << 1},
+	{6, 1 << 2},
+	{7, 1 << 3},
+	{14, 1 << 4},
+	{13, 1 << 5},
+	{12, 1 << 6},
+	{11, 1 << 7}
+};
+
 nts::Tristate	Comp4094::internalCompute(PinNumber pin)
 {
+	nts::Tristate	clck = getInputPin(3);
+
+	if (_lastState != nts::TRUE && clck == nts::TRUE)
+		_value = (_value << 1) | (getInputPin(2) == nts::TRUE);
+	if (_lastState != nts::FALSE && clck == nts::FALSE)
+		_notQs = (_value & (1 << 7)) ? nts::TRUE : nts::FALSE;
+	_lastState = clck;
+	if (getInputPin(1) == nts::TRUE)
+		_display = _value;
+	if (pin == 9)
+		return (_value & (1 << 7)) ? nts::TRUE : nts::FALSE;
+	if (pin == 10)
+		return _notQs;
+	if (getInputPin(15) == nts::TRUE)
+		return (_display & _valuesTab.at(pin)) ? nts::TRUE : nts::FALSE;
+	return nts::UNDEFINED;
 }
