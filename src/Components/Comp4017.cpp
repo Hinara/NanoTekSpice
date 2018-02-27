@@ -36,7 +36,8 @@ const SuperComponent::PinMap	Comp4017::_pins = {
 
 nts::Tristate	Comp4017::internalCompute(PinNumber pin)
 {
-	nts::Tristate	state = LogicGates::andGate(LogicGates::notGate(getInputPin(13)), getInputPin(14));
+	nts::Tristate	state = LogicGates::andGate(
+		LogicGates::notGate(getInputPin(13)), getInputPin(14));
 	nts::Tristate	ret = nts::UNDEFINED;
 
 	if (state == nts::TRUE && _lastState != nts::TRUE)
