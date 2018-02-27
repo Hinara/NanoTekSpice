@@ -19,6 +19,7 @@ public:
 private:
 	Graph	&_g;
 	void	input(const std::string &s, nts::Tristate state);
+	void	simulateAndDisplay();
 	void	simulate();
 	void	loop();
 	void	dump();

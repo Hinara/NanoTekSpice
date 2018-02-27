@@ -90,6 +90,12 @@ void	Cli::loop()
 	std::signal(SIGINT, oldHandler);
 }
 
+void	Cli::simulateAndDisplay()
+{
+	this->simulate();
+	this->display();
+}
+
 void	Cli::executeCommand(const std::string &s)
 {
 	const static std::map<const std::string, void (Cli::*)()> m = {
@@ -97,6 +103,7 @@ void	Cli::executeCommand(const std::string &s)
 		{ "loop", &Cli::loop },
 		{ "display", &Cli::display },
 		{ "dump", &Cli::dump },
+		{ "sd", &Cli::simulateAndDisplay }
 	};
 	try {
 		(this->*m.at(s))();
