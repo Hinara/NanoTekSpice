@@ -40,7 +40,7 @@ nts::Tristate	Comp4017::internalCompute(PinNumber pin)
 	nts::Tristate	ret = nts::UNDEFINED;
 
 	if (state == nts::TRUE && _lastState != nts::TRUE)
-		_value += ((_value + 1) % 10);
+		_value = ((_value + 1) % 10);
 	_lastState = state;
 	if (getInputPin(15) == nts::TRUE)
 		_value = 0;
