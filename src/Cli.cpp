@@ -42,7 +42,7 @@ void	Cli::display()
 			} else if (state == nts::FALSE) {
 				str = "0";
 			}
-			std::cout << p.first << ":" << str << std::endl;
+			std::cout << p.first << "=" << str << std::endl;
 		}
 	);
 }
