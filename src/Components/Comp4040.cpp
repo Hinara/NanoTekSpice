@@ -6,6 +6,7 @@
 */
 
 #include "../Errors.hpp"
+#include "LogicGates.hpp"
 #include "Comp4040.hpp"
 
 Comp4040::Comp4040(const std::string &)
@@ -36,14 +37,14 @@ const SuperComponent::PinMap	Comp4040::_pins = {
 
 nts::Tristate	Comp4040::internalCompute(PinNumber pin)
 {
-	nts::Tristate state = getInputPin(10);
+	nts::Tristate state = LogicGates::notGate(getInputPin(10));
 
 	if (state == nts::TRUE && _lastState != nts::TRUE) {
-		_value += ((_value + 1) % 12);
+		_value = ((_value + 1) % (1 << 12));
 	}
 	_lastState = state;
 	if (getInputPin(11) == nts::TRUE) {
 		_value = 0;
 	}
-	return _value == _valuesTab.at(pin) ? nts::TRUE : nts::FALSE;
+	return ((_value & _valuesTab.at(pin)) ? nts::TRUE : nts::FALSE);
 }
