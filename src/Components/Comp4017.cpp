@@ -30,6 +30,19 @@ const SuperComponent::PinMap	Comp4017::_pins = {
 	{15, PinStatus::INPUT}
 };
 
+const Comp4017::CorrespondanceMap	Comp4017::_valuesTab = {
+	{3, 0},
+	{2, 1},
+	{4, 2},
+	{7, 3},
+	{10, 4},
+	{1, 5},
+	{5, 6},
+	{6, 7},
+	{9, 8},
+	{11, 9}
+};
+
 nts::Tristate	Comp4017::internalCompute(PinNumber pin)
 {
 	nts::Tristate	state = LogicGates::andGate(

@@ -7,7 +7,7 @@
 
 #ifndef COMP4017_HPP_
 	#define COMP4017_HPP_
-	#include <map>
+	#include <unordered_map>
 	#include "LogicGates.hpp"
 	#include "SuperComponent.hpp"
 
@@ -19,21 +19,11 @@ public:
 protected:
 	nts::Tristate		internalCompute(PinNumber) final;
 private:
+	using CorrespondanceMap = std::unordered_map<PinNumber, int>;
 	static const PinMap		_pins;
 	int				_value;
 	nts::Tristate			_lastState;
-	const std::map<PinNumber, int>	_valuesTab = {
-		{3, 0},
-		{2, 1},
-		{4, 2},
-		{7, 3},
-		{10, 4},
-		{1, 5},
-		{5, 6},
-		{6, 7},
-		{9, 8},
-		{11, 9}
-	};
+	static const CorrespondanceMap	_valuesTab;
 };
 
 #endif /* !COMP4017_HPP_ */

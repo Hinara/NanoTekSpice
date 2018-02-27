@@ -31,6 +31,21 @@ const SuperComponent::PinMap	Comp4040::_pins = {
 	{15, PinStatus::OUTPUT}
 };
 
+const Comp4040::CorrespondanceMap	Comp4040::_valuesTab = {
+	{9, 1 << 0},
+	{7, 1 << 1},
+	{6, 1 << 2},
+	{5, 1 << 3},
+	{3, 1 << 4},
+	{2, 1 << 5},
+	{4, 1 << 6},
+	{13, 1 << 7},
+	{12, 1 << 8},
+	{14, 1 << 9},
+	{15, 1 << 10},
+	{1, 1 << 11}
+};
+
 nts::Tristate	Comp4040::internalCompute(PinNumber pin)
 {
 	nts::Tristate state = LogicGates::notGate(getInputPin(10));

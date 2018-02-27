@@ -54,7 +54,6 @@ void	Cli::dump()
 			[](const std::pair<const std::string, std::unique_ptr<nts::IComponent> > &pair)
 			{ pair.second->dump(); }
 		);
-	(void) components;
 }
 
 void	Cli::input(const std::string &s, nts::Tristate state)

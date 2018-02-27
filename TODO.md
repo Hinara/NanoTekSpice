@@ -23,5 +23,5 @@
 |-------|-------------|
 | ✔ | Use default for constructor and destructor when function is empty |
 | ❌ | Use for range instead of for_each |
-| ❌ | Use static with const attribute that depends upon the component type only |
+| ✔ | Use static with const attribute that depends upon the component type only |
 | ❌ | Reduce number of Error classes |
