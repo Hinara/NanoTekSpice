@@ -17,7 +17,10 @@ public:
 protected:
 	nts::Tristate		internalCompute(PinNumber) final;
 private:
-	static const PinMap	_pins;
+	using CorrespondanceMap = std::unordered_map<PinNumber, int>;
+	static const PinMap		_pins;
+	int				_value;
+	static const CorrespondanceMap	_valuesTab;
 };
 
 #endif /* !COMP4514_HPP_ */
