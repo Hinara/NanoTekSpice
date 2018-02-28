@@ -32,28 +32,24 @@ Cli::~Cli()
 void	Cli::display()
 {
 	const Graph::OutputMap &outputs = _g.getOutputs();
-	std::for_each(outputs.cbegin(), outputs.cend(),
-		[this](const Graph::OutputPair &p)
-		{
-			nts::Tristate state = p.second->getValue();
-			std::string str = "U";
-			if (state == nts::TRUE) {
-				str = "1";
-			} else if (state == nts::FALSE) {
-				str = "0";
-			}
-			std::cout << p.first << "=" << str << std::endl;
+
+	for (const auto it : outputs) {
+		nts::Tristate state = it.second->getValue();
+		std::string str = "U";
+		if (state == nts::TRUE) {
+			str = "1";
+		} else if (state == nts::FALSE) {
+			str = "0";
 		}
-	);
+		std::cout << it.first << "=" << str << std::endl;
+	}
 }
 
 void	Cli::dump()
 {
 	const Graph::CompMap	&components = _g.getGraph();
-	std::for_each(components.begin(), components.end(),
-			[](const std::pair<const std::string, std::unique_ptr<nts::IComponent> > &pair)
-			{ pair.second->dump(); }
-		);
+	for (const auto &pair: components)
+		pair.second->dump();
 }
 
 void	Cli::input(const std::string &s, nts::Tristate state)
@@ -68,15 +64,11 @@ void	Cli::input(const std::string &s, nts::Tristate state)
 void	Cli::simulate()
 {
 	const Graph::OutputMap &outputs = _g.getOutputs();
-	std::for_each(outputs.cbegin(), outputs.cend(),
-		[this](const Graph::OutputPair &p)
-		{ p.second->simulate(); }
-	);
+	for (auto it : outputs)
+		it.second->simulate();
 	const Graph::ClockMap &clocks = _g.getClocks();
-	std::for_each(clocks.cbegin(), clocks.cend(),
-		[this](const Graph::ClockPair &p)
-		{ p.second->swapState(); }
-	);
+	for (auto it : clocks)
+		it.second->swapState();
 }
 
 void	Cli::loop()
