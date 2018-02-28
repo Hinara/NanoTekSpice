@@ -28,3 +28,46 @@
 | ✔ | Use static with const attribute that depends upon the component type only |
 | WIP | Reduce number of Error classes |
 | ❌ | Make unit test |
+
+## Mouli
+
+### A - Single components - 17 tests
+
+| Test n° | Description | Result |
+|:-------:|-------------|:------:|
+| 00 | DIRECT CONNECTION | ✔ |
+| 01 | CLOCK | ✔ |
+| 02 | TRUE | ✔ |
+| 03 | FALSE | ✔ |
+| 04 | AND GATE (4081) | ✔ |
+| 05 | OR GATE (4071) | ✔ |
+| 06 | NAND GATE (4011) | ✔ |
+| 07 | NOR GATE (4001) | ✔ |
+| 08 | XOR GATE (4030) | ✔ |
+| 09 | NOT GATE (4069) | ✔ |
+| 10 | DECODER (4514) | ❌ |
+| 11 | ADDER (4008) | ✔ |
+| 12 | COUNTER (4040) | ✔ |
+| 13 | JOHNSON (4017) | ❌ |
+| 14 | SHIFT (4094) | ✔ |
+| 15 | D LATCH (4013) | ❌ |
+| 16 | TERMINAL (4013) | ❌ |
+
+### B - Combinatory logic - 7 tests
+
+| Test n° | Description | Result |
+|:-------:|-------------|:------:|
+| 01 | 5 INPUT AND GATE | ✔ |
+| 02 | 5 INPUT NAND GATE | ✔ |
+| 03 | 5 INPUT OR GATE | ✔ |
+| 04 | 5 INPUT NOR GATE | ✔ |
+| 05 | MANDION | ✔ |
+| 06 | ALTERED COUNTER | ✔ |
+| 07 | ROM DUMP | ✔ |
+
+### C - Sequential logic - 2 tests
+
+| Test n° | Description | Result |
+|:-------:|-------------|:------:|
+| 01 | ONE BIT RAM | ❌ |
+| 02 | XORED DATA ROM DUMPER | ❌ |
