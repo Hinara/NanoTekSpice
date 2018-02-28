@@ -116,12 +116,12 @@ void	Cli::start()
 	simulate();
 	display();
 	while (!std::cin.eof() && line != "exit") {
-		std::cout << ">";
+		std::cout << "> ";
 		std::getline(std::cin, line);
 		//if (std::cin.eof())
 		//	std::cout << "\n";
 		if (line != "" && line != "exit")
 			executeCommand(line);
 	}
-	std::cout << std::endl;
+	//std::cout << std::endl;
 }
