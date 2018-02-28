@@ -38,7 +38,7 @@ void	Graph::setLink(link_s link)
 {
 	if (_graph.find(link._nameO) == _graph.cend() ||
 		_graph.find(link._nameT) == _graph.cend())
-		throw Err::LexicalError("This component doesn't exist.");
+		throw Err::ParsingError("This component doesn't exist.");
 	SuperComponent *compO = 
 		(static_cast<SuperComponent *>(_graph.at(link._nameO).get()));
 	SuperComponent *compT =

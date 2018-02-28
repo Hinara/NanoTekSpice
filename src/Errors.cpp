@@ -26,13 +26,7 @@ const char		*Err::Errors::what() const noexcept
 	return _message.data();
 }
 
-Err::LexicalError::LexicalError(std::string const &message, std::string const &component)
-: Errors(message, component)
-{
-
-}
-
-Err::UnknowType::UnknowType(std::string const &message, std::string const &component)
+Err::ParsingError::ParsingError(std::string const &message, std::string const &component)
 : Errors(message, component)
 {
 }
@@ -42,28 +36,8 @@ Err::LinkError::LinkError(std::string const &message, std::string const &compone
 {
 }
 
-Err::SectionError::SectionError(std::string const &message, std::string const &component)
-: Errors(message, component)
-{
-}
-
-Err::SegFault::SegFault(std::string const &message, std::string const &component)
-: Errors(message, component)
-{
-}
-
-Err::InfiniteLoop::InfiniteLoop(std::string const &message, std::string const &component)
-: Errors(message, component)
-{
-}
-
 Err::UnknowPin::UnknowPin(std::string const &message, std::string const &component)
 : Errors(message, component)
-{
-}
-
-Err::DuplicatedSectionHeader::DuplicatedSectionHeader(std::string const &message, std::string const &component)
-	: Errors(message, component)
 {
 }
 

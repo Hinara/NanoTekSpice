@@ -26,17 +26,10 @@ namespace Err
 		std::string	_component;
 	};
 
-	class LexicalError	:	public Errors
+	class ParsingError	:	public Errors
 	{
 	public:
-		LexicalError(std::string const &message,
-			std::string const &component = "Unknown");
-	};
-
-	class UnknowType	:	public Errors
-	{
-	public:
-		UnknowType(std::string const &message,
+		ParsingError(std::string const &message,
 			std::string const &component = "Unknown");
 	};
 
@@ -54,31 +47,10 @@ namespace Err
 			std::string const &component = "Unknown");
 	};
 
-	class SegFault	:	public Errors
-	{
-	public:
-		SegFault(std::string const &message,
-			std::string const &component = "Unknown");
-	};
-
-	class InfiniteLoop	:	public Errors
-	{
-	public:
-		InfiniteLoop(std::string const &message,
-			std::string const &component = "Unknown");
-	};
-
 	class UnknowPin	:	public Errors
 	{
 	public:
 		UnknowPin(std::string const &message,
-			std::string const &component = "Unknown");
-	};
-
-	class DuplicatedSectionHeader :	public Errors
-	{
-	public:
-		DuplicatedSectionHeader(std::string const &message,
 			std::string const &component = "Unknown");
 	};
 
