@@ -24,7 +24,7 @@
 | State | Description |
 |:-----:|-------------|
 | ✔ | Use default for constructor and destructor when function is empty |
-| ❌ | Use for range instead of for_each |
+| ✔ | Use for range instead of for_each |
 | ✔ | Use static with const attribute that depends upon the component type only |
 | WIP | Reduce number of Error classes |
 | ❌ | Make unit test |
