@@ -32,19 +32,19 @@ int	Kernel::run(const int ac, const char **av)
 
 void	Kernel::verifValueInputsComp(Graph &g)
 {
-	std::for_each(g.getInputs().begin(), g.getInputs().end(), [](auto it){ 
+	for (auto it : g.getInputs()) {
 		if (it.second->compute() == nts::UNDEFINED)
-			throw Err::ArgumentError("\'" + it.first 
-			+ "\': input not set.");
-	});
-	std::for_each(g.getClocks().begin(), g.getClocks().end(), [](auto it){
+			throw Err::ArgumentError("\'" + it.first +
+				"\': input not set.");
+	}
+	for (auto it : g.getClocks()) {
 		if (it.second->compute() == nts::UNDEFINED)
-			throw Err::ArgumentError("\'" + it.first 
-			+ "\': clock not set.");
-	});
-	std::for_each(g.getOutputs().begin(), g.getOutputs().end(), [](auto it){
+			throw Err::ArgumentError("\'" + it.first +
+				"\': clock not set.");
+	}
+	for (auto it : g.getOutputs()) {
 		if (!(it.second->isInputLinked(1)))
-			throw Err::LinkError("\'" + it.first 
-			+ "\': output not linked.");
-	});
+			throw Err::LinkError("\'" + it.first +
+				"\': output not linked.");
+	}
 }
