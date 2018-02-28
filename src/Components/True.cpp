@@ -19,7 +19,5 @@ const SuperComponent::PinMap True::_pins = {
 
 nts::Tristate	True::internalCompute(PinNumber pin)
 {
-	if (pin != 1)
-		throw Err::UnknowPin("\'True\''s pin can only be equal to 1.");
 	return nts::TRUE;
 }

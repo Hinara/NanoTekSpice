@@ -32,9 +32,7 @@ nts::Tristate	LogicGates::notGate(nts::Tristate p1)
 {
 	if (p1 == nts::UNDEFINED)
 		return (nts::UNDEFINED);
-	if (p1 == nts::FALSE)
-		return (nts::TRUE);
-	return (nts::FALSE);
+	return ((p1 == nts::FALSE) ? nts::TRUE : nts::FALSE);
 }
 
 nts::Tristate	LogicGates::xnorGate(nts::Tristate p1, nts::Tristate p2)

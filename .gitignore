@@ -4,3 +4,5 @@
 nanotekspice
 .vscode
 chipset
+*.gcda
+*.gcno
