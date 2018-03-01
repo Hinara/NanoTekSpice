@@ -63,11 +63,11 @@
 | 04 | 5 INPUT NOR GATE | ✔ |
 | 05 | MANDION | ✔ |
 | 06 | ALTERED COUNTER | ✔ |
-| 07 | ROM DUMP | ✔ |
+| 07 | ROM DUMP | ❌ |
 
 ### C - Sequential logic - 2 tests
 
 | Test n° | Description | Result |
 |:-------:|-------------|:------:|
-| 01 | ONE BIT RAM | ❌ |
+| 01 | ONE BIT RAM | ✔ |
 | 02 | XORED DATA ROM DUMPER | ❌ |
