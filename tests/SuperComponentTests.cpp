@@ -83,3 +83,20 @@ Test(misc, supercomponentgetinputnotlinked)
 	o.simulate();
 	cr_assert(o.getValue() == nts::UNDEFINED);
 }
+
+Test(misc, supercomponentdump)
+{
+	Comp4071		c("None");
+
+	c.dump();
+}
+
+Test(misc, supercomponentisinputlinked)
+{
+	Input			i("None");
+	Output			o("None");
+
+	cr_assert(o.isInputLinked(1) == nts::FALSE);
+	o.setLink(1, i, 1);
+	cr_assert(o.isInputLinked(1) == nts::TRUE);
+}
