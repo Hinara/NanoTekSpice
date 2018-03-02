@@ -17,7 +17,7 @@ const SuperComponent::PinMap True::_pins = {
 	{1, PinStatus::OUTPUT}
 };
 
-nts::Tristate	True::internalCompute(PinNumber pin)
+nts::Tristate	True::internalCompute(PinNumber)
 {
 	return nts::TRUE;
 }
