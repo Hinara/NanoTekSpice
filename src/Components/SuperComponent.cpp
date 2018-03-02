@@ -13,16 +13,12 @@ SuperComponent::SuperComponent(const PinMap &pins)
 {
 	for (auto pin : pins) {
 		if (pin.second & OUTPUT) {
-			this->output.insert(std::make_pair(
-				pin.first,
-				std::make_pair(nts::UNDEFINED, false)
-			));
+			this->output.insert(std::make_pair(pin.first,
+				std::make_pair(nts::UNDEFINED, false)));
 		}
 		if (pin.second & INPUT) {
-			this->input.insert(std::make_pair(
-				pin.first,
-				std::make_pair(nullptr, 0)
-			));
+			this->input.insert(std::make_pair(pin.first,
+				std::make_pair(nullptr, 0)));
 		}
 	}
 }
