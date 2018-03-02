@@ -38,9 +38,7 @@ nts::Tristate SuperComponent::compute(PinNumber pin)
 {
 	auto &p = this->output.at(pin);
 	if (p.second)
-	{
 		return (p.first);
-	}
 	p.second = true;
 	p.first = this->internalCompute(pin);
 	p.second = false;

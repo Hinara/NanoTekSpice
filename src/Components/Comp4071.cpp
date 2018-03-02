@@ -31,17 +31,22 @@ const SuperComponent::PinMap	Comp4071::_pins = {
 
 nts::Tristate	Comp4071::internalCompute(PinNumber pin)
 {
+	nts::Tristate	res;
+
 	switch (pin)
 	{
 	case 3:
-		return (LogicGates::orGate(getInputPin(1), getInputPin(2)));
+		res = (LogicGates::orGate(getInputPin(1), getInputPin(2)));
+		break;
 	case 4:
-		return (LogicGates::orGate(getInputPin(5), getInputPin(6)));
+		res = (LogicGates::orGate(getInputPin(5), getInputPin(6)));
+		break;
 	case 10:
-		return (LogicGates::orGate(getInputPin(8), getInputPin(9)));
+		res = (LogicGates::orGate(getInputPin(8), getInputPin(9)));
+		break;
 	case 11:
-		return (LogicGates::orGate(getInputPin(12), getInputPin(13)));
-	default:
-		throw Err::UnknowPin("Comp4071 can't compute this pin.");
+		res = (LogicGates::orGate(getInputPin(12), getInputPin(13)));
+		break;
 	}
+	return (res);
 }

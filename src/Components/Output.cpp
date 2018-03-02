@@ -19,7 +19,7 @@ const SuperComponent::PinMap	Output::_pins = {
 
 nts::Tristate	Output::internalCompute(PinNumber)
 {
-	throw;
+	return (nts::UNDEFINED);
 }
 
 void	Output::simulate()
