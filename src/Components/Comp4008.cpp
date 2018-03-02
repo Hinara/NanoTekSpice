@@ -52,7 +52,5 @@ nts::Tristate	Comp4008::internalCompute(PinNumber pin)
 		p = bitFullAdder(getInputPin(2), getInputPin(3), p.second);
 	if (pin >= 13)
 		p = bitFullAdder(getInputPin(1), getInputPin(15), p.second);
-	if (pin == 14)
-		return (p.second);
-	return (p.first);
+	return (pin == 14 ? p.second : p.first);
 }
