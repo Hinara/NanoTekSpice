@@ -79,14 +79,5 @@ void SuperComponent::dump() const
 
 bool SuperComponent::isInputLinked(PinNumber pin) const
 {
-	if (!input.at(pin).first)
-		return (false);
-	return (true);
-}
-
-bool SuperComponent::isOutputLinked(PinNumber pin) const
-{
-	if (!output.at(pin).first)
-		return (false);
-	return (true);
+	return (input.at(pin).first != nullptr);
 }
