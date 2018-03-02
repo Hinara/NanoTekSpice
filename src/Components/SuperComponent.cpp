@@ -11,22 +11,20 @@
 
 SuperComponent::SuperComponent(const PinMap &pins)
 {
-	std::for_each(pins.begin(), pins.end(),
-		[this](std::pair<PinNumber, PinStatus> pin) {
-			if (pin.second & OUTPUT) {
-				this->output.insert(std::make_pair(
-					pin.first,
-					std::make_pair(nts::UNDEFINED, false)
-				));
-			}
-			if (pin.second & INPUT) {
-				this->input.insert(std::make_pair(
-					pin.first,
-					std::make_pair(nullptr, 0)
-				));
-			}
+	for (auto pin : pins) {
+		if (pin.second & OUTPUT) {
+			this->output.insert(std::make_pair(
+				pin.first,
+				std::make_pair(nts::UNDEFINED, false)
+			));
 		}
-	);
+		if (pin.second & INPUT) {
+			this->input.insert(std::make_pair(
+				pin.first,
+				std::make_pair(nullptr, 0)
+			));
+		}
+	}
 }
 
 bool SuperComponent::isInput(PinNumber pin) const
