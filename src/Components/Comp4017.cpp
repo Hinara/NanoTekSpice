@@ -45,8 +45,7 @@ const Comp4017::CorrespondanceMap	Comp4017::_valuesTab = {
 
 nts::Tristate	Comp4017::internalCompute(PinNumber pin)
 {
-	nts::Tristate	state = LogicGates::andGate(
-		LogicGates::notGate(getInputPin(13)), getInputPin(14));
+	nts::Tristate	state = getInputPin(14);
 	nts::Tristate	ret = nts::UNDEFINED;
 
 	if (state == nts::TRUE && _lastState != nts::TRUE)
