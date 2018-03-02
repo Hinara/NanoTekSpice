@@ -51,16 +51,15 @@ void SuperComponent::setLink(PinNumber pin,
 			     nts::IComponent &other,
 			     PinNumber otherpin)
 {
-	try
-	{
+	try {
 		auto &p = this->input.at(pin);
 		if (p.first)
 			throw Err::LinkError("Pin already linked");
 		p.first = &other;
 		p.second = otherpin;
-	}
-	catch (std::exception)
-	{
+	} catch (Err::LinkError &e) {
+		throw e;
+	} catch (std::exception) {
 		throw Err::LinkError("Unknown Pin");
 	}
 }
