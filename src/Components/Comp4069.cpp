@@ -29,23 +29,16 @@ const SuperComponent::PinMap	Comp4069::_pins = {
 	{13, PinStatus::INPUT}
 };
 
+const Comp4069::CorrespondanceMap	Comp4069::_valuesTab = {
+	{2, 1},
+	{4, 3},
+	{6, 5},
+	{8, 9},
+	{10, 11},
+	{12, 13},
+};
+
 nts::Tristate	Comp4069::internalCompute(PinNumber pin)
 {
-	switch (pin)
-	{
-	case 2:
-		return (LogicGates::notGate(getInputPin(1)));
-	case 4:
-		return (LogicGates::notGate(getInputPin(3)));
-	case 6:
-		return (LogicGates::notGate(getInputPin(5)));
-	case 8:
-		return (LogicGates::notGate(getInputPin(9)));
-	case 10:
-		return (LogicGates::notGate(getInputPin(11)));
-	case 12:
-		return (LogicGates::notGate(getInputPin(13)));
-	default:
-		throw Err::UnknowPin("Comp4069 can't compute this pin.");
-	}
+	return (LogicGates::notGate(getInputPin(_valuesTab.at(pin))));
 }

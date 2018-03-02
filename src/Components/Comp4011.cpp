@@ -29,19 +29,17 @@ const SuperComponent::PinMap	Comp4011::_pins = {
 	{13, PinStatus::INPUT}
 };
 
+const Comp4011::CorrespondanceMap	Comp4011::_valuesTab = {
+	{3, {1, 2}},
+	{4, {5, 6}},
+	{10, {8, 9}},
+	{11, {12, 13}},
+};
+
 nts::Tristate	Comp4011::internalCompute(PinNumber pin)
 {
-	switch (pin)
-	{
-	case 3:
-		return (LogicGates::nandGate(getInputPin(1), getInputPin(2)));
-	case 4:
-		return (LogicGates::nandGate(getInputPin(5), getInputPin(6)));
-	case 10:
-		return (LogicGates::nandGate(getInputPin(8), getInputPin(9)));
-	case 11:
-		return (LogicGates::nandGate(getInputPin(12), getInputPin(13)));
-	default:
-		throw Err::UnknowPin("Comp4011 can't compute this pin.");
-	}
+	const InputPair &p = _valuesTab.at(pin);
+	
+	return (LogicGates::nandGate(
+		getInputPin(p.first), getInputPin(p.second)));
 }

@@ -29,24 +29,17 @@ const SuperComponent::PinMap	Comp4071::_pins = {
 	{13, PinStatus::INPUT}
 };
 
+const Comp4071::CorrespondanceMap	Comp4071::_valuesTab = {
+	{3, {1, 2}},
+	{4, {5, 6}},
+	{10, {8, 9}},
+	{11, {12, 13}},
+};
+
 nts::Tristate	Comp4071::internalCompute(PinNumber pin)
 {
-	nts::Tristate	res;
-
-	switch (pin)
-	{
-	case 3:
-		res = (LogicGates::orGate(getInputPin(1), getInputPin(2)));
-		break;
-	case 4:
-		res = (LogicGates::orGate(getInputPin(5), getInputPin(6)));
-		break;
-	case 10:
-		res = (LogicGates::orGate(getInputPin(8), getInputPin(9)));
-		break;
-	case 11:
-		res = (LogicGates::orGate(getInputPin(12), getInputPin(13)));
-		break;
-	}
-	return (res);
+	const InputPair &p = _valuesTab.at(pin);
+	
+	return (LogicGates::orGate(
+		getInputPin(p.first), getInputPin(p.second)));
 }

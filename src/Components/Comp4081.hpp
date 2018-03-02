@@ -1,7 +1,5 @@
 /*
 ** EPITECH PROJECT, 2018
-** Nanotekspice
-** File description:
 ** 4081
 */
 
@@ -18,6 +16,9 @@ protected:
 	nts::Tristate		internalCompute(PinNumber) final;
 private:
 	static const PinMap	_pins;
+	using InputPair = std::pair<PinNumber, PinNumber>;
+	using CorrespondanceMap = std::unordered_map<PinNumber, InputPair>;
+	static const CorrespondanceMap	_valuesTab;
 };
 
 #endif /* !COMP4081_HPP_ */
