@@ -20,6 +20,7 @@ public:
 	bool	isInput(PinNumber pin) const;
 	bool	isOutput(PinNumber pin) const;
 	bool	isInputLinked(PinNumber) const;
+	virtual ~SuperComponent() = default;
 protected:
 	enum PinStatus {
 		INPUT = 0x01,
@@ -29,7 +30,6 @@ protected:
 	using PinMap = std::unordered_map<PinNumber, PinStatus>;
 	SuperComponent(const PinMap &);
 	nts::Tristate	getInputPin(PinNumber) const;
-	virtual ~SuperComponent() = default;
 protected:
 	virtual nts::Tristate	internalCompute(PinNumber) = 0;
 private:
