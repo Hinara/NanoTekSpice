@@ -63,6 +63,7 @@ SRCS_TESTS	=	\
 			tests/LogicGatesXnorTests.cpp	\
 			tests/SuperComponentTests.cpp	\
 			tests/Comp4001Tests.cpp		\
+			tests/Comp4008Tests.cpp		\
 			tests/Comp4011Tests.cpp		\
 			tests/Comp4030Tests.cpp		\
 			tests/Comp4040Tests.cpp		\
