@@ -18,7 +18,7 @@
 #include "Components/True.hpp"
 #include "Cli.hpp"
 
-static bool	*g_stop;
+static bool	g_loop;
 
 Cli::Cli(Graph &g)
 	: _g(g)
@@ -73,10 +73,9 @@ void	Cli::simulate()
 
 void	Cli::loop()
 {
-	bool	exit = false;
-	g_stop = &exit;
-	auto oldHandler = std::signal(SIGINT, [](int){ *g_stop = true; });
-	while (!exit)
+	g_loop = true;
+	auto oldHandler = std::signal(SIGINT, [](int){ g_loop = false; });
+	while (!g_loop)
 		this->simulate();
 	std::signal(SIGINT, oldHandler);
 }
