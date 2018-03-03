@@ -7,6 +7,8 @@
 
 #include "../Errors.hpp"
 #include "Comp4094.hpp"
+#include <iostream>
+#include <bitset>
 
 Comp4094::Comp4094(const std::string &)
 : SuperComponent(_pins)
@@ -59,4 +61,12 @@ nts::Tristate	Comp4094::internalCompute(PinNumber pin)
 	if (getInputPin(15) == nts::TRUE)
 		return (_display & _valuesTab.at(pin)) ? nts::TRUE : nts::FALSE;
 	return nts::UNDEFINED;
+}
+
+void 	Comp4094::dump() const
+{
+	std::cout << "\tInternal value: " << std::bitset<8>(_value)
+		<< "\n\tDisplay value: " << std::bitset<8>(_display)
+		<< "\n\tPrevious State: " << _lastState
+		<< "\n\tNot Q: " << _notQs << std::endl;
 }

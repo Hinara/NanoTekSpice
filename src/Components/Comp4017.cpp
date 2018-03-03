@@ -63,7 +63,7 @@ nts::Tristate	Comp4017::internalCompute(PinNumber pin)
 
 void	Comp4017::dump() const
 {
-	std::cout << "Value: " << _value
-		<< " PreviousState: " << _lastState
+	std::cout << "\tValue: " << _value
+		<< "\n\tPreviousState: " << _lastState
 		<< std::endl;
 }

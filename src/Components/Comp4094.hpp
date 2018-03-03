@@ -14,6 +14,7 @@ class Comp4094	:	public SuperComponent
 public:
 	Comp4094(const std::string &);
 	~Comp4094() = default;
+	virtual void	dump() const final override;
 protected:
 	nts::Tristate		internalCompute(PinNumber) final;
 private:
