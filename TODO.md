@@ -15,7 +15,7 @@
 | [4069](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4069.pdf) | Inverted Circuit | ✔ | ✔ | ✔ | ✔ |
 | [4071](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4071.pdf) | Quad 2 input OR Gate | ✔ | ✔ | ✔ | ✔ |
 | [4081](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4081.pdf) | Quad 2 input AND Gate | ✔ | ✔ | ✔ | ✔ |
-| [4094](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4094.pdf) | 8-Bit Shift Register/Latch with 3-STATE Output | ✔ | ✔ | ❌ | ✔ |
+| [4094](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4094.pdf) | 8-Bit Shift Register/Latch with 3-STATE Output | ✔ | ✔ | ✔ | ✔ |
 | [4514](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4514.pdf) | 4-Bit Latched/4-to-16 Line decoder | ✔ | ✔ | ❌ | ❌ |
 | [4801](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/mk4801.pdf) | 1K x 8bit static RAM | ✔ | ❌ | ❌ | ❌ |
 
