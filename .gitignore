@@ -2,6 +2,8 @@
 #*#
 *~
 nanotekspice
+nanotekspice.cover
+nanotekspice.info
 .vscode
 chipset
 *.gcda
