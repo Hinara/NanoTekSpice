@@ -2,8 +2,8 @@
 
 ## Components
 
-| Component | Description | Table | internalCompute | Unit Tests | Automated Tests |
-|-----------|-------------|:-----:|:---------------:|:----------:|:---------------:|
+| Component | Description | Table | internalCompute | Automated Tests | Unit Tests |
+|-----------|-------------|:-----:|:---------------:|:---------------:|:----------:|
 | [2716](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/2716.pdf) | UV Erasable PROM | ✔ | ❌ | ❌ | ❌ |
 | [4001](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4001.pdf) | Quad 2 input NOR Gate | ✔ | ✔ | ✔ | ✔ |
 | [4008](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4008.pdf) | 4-Bit full adder | ✔ | ✔ | ✔ | ✔ |
