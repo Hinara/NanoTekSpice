@@ -11,7 +11,8 @@
 #include <bitset>
 
 Comp4094::Comp4094(const std::string &)
-: SuperComponent(_pins)
+: SuperComponent(_pins), _value(0), _display(0),
+	_notQs(nts::FALSE), _lastState(nts::TRUE)
 {
 }
 
