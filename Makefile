@@ -97,7 +97,7 @@ cover:	$(NAME_COVER)
 	rm -rf ../test_coverage
 	genhtml -o ../test_coverage -t "$(NAME) test coverage" --num-spaces 4 $(COVER_FILE)
 
-run_tests: fclean $(NAME_COVER)
+tests_run: fclean $(NAME_COVER)
 	./$(NAME_COVER)
 
 test:	$(NAME)
@@ -111,4 +111,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re test cover run_tests test
+.PHONY: all clean fclean re test cover tests_run test
