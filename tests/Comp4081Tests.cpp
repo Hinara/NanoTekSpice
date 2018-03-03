@@ -2,20 +2,20 @@
 ** EPITECH PROJECT, 2018
 ** Nanotekspice
 ** File description:
-** 4071 Test
+** 4081 Test
 */
 
 #include "../src/Components/Output.hpp"
-#include "../src/Components/Comp4071.hpp"
+#include "../src/Components/Comp4081.hpp"
 #include "../src/Components/Input.hpp"
 #include <criterion/criterion.h>
 
-Test(misc, 4071)
+Test(misc, 4081)
 {
 	Input			i1("None");
 	Input			i2("None");
 	Output			o("None");
-	Comp4071		c("None");
+	Comp4081		c("None");
 	
 	i1.setState(nts::TRUE);
 	i2.setState(nts::TRUE);
