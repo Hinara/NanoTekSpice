@@ -6,7 +6,7 @@
 |-----------|-------------|:-----:|:---------------:|:----------:|:---------------:|
 | [2716](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/2716.pdf) | UV Erasable PROM | ✔ | ❌ | ❌ | ❌ |
 | [4001](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4001.pdf) | Quad 2 input NOR Gate | ✔ | ✔ | ✔ | ✔ |
-| [4008](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4008.pdf) | 4-Bit full adder | ✔ | ✔ | ❌ | ✔ |
+| [4008](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4008.pdf) | 4-Bit full adder | ✔ | ✔ | ✔ | ✔ |
 | [4011](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4011.pdf) | Quad 2 input NAND Gate | ✔ | ✔ | ✔ | ✔ |
 | [4013](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4013.pdf) | Dual D-Type Flip-Flop | ✔ | ✔ | ❌ | ❌ |
 | [4017](https://intra.epitech.eu/module/2017/B-CPP-400/PAR-4-1/acti-278570/project/file/tonsil/4017.pdf) | Johnson decade counter with 10 decoded outputs | ✔ | ✔ | ✔ | ✔ |
