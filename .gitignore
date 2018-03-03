@@ -1,3 +1,5 @@
+.gitmodules
+test_nano
 *.o
 #*#
 *~
@@ -8,3 +10,4 @@ nanotekspice.info
 chipset
 *.gcda
 *.gcno
+*.gcov
