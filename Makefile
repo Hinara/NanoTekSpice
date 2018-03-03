@@ -100,15 +100,15 @@ cover:	$(NAME_COVER)
 run_tests: fclean $(NAME_COVER)
 	./$(NAME_COVER)
 
-#test:	$(NAME)
-#	./test_nano/testing_script.sh ./$(NAME) ./test_nano/units_tests
+test:	$(NAME)
+	./test_nano/testing_script.sh ./$(NAME) ./test_nano/units_tests
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJS_MAIN) $(OBJS_TESTS)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re test cover run_tests
+.PHONY: all clean fclean re test cover run_tests test
