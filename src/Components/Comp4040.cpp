@@ -8,6 +8,7 @@
 #include "../Errors.hpp"
 #include "LogicGates.hpp"
 #include "Comp4040.hpp"
+#include <iostream>
 
 Comp4040::Comp4040(const std::string &)
 : SuperComponent(_pins), _value(0), _lastState(nts::TRUE)
@@ -58,4 +59,11 @@ nts::Tristate	Comp4040::internalCompute(PinNumber pin)
 		_value = 0;
 	}
 	return ((_value & _valuesTab.at(pin)) ? nts::TRUE : nts::FALSE);
+}
+
+void	Comp4040::dump() const
+{
+	std::cout << "Value: " << _value
+		<< " PreviousState: " << _lastState
+		<< std::endl;
 }

@@ -7,6 +7,7 @@
 
 #include "../Errors.hpp"
 #include "Comp4017.hpp"
+#include <iostream>
 
 Comp4017::Comp4017(const std::string &)
 : SuperComponent(_pins), _value(0), _lastState(nts::TRUE)
@@ -58,4 +59,11 @@ nts::Tristate	Comp4017::internalCompute(PinNumber pin)
 	else
 		ret = (_value == _valuesTab.at(pin) ? nts::TRUE : nts::FALSE);
 	return ret;
+}
+
+void	Comp4017::dump() const
+{
+	std::cout << "Value: " << _value
+		<< " PreviousState: " << _lastState
+		<< std::endl;
 }
