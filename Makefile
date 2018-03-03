@@ -66,11 +66,12 @@ SRCS_TESTS	=	\
 			tests/Comp4008Tests.cpp		\
 			tests/Comp4011Tests.cpp		\
 			tests/Comp4030Tests.cpp		\
+			tests/Comp4017Tests.cpp		\
 			tests/Comp4040Tests.cpp		\
 			tests/Comp4069Tests.cpp		\
 			tests/Comp4071Tests.cpp		\
 			tests/Comp4081Tests.cpp		\
-			tests/Comp4017Tests.cpp		\
+			tests/Comp4094Tests.cpp		\
 
 OBJS		=	$(SRCS:.cpp=.o)
 
