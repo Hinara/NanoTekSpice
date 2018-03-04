@@ -38,6 +38,56 @@ const SuperComponent::PinMap	Comp4801::_pins = {
 	{23, PinStatus::INPUT},
 };
 
+const Comp4801::CorrespondanceMap	Comp4801::_valuesTab = {
+	{9, 1 << 0},
+	{10, 1 << 1},
+	{11, 1 << 2},
+	{13, 1 << 3},
+	{14, 1 << 4},
+	{15, 1 << 5},
+	{16, 1 << 6},
+	{17, 1 << 7},
+};
+
+
+
+uint16_t	Comp4801::getAddress() const
+{
+	return (((getInputPin(8) == nts::TRUE) << 0) |
+		((getInputPin(7) == nts::TRUE) << 1) |
+		((getInputPin(6) == nts::TRUE) << 2) |
+		((getInputPin(5) == nts::TRUE) << 3) |
+		((getInputPin(4) == nts::TRUE) << 4) |
+		((getInputPin(3) == nts::TRUE) << 5) |
+		((getInputPin(2) == nts::TRUE) << 6) |
+		((getInputPin(1) == nts::TRUE) << 7) |
+		((getInputPin(23) == nts::TRUE) << 8) |
+		((getInputPin(22) == nts::TRUE) << 9)
+	);
+}
+
+uint8_t	Comp4801::getValue() const
+{
+	return (((getInputPin(9) == nts::TRUE) << 0) |
+		((getInputPin(10) == nts::TRUE) << 1) |
+		((getInputPin(11) == nts::TRUE) << 2) |
+		((getInputPin(13) == nts::TRUE) << 3) |
+		((getInputPin(14) == nts::TRUE) << 4) |
+		((getInputPin(15) == nts::TRUE) << 5) |
+		((getInputPin(16) == nts::TRUE) << 6) |
+		((getInputPin(17) == nts::TRUE) << 7)
+	);
+}
+
 nts::Tristate	Comp4801::internalCompute(PinNumber pin)
 {
+	if (getInputPin(18) != nts::TRUE) {
+		if (getInputPin(21) != nts::TRUE) {
+			_values[getAddress()] = getValue();
+		} else if (getInputPin(20) != nts::TRUE) {
+			return ((_values[getAddress()] & _valuesTab.at(pin)) ? 
+				nts::TRUE : nts::FALSE);
+		}
+	}
+	return nts::UNDEFINED;
 }

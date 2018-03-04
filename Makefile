@@ -9,7 +9,7 @@ CXX	=	g++ #--coverage
 
 RM	=	rm -rf
 
-CXXFLAGS	+=	-Wall -Wextra
+CXXFLAGS	+=	-Wall -Wextra -Werror
 
 NAME		=	nanotekspice
 

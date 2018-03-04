@@ -8,7 +8,7 @@
 #include "../Errors.hpp"
 #include "Comp2716.hpp"
 
-Comp2716::Comp2716(const std::string &value)
+Comp2716::Comp2716(const std::string &)
 : SuperComponent(_pins)
 {
 }
@@ -38,6 +38,7 @@ const SuperComponent::PinMap	Comp2716::_pins = {
 	{23, PinStatus::INPUT}
 };
 
-nts::Tristate	Comp2716::internalCompute(PinNumber pin)
+nts::Tristate	Comp2716::internalCompute(PinNumber)
 {
+	return nts::UNDEFINED;
 }
