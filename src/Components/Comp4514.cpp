@@ -60,10 +60,10 @@ const Comp4514::CorrespondanceMap	Comp4514::_valuesTab = {
 nts::Tristate	Comp4514::internalCompute(PinNumber pin)
 {
 	if (getInputPin(1) == nts::TRUE) {
-		_value = ((getInputPin(2) == nts::TRUE) << 3) |
-			((getInputPin(3) == nts::TRUE) << 2) |
-			((getInputPin(21) == nts::TRUE) << 1) |
-			((getInputPin(22) == nts::TRUE) << 0);
+		_value = ((getInputPin(2) == nts::TRUE) << 0) |
+			((getInputPin(3) == nts::TRUE) << 1) |
+			((getInputPin(21) == nts::TRUE) << 2) |
+			((getInputPin(22) == nts::TRUE) << 3);
 	}
 	if (getInputPin(23) == nts::TRUE)
 		return nts::FALSE;
