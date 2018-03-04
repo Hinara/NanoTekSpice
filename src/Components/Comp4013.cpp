@@ -6,6 +6,7 @@
 */
 
 #include "../Errors.hpp"
+#include "LogicGates.hpp"
 #include "Comp4013.hpp"
 
 Comp4013::Comp4013(const std::string &)
@@ -46,5 +47,6 @@ nts::Tristate	Comp4013::internalCompute(PinNumber pin)
 		_value[part] = nts::FALSE;
 	if (q)
 		return ((set == nts::TRUE) ? nts::TRUE : _value[part]);
-	return ((reset == nts::TRUE) ? nts::TRUE : _value[part]);
+	return ((reset == nts::TRUE) ?
+		nts::TRUE : LogicGates::notGate(_value[part]));
 }
