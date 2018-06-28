@@ -53,6 +53,6 @@ namespace Err
 	public:
 		ArgumentError(std::string const &message);
 	};
-};
+}
 
 #endif /* !ERRORS_HPP_ */

@@ -66,8 +66,10 @@ nts::Tristate	Comp4094::internalCompute(PinNumber pin)
 
 void 	Comp4094::dump() const
 {
-	std::cout << "\tInternal value: " << std::bitset<8>(_value)
-		<< "\n\tDisplay value: " << std::bitset<8>(_display)
+	std::cout << "\tInternal value: " << std::bitset<8>(
+			static_cast<long long unsigned int>(_value))
+		<< "\n\tDisplay value: " << std::bitset<8>(
+			static_cast<long long unsigned int>(_display))
 		<< "\n\tPrevious State: " << _lastState
 		<< "\n\tNot Q: " << _notQs << std::endl;
 }
